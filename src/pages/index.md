@@ -21,7 +21,7 @@ To create your first Campsite site, follow these steps:
 
 - **Install Campsite**: Use npm or yarn to install Campsite globally.
    ```bash
-   npm install -g campsite
+   npm install -g campsitejs
    ```
 - **Create a New Site**: Run the following command to create a new Campsite project.
    ```bash
