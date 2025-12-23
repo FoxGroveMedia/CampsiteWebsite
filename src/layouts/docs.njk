@@ -1,0 +1,53 @@
+{% extends "base.njk" %}
+{% from "macros/docs-sidebar.njk" import docsSidebar %}
+
+{% block content %}
+<div class="relative mx-auto flex w-full max-w-8xl flex-auto justify-center sm:px-2 lg:px-8 xl:px-12">
+
+    <aside class="hidden lg:relative lg:block lg:flex-none">
+        <div class="absolute inset-y-0 right-0 w-[50vw] bg-stone-950 dark:hidden"></div>
+        <div class="sticky top-0 w-64 overflow-x-hidden overflow-y-auto py-8 pr-8 pl-0.5 xl:w-72 xl:pr-16 space-y-8">
+            {{ docsSidebar(page.url,'Getting Started',[
+                { href: "/docs/installation", label: "Installation" },
+                { href: "/docs/template-languages", label: "Template Languages" },
+                { href: "/docs/macros", label: "Macros" }
+            ]) }}
+
+            {{ docsSidebar(page.url,'Essentials',[
+                { href: "#", label: "Creating an Application" },
+                { href: "#", label: "Template Syntax" },
+                { href: "#", label: "Reactivity Fundamentals" },
+                { href: "#", label: "Computed Properties" },
+                { href: "#", label: "Class and Style Bindings" },
+                { href: "#", label: "Conditional Rendering" },
+                { href: "#", label: "List Rendering" },
+                { href: "#", label: "Event Handling" },
+                { href: "#", label: "Form Input Bindings" },
+                { href: "#", label: "Watchers" },
+                { href: "#", label: "Template Refs" },
+                { href: "#", label: "Components Basics" },
+                { href: "#", label: "Lifecycle Hooks" },
+                { href: "#", label: "Custom Directives" }
+            ]) }}
+
+            {{ docsSidebar(page.url,'Reusability',[
+            ]) }}
+        </div>
+    </aside>
+
+    <section>
+        <header>
+            <div class="max-w-2xl min-w-0 flex-auto px-4 lg:max-w-none pt-12 mb-4 lg:pr-0 lg:pl-8 xl:px-16">
+                <p class="text-base text-stone-200/50 font-medium">{{ page.subtitle }}</p>
+                <h1 class="text-4xl">{{ page.title }}</h1>
+            </div>
+        </header>
+
+        <article class="max-w-2xl min-w-0 flex-auto px-4 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16">
+            <p class="text-xl tracking-wide mb-12">{{ page.description }}</p>
+            {{ content | safe }}
+        </article>
+    </section>
+
+</div>
+{% endblock %}

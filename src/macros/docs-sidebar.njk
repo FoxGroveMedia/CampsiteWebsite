@@ -1,0 +1,27 @@
+{% macro docsSidebar(current, title="Getting Started", links=[]) %}
+  {% set normalizedCurrent = current or page.url or '' %}
+  {% if normalizedCurrent and normalizedCurrent.endsWith('/') %}
+    {% set normalizedCurrent = normalizedCurrent.slice(0, -1) %}
+  {% endif %}
+  {% if not links or links | length == 0 %}
+    {% set links = [] %}
+  {% endif %}
+  {% set baseLinkClasses = "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:h-1.5 before:w-1.5 before:translate-y-2 before:rounded-full" %}
+  {% set activeClasses = "font-semibold text-amber-500 before:bg-amber-500" %}
+  {% set inactiveClasses = "text-stone-500 before:hidden before:bg-stone-300 hover:text-white hover:before:block dark:text-stone-400 dark:before:bg-stone-700 dark:hover:text-stone-300" %}
+  <div>
+      <h2 class="text-xl">{{ title }}</h2>
+      <ul role="list" class="space-y-2 lg:space-y-4 border-l-2 border-stone-600 dark:border-stone-800 pt-4">
+        {% for link in links %}
+          {% set normalizedHref = link.href %}
+          {% if normalizedHref and normalizedHref.endsWith('/') %}
+            {% set normalizedHref = normalizedHref.slice(0, -1) %}
+          {% endif %}
+          {% set isActive = normalizedCurrent == normalizedHref %}
+          <li class="relative">
+            <a class="{{ baseLinkClasses }} {% if isActive %}{{ activeClasses }}{% else %}{{ inactiveClasses }}{% endif %}" href="{{ link.href }}">{{ link.label }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+  </div>
+{% endmacro %}
