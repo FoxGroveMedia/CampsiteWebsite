@@ -25,19 +25,19 @@ To create your first Campsite site, follow these steps:
    ```
 - **Create a New Site**: Run the following command to create a new Campsite project.
    ```bash
-   campsite create my-site
+   campsitejs my-site-name
    ```
 - **Navigate to Your Site**: Change into your new site directory.
    ```bash
-   cd my-site
+   cd my-site-name
    ```
 - **Start the Development Server**: Launch the development server to preview your site.
    ```bash
-   campsite dev
+   campsitejs dev
    ```
 - **Build for Production**: When you're ready to deploy, build your site with:
    ```bash
-   campsite build
+   campsitejs build
    ```
    The output will be in the `./campfire/` folder, this can be changed in your `campsite.config.js` file.
 
