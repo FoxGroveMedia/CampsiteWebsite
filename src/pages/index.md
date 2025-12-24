@@ -8,39 +8,19 @@ description: Cozy, fast static sites with Campsite.
 
 # Welcome, camper
 
-⛺ Campsite is a fresh new static site generator, pack light, pitch fast, and build sites with a cozy developer experience. Campsite supports Markdown, Nunjucks, Liquid, Vue, and Alpine.
+<p class="text-xl mb-4">⛺ Campsite is a fresh new static site generator, pack light, pitch fast, and build sites with a cozy developer experience.</p>
 
-### Prerequisites
-Before you begin, ensure you have the following installed on your machine:
-- **Node.js**: Campsite requires Node.js version 14 or higher. You can download it from [nodejs.org](https://nodejs.org/).
-- **npm or yarn**: npm comes bundled with Node.js, but you can also use yarn as an alternative package manager. You can install yarn from [yarnpkg.com](https://yarnpkg.com/).
-- **Git**: While not strictly necessary, having Git installed is recommended for version control and managing your Campsite projects. You can download it from [git-scm.com](https://git-scm.com/).
+Campsite supports Markdown, Nunjucks, Liquid, Vue.js, and Alpine.js out of the box, plus Tailwind CSS for styling.
 
-### Installation Steps
-To create your first Campsite site, follow these steps:
+Get started by checking out the [documentation](./docs/) or jump right in with one of the following commands:
 
-- **Install Campsite**: Use npm or yarn to install Campsite globally.
-   ```bash
-   npm install -g campsitejs
-   ```
-- **Create a New Site**: Run the following command to create a new Campsite project.
-   ```bash
-   campsitejs my-site-name
-   ```
-- **Navigate to Your Site**: Change into your new site directory.
-   ```bash
-   cd my-site-name
-   ```
-- **Start the Development Server**: Launch the development server to preview your site.
-   ```bash
-   campsitejs dev
-   ```
-- **Build for Production**: When you're ready to deploy, build your site with:
-   ```bash
-   campsitejs build
-   ```
-   The output will be in the `./campfire/` folder, this can be changed in your `campsite.config.js` file.
-
+```bash
+# Create a new Campsite project
+npm create campsite@latest my-campsite-site
+cd my-campsite-site
+# Start the development server
+npx campsitejs dev
+```
 
 ___
 

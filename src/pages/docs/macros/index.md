@@ -1,6 +1,6 @@
 ---
 title: Macros
-subtitle: Getting Started
+subtitle: Essentials
 layout: docs.njk
 description: Learn about macros in Campsite and how to use them to create reusable templates and components in your projects.
 ---

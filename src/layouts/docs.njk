@@ -2,52 +2,118 @@
 {% from "macros/docs-sidebar.njk" import docsSidebar %}
 
 {% block content %}
-<div class="relative mx-auto flex w-full max-w-8xl flex-auto justify-center sm:px-2 lg:px-8 xl:px-12">
+<el-dialog>
+  <dialog id="sidebar" class="m-0 p-0 backdrop:bg-transparent lg:hidden">
+    <el-dialog-backdrop
+      class="fixed inset-0 bg-stone-950/90 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"></el-dialog-backdrop>
 
-    <aside class="hidden lg:relative lg:block lg:flex-none">
-        <div class="absolute inset-y-0 right-0 w-[50vw] bg-stone-950 dark:hidden"></div>
-        <div class="sticky top-0 w-64 overflow-x-hidden overflow-y-auto py-8 pr-8 pl-0.5 xl:w-72 xl:pr-16 space-y-8">
-            {{ docsSidebar(page.url,'Getting Started',[
-                { href: "/docs/installation", label: "Installation" },
-                { href: "/docs/template-languages", label: "Template Languages" },
-                { href: "/docs/macros", label: "Macros" }
-            ]) }}
-
-            {{ docsSidebar(page.url,'Essentials',[
-                { href: "#", label: "Creating an Application" },
-                { href: "#", label: "Template Syntax" },
-                { href: "#", label: "Reactivity Fundamentals" },
-                { href: "#", label: "Computed Properties" },
-                { href: "#", label: "Class and Style Bindings" },
-                { href: "#", label: "Conditional Rendering" },
-                { href: "#", label: "List Rendering" },
-                { href: "#", label: "Event Handling" },
-                { href: "#", label: "Form Input Bindings" },
-                { href: "#", label: "Watchers" },
-                { href: "#", label: "Template Refs" },
-                { href: "#", label: "Components Basics" },
-                { href: "#", label: "Lifecycle Hooks" },
-                { href: "#", label: "Custom Directives" }
-            ]) }}
-
-            {{ docsSidebar(page.url,'Reusability',[
-            ]) }}
+    <div tabindex="0" class="fixed inset-0 flex focus:outline focus:outline-0">
+      <el-dialog-panel
+        class="group/dialog-panel relative mr-16 flex w-full max-w-xs flex-1 transform transition duration-300 ease-in-out data-[closed]:-translate-x-full">
+        <div
+          class="absolute left-full top-0 flex w-16 justify-center pt-5 duration-300 ease-in-out group-data-[closed]/dialog-panel:opacity-0">
+          <button type="button" command="close" commandfor="sidebar" class="-m-2.5 p-2.5">
+            <span class="sr-only">Close sidebar</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon"
+              aria-hidden="true" class="size-6 text-white">
+              <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
         </div>
-    </aside>
 
-    <section>
-        <header>
-            <div class="max-w-2xl min-w-0 flex-auto px-4 lg:max-w-none pt-12 mb-4 lg:pr-0 lg:pl-8 xl:px-16">
-                <p class="text-base text-stone-200/50 font-medium">{{ page.subtitle }}</p>
-                <h1 class="text-4xl">{{ page.title }}</h1>
-            </div>
-        </header>
+        <!-- Sidebar component, swap this element with another sidebar if you like -->
+        <div
+          class="relative flex grow flex-col gap-y-5 overflow-y-auto bg-stone-950 py-8 px-6 ring-1 ring-white/10 dark:before:pointer-events-none dark:before:absolute dark:before:inset-0 dark:before:bg-black/10">
 
-        <article class="max-w-2xl min-w-0 flex-auto px-4 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16">
-            <p class="text-xl tracking-wide mb-12">{{ page.description }}</p>
-            {{ content | safe }}
-        </article>
-    </section>
+          {{ docsSidebar(page.url,'Getting Started',[
+          { href: "/docs/overview", label: "Overview" },
+          { href: "/docs/installation", label: "Installation" }
+          ]) }}
 
+          {{ docsSidebar(page.url,'Template Languages',[
+          { href: "/docs/template-languages/markdown", label: "Markdown" },
+          { href: "/docs/template-languages/nunjucks", label: "Nunjucks" },
+          { href: "/docs/template-languages/liquid", label: "Liquid" },
+          { href: "/docs/template-languages/vuejs", label: "Vue.js" },
+          { href: "/docs/template-languages/alpinejs", label: "Alpine.js" }
+          ]) }}
+
+          {{ docsSidebar(page.url,'Essentials',[
+          { href: "/docs/macros", label: "Macros" }
+          ]) }}
+
+          {{ docsSidebar(page.url,'CSS Frameworks',[
+          { href: "/docs/tailwindcss", label: "Tailwind CSS" },
+          { href: "/docs/bootstrap", label: "Bootstrap" },
+          { href: "/docs/foundation", label: "Foundation" }
+          ]) }}
+        </div>
+      </el-dialog-panel>
+    </div>
+  </dialog>
+</el-dialog>
+
+<!-- Static sidebar for desktop -->
+<div class="hidden bg-stone-950 lg:fixed lg:pt-12 lg:inset-y-0 lg:z-10 lg:flex lg:w-72 lg:flex-col">
+  <!-- Sidebar component, swap this element with another sidebar if you like -->
+  <div class="flex grow flex-col gap-y-5 overflow-y-auto pt-12 px-6 dark:border-white/10 dark:bg-black/10">
+    {{ docsSidebar(page.url,'Getting Started',[
+    { href: "/docs/overview", label: "Overview" },
+    { href: "/docs/installation", label: "Installation" }
+    ]) }}
+
+    {{ docsSidebar(page.url,'Template Languages',[
+    { href: "/docs/template-languages/markdown", label: "Markdown" },
+    { href: "/docs/template-languages/nunjucks", label: "Nunjucks" },
+    { href: "/docs/template-languages/liquid", label: "Liquid" },
+    { href: "/docs/template-languages/vuejs", label: "Vue.js" },
+    { href: "/docs/template-languages/alpinejs", label: "Alpine.js" }
+    ]) }}
+
+    {{ docsSidebar(page.url,'Essentials',[
+    { href: "/docs/macros", label: "Macros" }
+    ]) }}
+
+    {{ docsSidebar(page.url,'CSS Frameworks',[
+    { href: "/docs/tailwindcss", label: "Tailwind CSS" },
+    { href: "/docs/bootstrap", label: "Bootstrap" },
+    { href: "/docs/foundation", label: "Foundation" }
+    ]) }}
+  </div>
 </div>
+
+<div
+  class="sticky top-16 z-40 flex items-center gap-x-6 bg-stone-900 px-4 py-4 shadow sm:px-6 lg:hidden dark:shadow-none dark:after:pointer-events-none dark:after:absolute dark:after:inset-0 dark:after:border-b dark:after:border-white/10 dark:after:bg-black/10">
+  <button type="button" command="show-modal" commandfor="sidebar"
+    class="-m-2.5 p-2.5 text-white hover:text-stone-400 lg:hidden">
+    <span class="sr-only">Open sidebar</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true"
+      class="size-6">
+      <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+  <div class="flex-1">
+    <h6 class="text-xs text-stone-400 leading-4">{{ page.subtitle }}</h6>
+    <h3 class="text-xl text-white leading-5">{{ page.title }}</h3>
+  </div>
+</div>
+
+<main class="py-10 lg:pl-72">
+  <div class="px-4 sm:px-6 lg:px-8">
+
+    <header>
+      <div class="max-w-2xl min-w-0 flex-auto px-4 lg:max-w-none pt-12 mb-4 lg:pr-0 lg:pl-8 xl:px-16">
+        <h6 class="text-base text-stone-200/50 font-medium">{{ page.subtitle }}</h6>
+        <h1 class="text-4xl">{{ page.title }}</h1>
+      </div>
+    </header>
+
+    <article class="max-w-2xl min-w-0 flex-auto px-4 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16">
+      <p class="text-xl tracking-wide mb-12">{{ page.description }}</p>
+      {{ content | safe }}
+    </article>
+
+  </div>
+</main>
+
 {% endblock %}
