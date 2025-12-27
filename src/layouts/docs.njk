@@ -23,7 +23,7 @@
 
         <!-- Sidebar component, swap this element with another sidebar if you like -->
         <div
-          class="relative flex grow flex-col gap-y-5 overflow-y-auto bg-stone-950 py-8 px-6 ring-1 ring-white/10 dark:before:pointer-events-none dark:before:absolute dark:before:inset-0 dark:before:bg-black/10">
+          class="relative flex grow flex-col gap-y-5 overflow-y-auto bg-stone-950/80 py-8 px-6 ring-1 ring-white/10 dark:before:pointer-events-none dark:before:absolute dark:before:inset-0 dark:before:bg-black/10">
 
           {{ docsSidebar(page.url,'Getting Started',[
           { href: "/docs/overview", label: "Overview" },
@@ -54,7 +54,7 @@
 </el-dialog>
 
 <!-- Static sidebar for desktop -->
-<div class="hidden bg-stone-950 lg:fixed lg:pt-12 lg:inset-y-0 lg:z-10 lg:flex lg:w-72 lg:flex-col">
+<div class="hidden bg-stone-950/50 lg:fixed lg:pt-12 lg:inset-y-0 lg:z-10 lg:flex lg:w-72 lg:flex-col">
   <!-- Sidebar component, swap this element with another sidebar if you like -->
   <div class="flex grow flex-col gap-y-5 overflow-y-auto pt-12 px-6 dark:border-white/10 dark:bg-black/10">
     {{ docsSidebar(page.url,'Getting Started',[
@@ -83,7 +83,7 @@
 </div>
 
 <div
-  class="sticky top-16 z-40 flex items-center gap-x-6 bg-stone-900 px-4 py-4 shadow sm:px-6 lg:hidden dark:shadow-none dark:after:pointer-events-none dark:after:absolute dark:after:inset-0 dark:after:border-b dark:after:border-white/10 dark:after:bg-black/10">
+  class="sticky top-[58px] z-40 flex items-center gap-x-6 bg-stone-900 px-4 py-4 shadow sm:px-6 lg:hidden dark:shadow-none dark:after:pointer-events-none dark:after:absolute dark:after:inset-0 dark:after:border-b dark:after:border-white/10 dark:after:bg-black/10">
   <button type="button" command="show-modal" commandfor="sidebar"
     class="-m-2.5 p-2.5 text-white hover:text-stone-400 lg:hidden">
     <span class="sr-only">Open sidebar</span>

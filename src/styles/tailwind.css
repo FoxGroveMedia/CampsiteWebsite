@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.font-serif {
+  font-family: "Caprasimo", serif;
+}
+
 @layer base {
   body {
     @apply text-white font-sans;
@@ -60,6 +64,27 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  background-color: #170900;
+  background-image: url("./campsite_home_bg.png");
+  background-attachment: fixed;
+  background-repeat: repeat;
+  background-size: 800px auto;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "Caprasimo", serif;
+}
+
+.text-shadow-strong {
+  filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.25));
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.15);
+}
+
+.merit-badges {
+  background-image: url("./merit_badges_bg.png");
+  background-size: 300px auto;
+  background-position: top center;
+  background-repeat: repeat;
 }
