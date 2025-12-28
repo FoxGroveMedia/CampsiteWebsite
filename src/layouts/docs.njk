@@ -25,12 +25,12 @@
         <div
           class="relative flex grow flex-col gap-y-5 overflow-y-auto bg-stone-950/80 py-8 px-6 ring-1 ring-white/10 dark:before:pointer-events-none dark:before:absolute dark:before:inset-0 dark:before:bg-black/10">
 
-          {{ docsSidebar(page.url,'Getting Started',[
+          {{ docsSidebar(page.path,'Getting Started',[
           { href: "/docs/overview", label: "Overview" },
           { href: "/docs/installation", label: "Installation" }
           ]) }}
 
-          {{ docsSidebar(page.url,'Template Languages',[
+          {{ docsSidebar(page.path,'Template Languages',[
           { href: "/docs/template-languages/markdown", label: "Markdown" },
           { href: "/docs/template-languages/nunjucks", label: "Nunjucks" },
           { href: "/docs/template-languages/liquid", label: "Liquid" },
@@ -38,11 +38,11 @@
           { href: "/docs/template-languages/alpinejs", label: "Alpine.js" }
           ]) }}
 
-          {{ docsSidebar(page.url,'Essentials',[
+          {{ docsSidebar(page.path,'Essentials',[
           { href: "/docs/macros", label: "Macros" }
           ]) }}
 
-          {{ docsSidebar(page.url,'CSS Frameworks',[
+          {{ docsSidebar(page.path,'CSS Frameworks',[
           { href: "/docs/tailwindcss", label: "Tailwind CSS" },
           { href: "/docs/bootstrap", label: "Bootstrap" },
           { href: "/docs/foundation", label: "Foundation" }
@@ -57,12 +57,12 @@
 <div class="hidden bg-stone-950/50 lg:fixed lg:pt-12 lg:inset-y-0 lg:z-10 lg:flex lg:w-72 lg:flex-col">
   <!-- Sidebar component, swap this element with another sidebar if you like -->
   <div class="flex grow flex-col gap-y-5 overflow-y-auto pt-12 px-6 dark:border-white/10 dark:bg-black/10">
-    {{ docsSidebar(page.url,'Getting Started',[
+    {{ docsSidebar(page.path,'Getting Started',[
     { href: "/docs/overview", label: "Overview" },
     { href: "/docs/installation", label: "Installation" }
     ]) }}
 
-    {{ docsSidebar(page.url,'Template Languages',[
+    {{ docsSidebar(page.path,'Template Languages',[
     { href: "/docs/template-languages/markdown", label: "Markdown" },
     { href: "/docs/template-languages/nunjucks", label: "Nunjucks" },
     { href: "/docs/template-languages/liquid", label: "Liquid" },
@@ -70,11 +70,11 @@
     { href: "/docs/template-languages/alpinejs", label: "Alpine.js" }
     ]) }}
 
-    {{ docsSidebar(page.url,'Essentials',[
+    {{ docsSidebar(page.path,'Essentials',[
     { href: "/docs/macros", label: "Macros" }
     ]) }}
 
-    {{ docsSidebar(page.url,'CSS Frameworks',[
+    {{ docsSidebar(page.path,'CSS Frameworks',[
     { href: "/docs/tailwindcss", label: "Tailwind CSS" },
     { href: "/docs/bootstrap", label: "Bootstrap" },
     { href: "/docs/foundation", label: "Foundation" }

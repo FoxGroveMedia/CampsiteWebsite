@@ -4,6 +4,8 @@ export default {
   outDir: "campfire",
   templateEngine: "nunjucks",
   markdown: true,
+  minifyCSS: true,
+  minifyHTML: true,
   integrations: {
     nunjucks: true,
     liquid: true,

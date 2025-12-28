@@ -1,5 +1,5 @@
 {% macro docsSidebar(current, title="Getting Started", links=[]) %}
-  {% set normalizedCurrent = current or page.url or '' %}
+  {% set normalizedCurrent = current or '' %}
   {% if normalizedCurrent and normalizedCurrent.endsWith('/') %}
     {% set normalizedCurrent = normalizedCurrent.slice(0, -1) %}
   {% endif %}

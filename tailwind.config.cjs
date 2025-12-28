@@ -1,6 +1,7 @@
 module.exports = {
     content: [
         "./src/**/*.{html,md,njk,js,vue}",
+        "./src/data/**/*.json",
         "./public/**/*.{html,js}"
     ],
     theme: {

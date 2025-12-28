@@ -1,0 +1,16 @@
+[
+    {
+        "label": "Home",
+        "url": "/"
+    },
+    {
+        "label": "Docs",
+        "url": "/docs/overview"
+    },
+    {
+        "label": "Releases",
+        "url": "https://github.com/FoxGroveMedia/CampsiteJS/releases",
+        "target": "_blank",
+        "rel": "noreferrer"
+    }
+]
