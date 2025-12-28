@@ -23,7 +23,8 @@
   <meta name="twitter:description" content="{{ meta_description }}">
   {% if meta_url %}
   <meta name="twitter:url" content="{{ meta_url }}">{% endif %}
-  <link rel="stylesheet" href="/style.css">
+  {% set css_version = (assets and assets.styleVersion) or (data.assets and data.assets.styleVersion) %}
+  <link rel="stylesheet" href="/style.css{% if css_version %}?v={{ css_version }}{% endif %}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caprasimo&display=swap" rel="stylesheet">

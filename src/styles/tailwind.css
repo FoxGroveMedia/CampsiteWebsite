@@ -67,7 +67,7 @@
 html {
   scroll-behavior: smooth;
   background-color: #170900;
-  background-image: url("./campsite_home_bg.png");
+  background-image: url("https://cdn.foxgrove.media/csjs/campsite_home_bg.png");
   background-attachment: fixed;
   background-repeat: repeat;
   background-size: 800px auto;
@@ -83,8 +83,5 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .merit-badges {
-  background-image: url("./merit_badges_bg.png");
-  background-size: 300px auto;
-  background-position: top center;
-  background-repeat: repeat;
+  background-image: url("https://cdn.foxgrove.media/csjs/merit_badges_bg_sm.png");
 }
