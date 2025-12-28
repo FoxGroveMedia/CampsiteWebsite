@@ -1,7 +1,8 @@
 [
     {
         "label": "Home",
-        "url": "/"
+        "url": "/",
+        "class": "hidden sm:inline-block"
     },
     {
         "label": "Docs",
