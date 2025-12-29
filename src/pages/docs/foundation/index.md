@@ -6,10 +6,10 @@ description: An introduction to using Foundation with Campsite.
 ---
 
 ### Introduction to Foundation with Campsite
-Foundation is a responsive front-end framework that provides a set of CSS and JavaScript tools to help you build responsive websites quickly. Campsite makes it easy to integrate Foundation into your projects, providing a seamless development experience.
+Foundation is a responsive front-end framework that provides a set of CSS and JavaScript tools to help you build responsive websites quickly. CampsiteJS makes it easy to integrate Foundation into your projects, providing a seamless development experience.
 
 ### Installing Foundation in Campsite
-To get started with Foundation in your Campsite project, follow these steps:
+To get started with Foundation in your CampsiteJS project, follow these steps:
 1. **Install Foundation**: Use npm or yarn to install Foundation and its dependencies.
    ```bash
    npm install foundation-sites
@@ -29,8 +29,8 @@ To get started with Foundation in your Campsite project, follow these steps:
     $(document).foundation();
     ```
 
-### Using Foundation in Your Campsite Project
-To use Foundation in your Campsite project, simply add Foundation's classes to your HTML or templating files. For example, you can create a button with Foundation classes like this:
+### Using Foundation in Your CampsiteJS Project
+To use Foundation in your CampsiteJS project, simply add Foundation's classes to your HTML or templating files. For example, you can create a button with Foundation classes like this:
 ```html
 <button class="button primary">
   Click Me
@@ -38,13 +38,13 @@ To use Foundation in your Campsite project, simply add Foundation's classes to y
 ```
 
 ### Customizing Foundation
-You can customize Foundation by modifying the `_settings.scss` file in your Campsite project. This allows you to change default variables such as colors, typography, and spacing. For example, to change the primary color, you can do the following:
+You can customize Foundation by modifying the `_settings.scss` file in your CampsiteJS project. This allows you to change default variables such as colors, typography, and spacing. For example, to change the primary color, you can do the following:
 ```scss
 $primary-color: #1DA1F2;
 @import 'foundation-sites/scss/foundation';
 ```
 ### Building Your CSS and JavaScript
-Campsite automatically processes your Foundation CSS and JavaScript during the build process. You can run the development server with:
+CampsiteJS automatically processes your Foundation CSS and JavaScript during the build process. You can run the development server with:
 ```bash
 campsitejs dev
 ```

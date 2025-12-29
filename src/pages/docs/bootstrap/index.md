@@ -6,10 +6,10 @@ description: An introduction to using Bootstrap with Campsite.
 ---
 
 ### Introduction to Bootstrap with Campsite
-Bootstrap is a popular front-end framework that provides a set of CSS and JavaScript tools to help you build responsive websites quickly. Campsite makes it easy to integrate Bootstrap into your projects, providing a seamless development experience.
+Bootstrap is a popular front-end framework that provides a set of CSS and JavaScript tools to help you build responsive websites quickly. CampsiteJS makes it easy to integrate Bootstrap into your projects, providing a seamless development experience.
 
 ### Installing Bootstrap in Campsite
-To get started with Bootstrap in your Campsite project, follow these steps:
+To get started with Bootstrap in your CampsiteJS project, follow these steps:
 1. **Install Bootstrap**: Use npm or yarn to install Bootstrap and its dependencies.
    ```bash
    npm install bootstrap
@@ -26,8 +26,8 @@ To get started with Bootstrap in your Campsite project, follow these steps:
    ```js
    import 'bootstrap';
    ```
-### Using Bootstrap in Your Campsite Project
-To use Bootstrap in your Campsite project, simply add Bootstrap's classes to your HTML or templating files. For example, you can create a button with Bootstrap classes like this:
+### Using Bootstrap in Your CampsiteJS Project
+To use Bootstrap in your CampsiteJS project, simply add Bootstrap's classes to your HTML or templating files. For example, you can create a button with Bootstrap classes like this:
 ```html
 <button class="btn btn-primary">
   Click Me
@@ -41,7 +41,7 @@ $primary: #1DA1F2;
 @import 'bootstrap/scss/bootstrap';
 ```
 ### Building Your CSS and JavaScript
-Campsite automatically processes your Bootstrap CSS and JavaScript during the build process. You can run the development server with:
+CampsiteJS automatically processes your Bootstrap CSS and JavaScript during the build process. You can run the development server with:
 ```bash
 campsitejs dev
 ```

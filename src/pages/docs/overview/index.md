@@ -5,21 +5,21 @@ layout: docs.njk
 description: An overview of Campsite, a static site generator, including its features and how to get started.
 ---
 
-> Campsite is a modern static site generator designed to provide a cozy and efficient developer experience. This overview will introduce you to Campsite's key features and guide you through the initial steps to get started with your first project.
+> CampsiteJS is a modern static site generator designed to provide a cozy and efficient developer experience. This overview will introduce you to Campsite's key features and guide you through the initial steps to get started with your first project.
 
 ### Key Features of Campsite
-- **Multiple Templating Languages**: Campsite supports Markdown, Nunjucks, Liquid, Vue, and Alpine, allowing you to choose the best tools for your project.
-- **Fast Build Times**: Optimized for speed, Campsite ensures quick builds and efficient site generation.
-- **Developer-Friendly**: With a focus on simplicity and ease of use, Campsite offers a cozy developer experience.
-- **Extensible**: Easily extend Campsite with plugins and custom configurations to suit your needs.
+- **Multiple Templating Languages**: CampsiteJS supports Markdown, Nunjucks, Liquid, Vue, and Alpine, allowing you to choose the best tools for your project.
+- **Fast Build Times**: Optimized for speed, CampsiteJS ensures quick builds and efficient site generation.
+- **Developer-Friendly**: With a focus on simplicity and ease of use, CampsiteJS offers a cozy developer experience.
+- **Extensible**: Easily extend CampsiteJS with plugins and custom configurations to suit your needs.
 
 ### Additional Resources
-- [Campsite Documentation](https://campsite.foxgrovemedia.com/docs)
-- [Campsite GitHub Repository](https://github.com/campsitejs/campsite)
+- [CampsiteJS Documentation](https://campsite.foxgrovemedia.com/docs)
+- [CampsiteJS GitHub Repository](https://github.com/campsitejs/campsite)
 
-Feel free to explore and experiment with Campsite to create your perfect static site!
+Feel free to explore and experiment with CampsiteJS to create your perfect static site!
 
 ### Installation
-To install Campsite read our installation guide:
+To install CampsiteJS read our installation guide:
 
 <a href="/docs/installation" class="inline-block rounded bg-amber-500 px-6 py-3 mb-8 font-semibold text-white hover:bg-amber-600 transition inline-flex items-center gap-2"><svg class="h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M121 352L224.5 352C259.8 352 288.5 380.7 288.5 416L288.5 519.5C288.5 544.4 315.6 559.7 337 546.9L425.2 494C439.7 485.3 448.5 469.7 448.5 452.8L448.5 357.8C577.4 281.8 583.9 168.3 572.8 92.4C570.9 79.6 560.9 69.6 548.1 67.7C472.2 56.6 358.7 63.1 282.6 192L187.6 192C170.7 192 155.1 200.8 146.4 215.3L93.6 303.5C80.8 324.9 96.1 352 121 352zM448.5 144C475 144 496.5 165.5 496.5 192C496.5 218.5 475 240 448.5 240C422 240 400.5 218.5 400.5 192C400.5 165.5 422 144 448.5 144zM216.9 537.6C248.4 506.1 248.4 455.1 216.9 423.6C185.4 392.1 134.4 392.1 102.9 423.6C71.6 454.9 65.4 515.6 64.6 550C64.2 564.6 75.8 576.2 90.5 575.9C125 575.1 185.6 568.9 216.9 537.6zM176.3 505.6C166.2 515.7 147.8 518.6 135 519.3C127 519.8 120.7 513.4 121.1 505.4C121.8 492.6 124.8 474.2 134.8 464.1C146.2 452.7 164.8 452.7 176.2 464.1C187.6 475.5 187.6 494.1 176.2 505.5z"/></svg><span>Installation Guide</span></a>

@@ -2,10 +2,10 @@
 title: Template Languages
 subtitle: Getting Started
 layout: docs.njk
-description: Learn about the different template languages supported by Campsite and how to use them in your projects.
+description: Learn about the different template languages supported by CampsiteJS and how to use them in your projects.
 ---
 
-> Campsite supports multiple template languages to help you build your static site the way you want. This guide will introduce you to the available template languages and how to use them in your Campsite projects.
+> CampsiteJS supports multiple template languages to help you build your static site the way you want. This guide will introduce you to the available template languages and how to use them in your CampsiteJS projects.
 
 ### Supported Template Languages
 1. **Nunjucks**: A powerful templating engine with a rich feature set, including template inheritance, macros, and filters. Nunjucks is the default template language in Campsite.
@@ -13,7 +13,7 @@ description: Learn about the different template languages supported by Campsite 
 3. **EJS**: Embedded JavaScript templates that allow you to include JavaScript code directly within your HTML. EJS is ideal for developers who prefer a more code-centric approach to templating.
 
 ### Choosing a Template Language
-When starting a new Campsite project, you can choose your preferred template language by specifying it in the `campsite.config.js` file:
+When starting a new CampsiteJS project, you can choose your preferred template language by specifying it in the `campsite.config.js` file:
 
 ```javascript
 module.exports = {

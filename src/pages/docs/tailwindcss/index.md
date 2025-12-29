@@ -6,10 +6,10 @@ description: An introduction to using Tailwind CSS with Campsite.
 ---
 
 ### Introduction to Tailwind CSS with Campsite
-Tailwind CSS is a utility-first CSS framework that allows you to build custom designs directly in your markup. Campsite makes it easy to integrate Tailwind CSS into your projects, providing a seamless development experience. Tailwind CSS comes pre-installed with Campsite, so you can start using it right away.
+Tailwind CSS is a utility-first CSS framework that allows you to build custom designs directly in your markup. CampsiteJS makes it easy to integrate Tailwind CSS into your projects, providing a seamless development experience. Tailwind CSS comes pre-installed with Campsite, so you can start using it right away.
 
-### Using Tailwind CSS in Your Campsite Project
-To use Tailwind CSS in your Campsite project, simply add Tailwind's utility classes to your HTML or templating files. For example, you can create a button with Tailwind classes like this:
+### Using Tailwind CSS in Your CampsiteJS Project
+To use Tailwind CSS in your CampsiteJS project, simply add Tailwind's utility classes to your HTML or templating files. For example, you can create a button with Tailwind classes like this:
 ```html
 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
   Click Me
@@ -17,7 +17,7 @@ To use Tailwind CSS in your Campsite project, simply add Tailwind's utility clas
 ```
 
 ### Customizing Tailwind CSS
-You can customize Tailwind CSS by modifying the `tailwind.config.js` file in your Campsite project. This allows you to extend the default theme, add custom colors, spacing, and more. For example, to add a custom color, you can do the following:
+You can customize Tailwind CSS by modifying the `tailwind.config.js` file in your CampsiteJS project. This allows you to extend the default theme, add custom colors, spacing, and more. For example, to add a custom color, you can do the following:
 ```js
 module.exports = {
   theme: {
@@ -50,7 +50,7 @@ You can add your own custom styles to Tailwind CSS using the `@layer` directive 
 @tailwind utilities;
 ```
 ### Building Your CSS
-Campsite automatically processes your Tailwind CSS during the build process. You can run the development server with:
+CampsiteJS automatically processes your Tailwind CSS during the build process. You can run the development server with:
 ```bash
 campsitejs dev
 ```
@@ -62,4 +62,4 @@ campsitejs build
 This will generate the optimized CSS along with your static site files.
 ### Additional Resources
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [Campsite Documentation](https://campsite.foxgrovemedia.com/docs)
+- [CampsiteJS Documentation](https://campsite.foxgrovemedia.com/docs)

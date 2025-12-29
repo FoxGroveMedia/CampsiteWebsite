@@ -2,11 +2,11 @@
 title: Alpine.js
 subtitle: Template Languages
 layout: docs.njk
-description: Learn how to use Alpine.js as a template language in your Campsite projects.
+description: Learn how to use Alpine.js as a template language in your CampsiteJS projects.
 ---
 
 ### Alpine.js Template Language
-<p class="mb-8">Alpine.js is a lightweight JavaScript framework that offers a simple and declarative way to add interactivity to your web pages. It is designed to be easy to use and integrates seamlessly with Campsite projects.</p>
+<p class="mb-8">Alpine.js is a lightweight JavaScript framework that offers a simple and declarative way to add interactivity to your web pages. It is designed to be easy to use and integrates seamlessly with CampsiteJS projects.</p>
 
 #### Key Features of Alpine.js
 - **Declarative Syntax**: Use HTML attributes to define behavior.
@@ -15,7 +15,7 @@ description: Learn how to use Alpine.js as a template language in your Campsite 
 - **Component-Based**: Build reusable components for better code organization.
 
 #### Getting Started with Alpine.js in Campsite
-1. **Installation**: Include Alpine.js in your Campsite project by adding it to your dependencies or via CDN.
+1. **Installation**: Include Alpine.js in your CampsiteJS project by adding it to your dependencies or via CDN.
 2. **Configuration**: No special configuration is needed; simply include Alpine.js in your templates.
 3. **Creating Templates**: Start creating `.html` or other supported template files for your templates.
 4. **Using Alpine.js Syntax**: Utilize Alpine.js directives to add interactivity to your templates.
@@ -48,6 +48,6 @@ Alpine.js automatically updates the DOM when the underlying data changes. You ca
 
 #### Additional Resources
 - [Alpine.js Official Documentation](https://alpinejs.dev/)
-- [Campsite Template Language Guide](https://campsite.dev/docs/template-languages)
+- [CampsiteJS Template Language Guide](https://campsite.dev/docs/template-languages)
 
-Feel free to explore and experiment with Alpine.js to enhance your Campsite projects!
+Feel free to explore and experiment with Alpine.js to enhance your CampsiteJS projects!
