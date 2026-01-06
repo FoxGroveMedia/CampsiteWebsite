@@ -6,60 +6,43 @@ body_css: 'homepage'
 {% extends "base.njk" %}
 
 {% block content %}
-<article class="bg-campfire-950/40 backdrop-blur-sm rounded-lg max-w-4xl mx-auto px-6 lg:px-8 pb-12">
-    <blockquote class="-mx-4 sm:-mx-8 bg-stone-100/5 rounded-lg border-0 sm:border-l-4 border-amber-500 pl-0 sm:pl-6 italic mb-12 flex flex-col-reverse lg:grid grid-cols-2 sm:gap-8">
-        <div class="py-8 px-4 sm:px-0">
-        <p class="font-mono text-lg mb-8"><span class="font-bold">Welcome camper!</span> CampsiteJS is a fresh new static site generator, pack light, pitch fast, and build sites with a cozy developer experience.</p>
-        <div class="flex gap-4">
-            <img src="https://0.gravatar.com/avatar/f2877e7802133fb75f924bbc8180f2cc33bb1986a19278c74c68b3377d8ab56e?size=256&d=initials"
-                alt="" class="size-16 rounded-full">
-            <div>
-                <div class="leading-5 font-medium">- Christophor S. Wilson,</div>
-                <div class="leading-5 text-stone-500 text-sm pl-3">Creator of CampsiteJS</div>
-                <a href="https://github.com/FoxGroveMedia/CampsiteJS"
-                    class="text-amber-500 hover:text-white pl-3">@FoxGroveMedia</a>
-            </div>
-        </div>
-        </div>
-        <picture>
-            <source srcset="https://cdn.foxgrove.media/csjs/screenshot.avif" type="image/avif">
-            <source srcset="https://cdn.foxgrove.media/csjs/screenshot.webp" type="image/webp">
-            <img src="https://cdn.foxgrove.media/csjs/screenshot.jpg" alt="CampsiteJS Screenshot" class="w-full">
-        </picture>
-    </blockquote>
-    <p class="pt-12 pb-4 font-mono text-center text-2xl font-light leading-[1.5em]">Pack <span class="bg-amber-600 py-0.5 px-1 rounded-lg">light</span>, Pitch <span class="bg-amber-600 py-0.5 px-1 rounded-lg">fast</span>, and build with <span class="bg-amber-600 py-0.5 px-1 rounded-lg">ease</span>.</p>
-    <pre class="mb-12"><code class="text-xl w-full text-center"><span class="select-none">$ </span>npm install -g campsitejs<span class="animate-pulse select-none"> █</span></code></pre>
-    <p class="text-xl font-extralight leading-8 mb-12"><b>CampsiteJS</b> transforms static site building into an exciting adventure, equipped out-of-the-box with Markdown for simple, readable content creation; Nunjucks and Liquid for advanced templating with logic and data; Vue.js for building reactive, interactive components; Alpine.js for lightweight, easy-to-add interactivity; and Tailwind CSS for rapid, utility-first styling of responsive designs. Ideal for everything from minimalist blogs to complex projects, it makes web development smooth, fast, and enjoyable without needing extra plugins—perfect for solo developers or teams ready to explore the digital wilderness.</p>
-    <div class="text-xs text-center tracking-wider mt-10 text-stone-500 font-medium">built using</div>
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-y-8 gap-x-12 sm:gap-x-24 sm:gap-16 items-center px-12 sm:px-0 pt-4 pb-8 text-white">
-        <a href="https://alpinejs.dev/" aria-label="Alpine.js" target="_blank" rel="noopener noreferrer" class="inline-block group"><img src="https://cdn.foxgrove.media/csjs/alpinejs_logo.svg?v=1" alt="Alpine.js logo" class="w-full pt-2 transition ease-in-out group-hover:scale-110 opacity-50 hover:opacity-100"></a>
-        <a href="https://nodejs.org/" aria-label="Node.js" target="_blank" rel="noopener noreferrer" class="inline-block group"><img src="https://cdn.foxgrove.media/csjs/nodejs_logo.svg?v=1" alt="Node.js logo" class="w-full transition ease-in-out group-hover:scale-110 opacity-50 hover:opacity-100"></a>
-        <a href="https://tailwindcss.com/" aria-label="Tailwind CSS" target="_blank" rel="noopener noreferrer" class="inline-block group"><img src="https://cdn.foxgrove.media/csjs/tailwindcss_logo.svg?v=1" alt="Tailwind CSS logo" class="w-full transition ease-in-out group-hover:scale-110 opacity-50 hover:opacity-100"></a>
-        <a href="https://vuejs.org/" aria-label="Vue.js" target="_blank" rel="noopener noreferrer" class="inline-block group"><img src="https://cdn.foxgrove.media/csjs/vuejs_logo.svg?v=2" alt="Vue.js logo" class="w-full transition ease-in-out group-hover:scale-110 opacity-50 hover:opacity-100"></a>
+
+{% include "partials/hero.njk" %}
+
+{% include "partials/get-started.njk" %}
+
+<section class="bg-campfire-900 isolate overflow-hidden border-t-campfire-950/50 border-t-4">
+  <div class="mx-auto max-w-7xl relative py-24 lg:py-28 px-0 lg:px-8">
+    <div aria-hidden="true" class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl lg:-top-80">
+      <div
+        style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
+        class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-campfire-900 to-campfire-800/75 opacity-30 lg:left-[calc(50%-30rem)] lg:w-[72.1875rem]">
+      </div>
     </div>
-    <section class="-mx-4 sm:mx-0 mt-16 grid grid-cols-3 gap-3 sm:gap-6 text-lime-500">
-        <a href="/docs/overview"
-            class="group w-full block text-white text-center bg-amber-600/15 rounded-lg px-4 py-6 hover:bg-amber-700 transition duration-500">
-            <img src="https://cdn.foxgrove.media/csjs/guidebook.png" alt="" class="w-36 mx-auto mb-2 group-hover:scale-110 group-hover:-translate-y-1 transition duration-500">
-            <h3 class="text-base sm:text-xl text-stone-200/30 group-hover:text-white text-shadow-strong m-0 -translate-y-1 group-hover:translate-y-2 transition duration-700">Guidebook</h3>
-        </a>
-        <a href="/docs/installation"
-            class="group w-full block text-white text-center bg-amber-600/15 rounded-lg px-4 py-6 hover:bg-amber-700 transition duration-500">
-            <img src="https://cdn.foxgrove.media/csjs/installation.png" alt="" class="w-36 mx-auto mb-2 group-hover:scale-110 group-hover:-translate-y-1 transition duration-500">
-            <h3 class="text-base sm:text-xl text-stone-200/30 group-hover:text-white text-shadow-strong m-0 -translate-y-1 group-hover:translate-y-2 transition duration-700">Installation</h3>
-        </a>
-        <a href="https://github.com/FoxGroveMedia/CampsiteJS" 
-            class="group w-full block text-white text-center bg-amber-600/15 rounded-lg px-4 py-6 hover:bg-amber-700 transition duration-500"
-            target="_blank" rel="noopener noreferrer">
-            <img src="https://cdn.foxgrove.media/csjs/source.png" alt="" class="w-36 mx-auto mb-2 group-hover:scale-110 group-hover:-translate-y-1 transition duration-500">
-            <h3 class="text-base sm:text-xl text-stone-200/30 group-hover:text-white text-shadow-strong m-0 -translate-y-1 group-hover:translate-y-2 transition duration-700">Source</h3>
-        </a>
-    </section>
-</article>
-<section class="mt-20 relative h-[465px] flex items-center justify-center border-y-amber-500 border-t-4 border-b-4" style="box-shadow: 0 25px 100px -100px black;">
+    <article class="px-6 lg:px-0">
+      <h2 class="text-3xl lg:text-4xl font-extralight mb-6">What is CampsiteJS?</h2>
+      <p class="text-xl font-extralight leading-8 mb-20"><b>CampsiteJS</b> transforms static site building into an exciting adventure, equipped out-of-the-box with Markdown for simple, readable content creation; Nunjucks and Liquid for advanced templating with logic and data; Vue.js for building reactive, interactive components; Alpine.js for lightweight, easy-to-add interactivity; and Tailwind CSS for rapid, utility-first styling of responsive designs. Ideal for everything from minimalist blogs to complex projects, it makes web development smooth, fast, and enjoyable without needing extra plugins—perfect for solo developers or teams ready to explore the digital wilderness.</p>
+    </article>
+    <div class="text-xs text-center tracking-wider mt-10 text-stone-500 font-medium">built using</div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-12 lg:gap-x-24 lg:gap-16 items-center px-12 lg:px-0 pt-4 pb-8 text-white">
+        <a href="https://alpinejs.dev/" aria-label="Alpine.js" target="_blank" rel="noopener noreferrer" class="inline-block group"><img src="https://cdn.foxgrove.media/csjs/alpinejs_logo.svg?v=1" alt="Alpine.js logo" class="w-full pt-2 transition ease-in-out group-hover:scale-110 opacity-20 hover:opacity-100"></a>
+        <a href="https://nodejs.org/" aria-label="Node.js" target="_blank" rel="noopener noreferrer" class="inline-block group"><img src="https://cdn.foxgrove.media/csjs/nodejs_logo.svg?v=1" alt="Node.js logo" class="w-full transition ease-in-out group-hover:scale-110 opacity-20 hover:opacity-100"></a>
+        <a href="https://tailwindcss.com/" aria-label="Tailwind CSS" target="_blank" rel="noopener noreferrer" class="inline-block group"><img src="https://cdn.foxgrove.media/csjs/tailwindcss_logo.svg?v=1" alt="Tailwind CSS logo" class="w-full transition ease-in-out group-hover:scale-110 opacity-20 hover:opacity-100"></a>
+        <a href="https://vuejs.org/" aria-label="Vue.js" target="_blank" rel="noopener noreferrer" class="inline-block group"><img src="https://cdn.foxgrove.media/csjs/vuejs_logo.svg?v=2" alt="Vue.js logo" class="w-full transition ease-in-out group-hover:scale-110 opacity-20 hover:opacity-100"></a>
+    </div>
+    <div aria-hidden="true"
+      class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl lg:top-[calc(100%-30rem)]">
+      <div
+        style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
+        class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-campfire-900 to-campfire-700 opacity-30 lg:left-[calc(50%+36rem)] lg:w-[72.1875rem]">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="relative h-[465px] flex items-center justify-center border-y-amber-500 border-t-4 border-b-4" style="box-shadow: 0 25px 100px -100px black;">
     <div class="z-0 merit-badges absolute top-0 left-0 w-full h-full brightness-50X opacity-75"></div>
     <div class="z-10 text-center py-16 px-24" style="background: radial-gradient(ellipse at center, rgba(23,9,0,1) 0%,rgba(23,9,0,0) 100%);">
-        <h2 class="text-white text-4xl sm:text-5xl mb-8">Level Up Your Skills</h2>
+        <h2 class="text-white text-4xl lg:text-5xl mb-8">Level Up Your Skills</h2>
         <a href="/docs/overview"
             class="inline-block rounded bg-red-600 px-6 py-3 mb-8 font-semibold text-white hover:bg-red-700 transition inline-flex items-center gap-2">
             <svg class="h-8 text-shadow-strong" fill="currentColor" xmlns="http://www.w3.org/2000/svg"

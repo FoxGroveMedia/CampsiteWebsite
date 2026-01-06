@@ -41,6 +41,9 @@
   article h3 {
     @apply text-2xl mt-6;
   }
+  article.docs h3 {
+    @apply mt-24 tracking-wide;
+  }
   article h4 {
     @apply text-xl mt-4;
   }
@@ -84,4 +87,21 @@ h1, h2, h3, h4, h5, h6 {
 
 .merit-badges {
   background-image: url("https://cdn.foxgrove.media/csjs/merit_badges_bg_sm.png");
+}
+
+.underlined {
+  position:relative;
+}
+
+.underlined:after {
+  content: "";
+  position: absolute;
+  bottom: -11px;
+  left: -5%;
+  height: 12px;
+  width: 110%;
+  border: 3px solid transparent;
+  border-top-color: currentcolor;
+  border-radius: 40%;
+  clip-path:inset(0 0 50% 0)
 }
