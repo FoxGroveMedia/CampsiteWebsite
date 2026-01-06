@@ -1,6 +1,5 @@
 {% extends "base.njk" %}
 {% from "partials/docs-sidebar.njk" import docsSidebar %}
-{% from "partials/docs-anchors.njk" import docsAnchors %}
 
 {% block content %}
 <el-dialog>
@@ -119,87 +118,7 @@
       {{ content | safe }}
     </article>
     </div>
-    {% set links = content | anchorsFromContent %}
-    {% if links.length > 0 %}
-    {{ docsAnchors(page,'On this page', links) }}
-    {% endif %}
   </div>
 </main>
 
-<script>
-// ScrollSpy for docs anchors using scroll position (stable order)
-(() => {
-  const nav = document.querySelector('[data-docs-anchor]');
-  if (!nav) return;
-  const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
-  const targets = links
-    .map((link) => {
-      const id = decodeURIComponent(link.hash.slice(1));
-      const el = document.getElementById(id);
-      return el ? { link, el } : null;
-    })
-    .filter(Boolean);
-
-  if (!targets.length) return;
-
-  const inactive = ['text-stone-500', 'hover:text-white', 'dark:text-stone-400', 'dark:hover:text-stone-300'];
-  const active = ['font-semibold', 'text-amber-500', 'border-l-4', 'border-amber-500', '-ml-1'];
-  const offset = 500; // px padding for header/breathing room
-
-  // Sort targets by document position to keep ordering predictable
-  const sorted = targets
-    .map((t) => ({ ...t, top: t.el.getBoundingClientRect().top + window.scrollY }))
-    .sort((a, b) => a.top - b.top);
-
-  const setActive = (link) => {
-    links.forEach((l) => {
-      l.classList.remove(...active);
-      l.classList.add(...inactive);
-    });
-    link.classList.add(...active);
-    link.classList.remove(...inactive);
-  };
-
-  const update = () => {
-    const pos = window.scrollY + offset;
-    // Find first section below current pos; activate the one just before it
-    let idx = sorted.findIndex((t) => t.top > pos);
-    if (idx === -1) idx = sorted.length; // past last section
-    const activeTarget = sorted[Math.max(0, idx - 1)];
-    if (activeTarget) setActive(activeTarget.link);
-  };
-
-  const applyHashTarget = () => {
-    const hash = decodeURIComponent(window.location.hash || '').replace('#', '');
-    if (!hash) return false;
-    const target = sorted.find((t) => t.el.id === hash);
-    if (target) {
-      setActive(target.link);
-      return true;
-    }
-    return false;
-  };
-
-  // Immediate feedback on click (before scroll settles)
-  links.forEach((link) => {
-    link.addEventListener('click', () => setActive(link));
-  });
-
-  window.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', () => {
-    // Recompute tops on resize to keep accuracy
-    sorted.forEach((t) => {
-      t.top = t.el.getBoundingClientRect().top + window.scrollY;
-    });
-    update();
-  });
-
-  window.addEventListener('hashchange', () => {
-    if (!applyHashTarget()) update();
-  });
-
-  // Initial state
-  if (!applyHashTarget()) update();
-})();
-</script>
 {% endblock %}
