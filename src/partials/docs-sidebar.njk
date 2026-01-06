@@ -10,8 +10,8 @@
   {% set activeClasses = "font-semibold text-amber-500" %}
   {% set inactiveClasses = "text-stone-500 hover:text-white dark:text-stone-400 dark:hover:text-stone-300" %}
   <div>
-      <h2 class="text-xl text-white mt-4">{{ title }}</h2>
-      <ul role="list" class="space-y-2 lg:space-y-3 border-l-4 border-stone-800 dark:border-stone-800 pt-4 ml-2">
+      <h2 class="text-xl text-white">{{ title }}</h2>
+      <ul role="list" class="space-y-2 lg:space-y-3 border-l-4 border-stone-800 dark:border-stone-800 pt-4 ml-2 mb-8">
         {% for link in links %}
           {% set normalizedHref = link.href %}
           {% if normalizedHref and normalizedHref.endsWith('/') %}

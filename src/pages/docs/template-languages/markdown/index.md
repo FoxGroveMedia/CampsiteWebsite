@@ -5,6 +5,8 @@ layout: docs.njk
 description: Learn how to use Markdown as a template language in your CampsiteJS projects.
 ---
 
+<a id="overview"></a>
+
 ### Markdown Template Language
 
 <p class="mb-8">Markdown is a lightweight markup language that allows you to create formatted text using a plain-text editor. It is widely used for documentation, blogging, and content management systems, making it a great choice for CampsiteJS projects.</p>
@@ -21,6 +23,8 @@ description: Learn how to use Markdown as a template language in your CampsiteJS
 3. **Creating Templates**: Start creating `.md` files for your templates.
 4. **Using Markdown Syntax**: Utilize Markdown syntax for headings, lists, links, images, and more.
 
+<a id="headings"></a>
+
 ### Headings
 Use `#` for headings. The number of `#` symbols indicates the heading level.
 ```markdown
@@ -28,6 +32,24 @@ Use `#` for headings. The number of `#` symbols indicates the heading level.
 ## Heading 2
 ### Heading 3
 ```
+
+<a id="paragraphs"></a>
+
+### Paragraphs
+Create paragraphs by separating lines with a blank line.
+
+
+<a id="bold-and-italic"></a>
+
+### Bold and Italic
+Use `**` or `__` for bold text and `*` or `_` for italic text.
+```markdown
+**Bold Text**
+*Italic Text*
+```
+
+<a id="lists"></a>
+
 ### Lists
 Create unordered lists using `-`, `*`, or `+`, and ordered lists using numbers.
 ```markdown
@@ -37,18 +59,24 @@ Create unordered lists using `-`, `*`, or `+`, and ordered lists using numbers.
 1. First Item
 2. Second Item
 ```
+
+<a id="links"></a>
+
 ### Links
 Create links using the `[text](URL)` syntax.
 ```markdown
 [Visit Campsite](https://campsite.dev)
 ```
+
+<a id="images"></a>
+
 ### Images
 Embed images using the `![alt text](image URL)` syntax.
 ```markdown
 ![CampsiteJS Logo](https://campsite.dev/logo.png)
 ```
 
-#### Additional Resources
+### Additional Resources
 - [Markdown Guide](https://www.markdownguide.org/)
 - [CampsiteJS Template Language Guide](https://campsite.dev/docs/template-languages)
 
