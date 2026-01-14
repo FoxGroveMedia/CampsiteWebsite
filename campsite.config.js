@@ -1,5 +1,7 @@
 export default {
   siteName: "CampsiteWebsite",
+  domain: "https://campsitejs.dev",
+  baseURL: "/",
   srcDir: "src",
   outDir: "campfire",
   templateEngine: "nunjucks",
@@ -7,9 +9,10 @@ export default {
   minifyCSS: true,
   minifyHTML: true,
   integrations: {
-    nunjucks: true,
+    alpine: false,
     liquid: true,
-    vue: false,
-    alpine: false
+    mustache: false,
+    nunjucks: true,
+    vue: false
   }
 };
