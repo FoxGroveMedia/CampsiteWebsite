@@ -26,29 +26,31 @@
           class="relative flex grow flex-col gap-y-5 overflow-y-auto bg-stone-950/80 py-8 px-6 ring-1 ring-white/10 dark:before:pointer-events-none dark:before:absolute dark:before:inset-0 dark:before:bg-black/10">
 
           {{ docsSidebar(page.path,'Getting Started',[
-          { href: "/docs/overview", label: "Overview" },
-          { href: "/docs/installation", label: "Installation" }
+            { href: "/docs/overview", label: "Overview" },
+            { href: "/docs/installation", label: "Installation" }
           ]) }}
 
           {{ docsSidebar(page.path,'Essentials',[
-          { href: "/docs/partials", label: "Partials" }
+            { href: "/docs/partials", label: "Partials" }
           ]) }}
 
           {{ docsSidebar(page.path,'Template Languages',[
-          { href: "/docs/template-languages/markdown", label: "Markdown" },
-          { href: "/docs/template-languages/nunjucks", label: "Nunjucks" },
-          { href: "/docs/template-languages/liquid", label: "Liquid" }
+            { href: "/docs/template-languages", label: "Overview" },
+            { href: "/docs/template-languages/liquid", label: "Liquid" },
+            { href: "/docs/template-languages/markdown", label: "Markdown" },
+            { href: "/docs/template-languages/mustache", label: "Mustache" },
+            { href: "/docs/template-languages/nunjucks", label: "Nunjucks" }
           ]) }}
 
           {{ docsSidebar(page.path,'JS Frameworks',[
-          { href: "/docs/template-languages/vuejs", label: "Vue.js" },
-          { href: "/docs/template-languages/alpinejs", label: "Alpine.js" }
+            { href: "/docs/template-languages/alpinejs", label: "Alpine.js" },
+            { href: "/docs/template-languages/vuejs", label: "Vue.js" }
           ]) }}
 
           {{ docsSidebar(page.path,'CSS Frameworks',[
-          { href: "/docs/tailwindcss", label: "Tailwind CSS" },
-          { href: "/docs/bootstrap", label: "Bootstrap" },
-          { href: "/docs/foundation", label: "Foundation" }
+            { href: "/docs/bootstrap", label: "Bootstrap" },
+            { href: "/docs/foundation", label: "Foundation" },
+            { href: "/docs/tailwindcss", label: "Tailwind CSS" }
           ]) }}
         </div>
       </el-dialog-panel>
@@ -61,29 +63,31 @@
   <!-- Sidebar component, swap this element with another sidebar if you like -->
   <div class="flex grow flex-col gap-y-5 overflow-y-auto pt-12 px-6 dark:border-white/10 dark:bg-black/10">
     {{ docsSidebar(page.path,'Getting Started',[
-    { href: "/docs/overview", label: "Overview" },
-    { href: "/docs/installation", label: "Installation" }
+      { href: "/docs/overview", label: "Overview" },
+      { href: "/docs/installation", label: "Installation" }
     ]) }}
 
     {{ docsSidebar(page.path,'Essentials',[
-    { href: "/docs/partials", label: "Partials" }
+      { href: "/docs/partials", label: "Partials" }
     ]) }}
 
     {{ docsSidebar(page.path,'Template Languages',[
-    { href: "/docs/template-languages/markdown", label: "Markdown" },
-    { href: "/docs/template-languages/nunjucks", label: "Nunjucks" },
-    { href: "/docs/template-languages/liquid", label: "Liquid" }
+      { href: "/docs/template-languages", label: "Overview" },
+      { href: "/docs/template-languages/liquid", label: "Liquid" },
+      { href: "/docs/template-languages/markdown", label: "Markdown" },
+      { href: "/docs/template-languages/mustache", label: "Mustache" },
+      { href: "/docs/template-languages/nunjucks", label: "Nunjucks" }
     ]) }}
 
     {{ docsSidebar(page.path,'JS Frameworks',[
-    { href: "/docs/template-languages/vuejs", label: "Vue.js" },
-    { href: "/docs/template-languages/alpinejs", label: "Alpine.js" }
+      { href: "/docs/template-languages/alpinejs", label: "Alpine.js" },
+      { href: "/docs/template-languages/vuejs", label: "Vue.js" }
     ]) }}
 
     {{ docsSidebar(page.path,'CSS Frameworks',[
-    { href: "/docs/tailwindcss", label: "Tailwind CSS" },
-    { href: "/docs/bootstrap", label: "Bootstrap" },
-    { href: "/docs/foundation", label: "Foundation" }
+      { href: "/docs/bootstrap", label: "Bootstrap" },
+      { href: "/docs/foundation", label: "Foundation" },
+      { href: "/docs/tailwindcss", label: "Tailwind CSS" }
     ]) }}
   </div>
 </div>
