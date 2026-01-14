@@ -143,6 +143,6 @@ To dump and log complex objects, you can chain the `dump` and `log` filters.
 
 ### Additional Resources
 - [Nunjucks Official Documentation](https://mozilla.github.io/nunjucks/)
-- [CampsiteJS Template Language Guide](https://campsite.dev/docs/template-languages)
+- [CampsiteJS Template Language Guide](/docs/template-languages)
 
 Feel free to explore and experiment with Nunjucks to enhance your CampsiteJS projects!

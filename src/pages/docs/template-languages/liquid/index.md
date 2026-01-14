@@ -53,6 +53,6 @@ You can iterate over arrays or objects using the `for` tag.
 
 #### Additional Resources
 - [Liquid Official Documentation](https://shopify.github.io/liquid/)
-- [CampsiteJS Template Language Guide](https://campsite.dev/docs/template-languages)
+- [CampsiteJS Template Language Guide](/docs/template-languages)
 
 Feel free to explore and experiment with Liquid to enhance your CampsiteJS projects!

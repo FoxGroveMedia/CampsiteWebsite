@@ -48,6 +48,6 @@ Alpine.js automatically updates the DOM when the underlying data changes. You ca
 
 #### Additional Resources
 - [Alpine.js Official Documentation](https://alpinejs.dev/)
-- [CampsiteJS Template Language Guide](https://campsite.dev/docs/template-languages)
+- [CampsiteJS Template Language Guide](/docs/template-languages)
 
 Feel free to explore and experiment with Alpine.js to enhance your CampsiteJS projects!

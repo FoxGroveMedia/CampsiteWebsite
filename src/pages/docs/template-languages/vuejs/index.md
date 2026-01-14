@@ -67,6 +67,6 @@ Vue.js automatically updates the DOM when the underlying data changes. You can d
 
 #### Additional Resources
 - [Vue.js Official Documentation](https://vuejs.org/)
-- [CampsiteJS Template Language Guide](https://campsite.dev/docs/template-languages)
+- [CampsiteJS Template Language Guide](/docs/template-languages)
 
 Feel free to explore and experiment with Vue.js to enhance your CampsiteJS projects!

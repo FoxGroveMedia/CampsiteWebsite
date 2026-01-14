@@ -65,7 +65,7 @@ Create unordered lists using `-`, `*`, or `+`, and ordered lists using numbers.
 ### Links
 Create links using the `[text](URL)` syntax.
 ```markdown
-[Visit Campsite](https://campsite.dev)
+[Visit Campsite](https://campsitejs.dev)
 ```
 
 <a id="images"></a>
@@ -73,11 +73,11 @@ Create links using the `[text](URL)` syntax.
 ### Images
 Embed images using the `![alt text](image URL)` syntax.
 ```markdown
-![CampsiteJS Logo](https://campsite.dev/logo.png)
+![CampsiteJS Logo](https://campsitejs.dev/logo.png)
 ```
 
 ### Additional Resources
 - [Markdown Guide](https://www.markdownguide.org/)
-- [CampsiteJS Template Language Guide](https://campsite.dev/docs/template-languages)
+- [CampsiteJS Template Language Guide](/docs/template-languages)
 
 Feel free to explore and experiment with Markdown to enhance your CampsiteJS projects!
