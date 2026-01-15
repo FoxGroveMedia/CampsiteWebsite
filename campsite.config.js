@@ -15,5 +15,10 @@ export default {
     mustache: false,
     nunjucks: true,
     vue: false
+  },
+  hooks: {
+    nunjucksEnv: (env) => {
+      env.addGlobal('currentYear', new Date().getFullYear());
+    }
   }
 };

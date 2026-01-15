@@ -8,9 +8,9 @@ description: Learn about partials in CampsiteJS and how to use them to create re
 > Partials in CampsiteJS are reusable snippets of code that can be included in multiple templates. They help you maintain consistency and reduce redundancy in your codebase.
 
 ### Creating Partials
-To create a partial, simply create a new file in the `src/partials` directory of your CampsiteJS project. The filename should start with an underscore (`_`) to indicate that it is a partial. For example, you might create a file named `_navbar.njk` for a header partial.
+To create a partial, simply create a new file in the `src/partials` directory of your CampsiteJS project. You can name the file anything you like, though it's common to prefix partial filenames with an underscore (e.g., `_navbar.njk`) as a naming convention to distinguish them from regular templates.
 
-<div class="inline-block rounded-md bg-black py-1 px-3 text-base font-bold text-white mb-0">Filename: src/partials/_navbar.njk</div>
+<div class="inline-block rounded-md bg-black py-1 px-3 text-base font-bold text-white mb-0">Filename: src/partials/navbar.njk</div>
 
 ```njk
 <nav>
@@ -37,7 +37,7 @@ To include a partial in your template, use the `{% include %}` tag followed by t
 </head>
 <body>
   <header>
-    {% include "partials/_navbar.njk" %}
+    {% include "partials/navbar.njk" %}
   </header>
   <main>
     {{ content | safe }}
@@ -49,7 +49,7 @@ To include a partial in your template, use the `{% include %}` tag followed by t
 ### Passing Variables to Partials
 You can also pass variables to partials when including them. This allows you to customize the content of the partial based on the context in which it is used. To pass variables, use the `with` keyword followed by a dictionary of variables. For example:
 
-<div class="inline-block rounded-md bg-black py-1 px-3 text-base font-bold text-white mb-0">Filename: src/partials/_alert.njk</div>
+<div class="inline-block rounded-md bg-black py-1 px-3 text-base font-bold text-white mb-0">Filename: src/partials/alert.njk</div>
 
 ```njk
 <div class="alert alert-{{ type }}">
@@ -61,7 +61,7 @@ You can also pass variables to partials when including them. This allows you to 
 <div class="inline-block rounded-md bg-black py-1 px-3 text-base font-bold text-white mb-0">Filename: src/pages/example.njk</div>
 
 ```njk
-{% include "partials/_alert.njk" with { type: "success", message: "Your operation was successful!" } %}
+{% include "partials/alert.njk" with { type: "success", message: "Your operation was successful!" } %}
 ```
 
 ### Output

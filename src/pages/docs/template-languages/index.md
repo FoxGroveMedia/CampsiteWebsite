@@ -1,6 +1,6 @@
 ---
-title: Template Languages
-subtitle: Getting Started
+title: Overview
+subtitle: Template Languages
 layout: docs.njk
 description: Learn about the different template languages supported by CampsiteJS and how to use them in your projects.
 ---
@@ -13,14 +13,13 @@ description: Learn about the different template languages supported by CampsiteJ
 2. **[Markdown](/docs/template-languages/markdown)**: While not a traditional template language, Markdown is widely used for content creation in CampsiteJS. It allows you to write content in a simple, plain-text format that can be easily converted to HTML.
 3. **[Mustache](/docs/template-languages/mustache)**: A logic-less templating engine that emphasizes simplicity and is easy to learn. Mustache is great for projects that require minimal logic in templates.
 4. **[Nunjucks](/docs/template-languages/nunjucks)**: A powerful templating engine with a rich feature set, including template inheritance, macros, and filters. Nunjucks is the default template language in Campsite.
-5. **[EJS](/docs/template-languages/ejs)**: Embedded JavaScript templates that allow you to include JavaScript code directly within your HTML. EJS is ideal for developers who prefer a more code-centric approach to templating.
 
 ### Choosing a Template Language
 When starting a new CampsiteJS project, you can choose your preferred template language by specifying it in the `campsite.config.js` file:
 
 ```javascript
 module.exports = {
-  templateLanguage: 'nunjucks', // Options: 'mustache', 'nunjucks', 'liquid', 'ejs'
+  templateEngine: 'nunjucks', // Options: 'mustache', 'nunjucks', 'liquid'
 };
 ```
 
@@ -31,6 +30,5 @@ Once you've selected a template language, you can start creating your templates 
 - [Mustache Documentation](https://mustache.github.io/)
 - [Nunjucks Documentation](https://mozilla.github.io/nunjucks/)
 - [Liquid Documentation](https://shopify.github.io/liquid/)
-- [EJS Documentation](https://ejs.co/)
 
 Feel free to explore and experiment with different template languages to find the one that best suits your project's needs!

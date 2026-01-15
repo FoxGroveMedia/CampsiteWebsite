@@ -1,6 +1,6 @@
 ---
 title: Alpine.js
-subtitle: Template Languages
+subtitle: JS Frameworks
 layout: docs.njk
 description: Learn how to use Alpine.js as a template language in your CampsiteJS projects.
 ---
