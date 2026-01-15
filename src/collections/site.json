@@ -1,0 +1,8 @@
+{
+    "name": "CampsiteJS",
+    "tagline": "Pack light, Pitch fast, and build with ease.",
+    "domain": "https://campsitejs.dev",
+    "baseURL": "/",
+    "description": "The cozy new static site generator, for adventurous developers.",
+    "image": "https://cdn.foxgrove.media/campsitejs/social.jpg"
+}

@@ -1,7 +1,4 @@
 export default {
-  siteName: "CampsiteJS",
-  domain: "https://campsitejs.dev",
-  baseURL: "/",
   srcDir: "src",
   outDir: "campfire",
   templateEngine: "nunjucks",
