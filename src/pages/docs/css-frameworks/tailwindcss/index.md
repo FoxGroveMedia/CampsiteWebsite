@@ -1,6 +1,6 @@
 ---
 title: Tailwind CSS
-subtitle: Essentials
+subtitle: CSS Frameworks
 layout: docs.njk
 description: An introduction to using Tailwind CSS with Campsite.
 ---
@@ -52,12 +52,12 @@ You can add your own custom styles to Tailwind CSS using the `@layer` directive 
 ### Building Your CSS
 CampsiteJS automatically processes your Tailwind CSS during the build process. You can run the development server with:
 ```bash
-campsitejs dev
+npm run dev
 ```
 This will watch for changes in your CSS and HTML files, allowing you to see updates in real-time.
 When you're ready to build your site for production, use:
 ```bash
-campsitejs build
+npm run build
 ```
 This will generate the optimized CSS along with your static site files.
 ### Additional Resources

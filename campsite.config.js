@@ -8,6 +8,7 @@ export default {
   markdown: true,
   minifyCSS: true,
   minifyHTML: true,
+  cacheBustAssets: true,
   integrations: {
     alpine: false,
     liquid: true,

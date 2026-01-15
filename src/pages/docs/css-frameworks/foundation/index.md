@@ -1,6 +1,6 @@
 ---
 title: Foundation
-subtitle: Essentials
+subtitle: CSS Frameworks
 layout: docs.njk
 description: An introduction to using Foundation with Campsite.
 ---
@@ -46,12 +46,12 @@ $primary-color: #1DA1F2;
 ### Building Your CSS and JavaScript
 CampsiteJS automatically processes your Foundation CSS and JavaScript during the build process. You can run the development server with:
 ```bash
-campsitejs dev
+npm run dev
 ```
 This will watch for changes in your CSS and HTML files, allowing you to see updates in real-time.
 When you're ready to build your site for production, use:
 ```bash
-campsitejs build
+npm run build
 ```
 
 This will compile and optimize your CSS and JavaScript for deployment.

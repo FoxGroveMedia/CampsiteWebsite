@@ -26,31 +26,34 @@
           class="relative flex grow flex-col gap-y-5 overflow-y-auto bg-stone-950/80 py-8 px-6 ring-1 ring-white/10 dark:before:pointer-events-none dark:before:absolute dark:before:inset-0 dark:before:bg-black/10">
 
           {{ docsSidebar(page.path,'Getting Started',[
-            { href: "/docs/overview", label: "Overview" },
-            { href: "/docs/installation", label: "Installation" }
+          { href: "/docs", label: "Overview" },
+          { href: "/docs/installation", label: "Installation" }
           ]) }}
 
           {{ docsSidebar(page.path,'Essentials',[
-            { href: "/docs/partials", label: "Partials" }
+          { href: "/docs/essentials/data-collections", label: "Data Collections" },
+          { href: "/docs/essentials/partials", label: "Partials" }
           ]) }}
 
           {{ docsSidebar(page.path,'Template Languages',[
-            { href: "/docs/template-languages", label: "Overview" },
-            { href: "/docs/template-languages/liquid", label: "Liquid" },
-            { href: "/docs/template-languages/markdown", label: "Markdown" },
-            { href: "/docs/template-languages/mustache", label: "Mustache" },
-            { href: "/docs/template-languages/nunjucks", label: "Nunjucks" }
+          { href: "/docs/template-languages", label: "Overview" },
+          { href: "/docs/template-languages/liquid", label: "Liquid" },
+          { href: "/docs/template-languages/markdown", label: "Markdown" },
+          { href: "/docs/template-languages/mustache", label: "Mustache" },
+          { href: "/docs/template-languages/nunjucks", label: "Nunjucks" }
           ]) }}
 
           {{ docsSidebar(page.path,'JS Frameworks',[
-            { href: "/docs/template-languages/alpinejs", label: "Alpine.js" },
-            { href: "/docs/template-languages/vuejs", label: "Vue.js" }
+          { href: "/docs/template-languages/alpinejs", label: "Alpine.js" },
+          { href: "/docs/template-languages/vuejs", label: "Vue.js" }
           ]) }}
 
           {{ docsSidebar(page.path,'CSS Frameworks',[
-            { href: "/docs/bootstrap", label: "Bootstrap" },
-            { href: "/docs/foundation", label: "Foundation" },
-            { href: "/docs/tailwindcss", label: "Tailwind CSS" }
+          { href: "/docs/css-frameworks", label: "Overview" },
+          { href: "/docs/css-frameworks/bootstrap", label: "Bootstrap" },
+          { href: "/docs/css-frameworks/bulma", label: "Bulma" },
+          { href: "/docs/css-frameworks/foundation", label: "Foundation" },
+          { href: "/docs/css-frameworks/tailwindcss", label: "Tailwind CSS" }
           ]) }}
         </div>
       </el-dialog-panel>
@@ -63,31 +66,34 @@
   <!-- Sidebar component, swap this element with another sidebar if you like -->
   <div class="flex grow flex-col gap-y-5 overflow-y-auto pt-12 px-6 dark:border-white/10 dark:bg-black/10">
     {{ docsSidebar(page.path,'Getting Started',[
-      { href: "/docs/overview", label: "Overview" },
-      { href: "/docs/installation", label: "Installation" }
+    { href: "/docs", label: "Overview" },
+    { href: "/docs/installation", label: "Installation" }
     ]) }}
 
     {{ docsSidebar(page.path,'Essentials',[
-      { href: "/docs/partials", label: "Partials" }
+    { href: "/docs/essentials/data-collections", label: "Data Collections" },
+    { href: "/docs/essentials/partials", label: "Partials" }
     ]) }}
 
     {{ docsSidebar(page.path,'Template Languages',[
-      { href: "/docs/template-languages", label: "Overview" },
-      { href: "/docs/template-languages/liquid", label: "Liquid" },
-      { href: "/docs/template-languages/markdown", label: "Markdown" },
-      { href: "/docs/template-languages/mustache", label: "Mustache" },
-      { href: "/docs/template-languages/nunjucks", label: "Nunjucks" }
+    { href: "/docs/template-languages", label: "Overview" },
+    { href: "/docs/template-languages/liquid", label: "Liquid" },
+    { href: "/docs/template-languages/markdown", label: "Markdown" },
+    { href: "/docs/template-languages/mustache", label: "Mustache" },
+    { href: "/docs/template-languages/nunjucks", label: "Nunjucks" }
     ]) }}
 
     {{ docsSidebar(page.path,'JS Frameworks',[
-      { href: "/docs/template-languages/alpinejs", label: "Alpine.js" },
-      { href: "/docs/template-languages/vuejs", label: "Vue.js" }
+    { href: "/docs/template-languages/alpinejs", label: "Alpine.js" },
+    { href: "/docs/template-languages/vuejs", label: "Vue.js" }
     ]) }}
 
     {{ docsSidebar(page.path,'CSS Frameworks',[
-      { href: "/docs/bootstrap", label: "Bootstrap" },
-      { href: "/docs/foundation", label: "Foundation" },
-      { href: "/docs/tailwindcss", label: "Tailwind CSS" }
+    { href: "/docs/css-frameworks", label: "Overview" },
+    { href: "/docs/css-frameworks/bootstrap", label: "Bootstrap" },
+    { href: "/docs/css-frameworks/bulma", label: "Bulma" },
+    { href: "/docs/css-frameworks/foundation", label: "Foundation" },
+    { href: "/docs/css-frameworks/tailwindcss", label: "Tailwind CSS" }
     ]) }}
   </div>
 </div>
@@ -109,19 +115,17 @@
 </div>
 
 <main class="py-10 lg:pl-72">
-  <div class="grid grid-cols-12 px-4 sm:px-6 lg:px-8">
-    <div class="col-span-8">
+  <div class="px-4 sm:px-6 lg:px-8">
     <header>
       <div class="max-w-2xl min-w-0 flex-auto px-4 lg:max-w-none pt-12 mb-4 lg:pr-0 lg:pl-8 xl:px-16">
         <h6 class="text-base text-stone-200/50 font-medium">{{ page.subtitle }}</h6>
         <h1 class="text-4xl">{{ page.title }}</h1>
       </div>
     </header>
-    <article class="docs max-w-2xl min-w-0 flex-auto px-4 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16 pb-[600px]">
+    <article class="docs max-w-2xl min-w-0 flex-auto px-4 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16">
       <p class="text-xl tracking-wide mb-12">{{ page.description }}</p>
       {{ content | safe }}
     </article>
-    </div>
   </div>
 </main>
 

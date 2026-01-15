@@ -25,8 +25,7 @@
   <meta name="twitter:description" content="{{ meta_description }}">
   {% if meta_url %}
   <meta name="twitter:url" content="{{ meta_url }}">{% endif %}
-  {% set css_version = (assets and assets.styleVersion) or (data.assets and data.assets.styleVersion) %}
-  <link rel="stylesheet" href="/style.css{% if css_version %}?v={{ css_version }}{% endif %}">
+  <link rel="stylesheet" href="/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caprasimo&display=swap" rel="stylesheet">
@@ -40,7 +39,7 @@
         C⛺mpsiteJS
       </a>
       <nav class="flex items-center gap-2 text-white">
-        {% set nav_items = navbar or data.navbar or [] %}
+        {% set nav_items = navbar or collections.navbar or [] %}
         {% set is_docs_page = page.path and page.path.indexOf('/docs/') == 0 %}
         {% for item in nav_items %}
         {% set is_docs_item = item.url and item.url.indexOf('/docs/') == 0 %}

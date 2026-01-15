@@ -30,10 +30,10 @@ To create your first CampsiteJS site, follow these steps:
    ```
 4. **Start the Development Server**: Launch the development server to preview your site.
    ```bash
-   CampsiteJS dev
+   npm run dev
    ```
 5. **Build for Production**: When you're ready to deploy, build your site with:
    ```bash
-   CampsiteJS build
+   npm run build
    ```
    The output will be in the `./campfire/` folder, this can be changed in your `campsite.config.js` file.

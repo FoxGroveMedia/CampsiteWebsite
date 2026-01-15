@@ -14,7 +14,7 @@
     "postinstall": "npm run build:css"
   },
   "dependencies": {
-    "basecampjs": "^0.0.6",
+    "basecampjs": "^0.0.8",
     "liquidjs": "^10.12.0",
     "markdown-it": "^14.1.0",
     "nunjucks": "^3.2.4"
