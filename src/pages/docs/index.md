@@ -2,22 +2,14 @@
 title: Overview
 subtitle: Getting Started
 layout: docs.njk
-description: An overview of Campsite, a static site generator, including its features and how to get started.
+description: An overview of CampsiteJS, a static site generator, including its features and how to get started.
 ---
 
-> CampsiteJS is a modern static site generator designed to provide a cozy and efficient developer experience. This overview will introduce you to Campsite's key features and guide you through the initial steps to get started with your first project.
-
-### Key Features of Campsite
-- **Multiple Templating Languages**: CampsiteJS supports Markdown, Nunjucks, Liquid, Vue, and Alpine, allowing you to choose the best tools for your project.
+### Key Features of CampsiteJS
+- **Multiple Templating Languages**: The engine supports Mustache, Markdown, Nunjucks, and Liquid, allowing you to choose the best tools for your project.
 - **Fast Build Times**: Optimized for speed, CampsiteJS ensures quick builds and efficient site generation.
 - **Developer-Friendly**: With a focus on simplicity and ease of use, CampsiteJS offers a cozy developer experience.
-- **Extensible**: Easily extend CampsiteJS with plugins and custom configurations to suit your needs.
-
-### Additional Resources
-- [CampsiteJS Documentation](https://campsite.foxgrovemedia.com/docs)
-- [CampsiteJS GitHub Repository](https://github.com/campsitejs/campsite)
-
-Feel free to explore and experiment with CampsiteJS to create your perfect static site!
+- **Extensible**: Easily extend CampsiteJS with engine hooks to tailor it to your needs.
 
 ### Installation
 To install CampsiteJS read our installation guide:

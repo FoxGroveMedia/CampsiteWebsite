@@ -13,16 +13,25 @@ Before you begin, ensure you have the following installed on your machine:
 - **npm or yarn**: npm comes bundled with Node.js, but you can also use yarn as an alternative package manager. You can install yarn from [yarnpkg.com](https://yarnpkg.com/).
 - **Git**: While not strictly necessary, having Git installed is recommended for version control and managing your CampsiteJS projects. You can download it from [git-scm.com](https://git-scm.com/).
 
-### Installation Steps
+### Basic Setup without CLI
+If you prefer not to use the CampsiteJS CLI, you can set up a CampsiteJS project manually by following these steps:
+
+Simply run the following commands in your terminal:
+
+```bash
+npm create campsitejs@latest
+```
+
+### Global Installation Steps
 To create your first CampsiteJS site, follow these steps:
 
 1. **Install Campsite**: Use npm or yarn to install CampsiteJS globally.
    ```bash
-   npm create campsitejs@latest
+   npm install -g campsitejs@latest
    ```
 2. **Create a New Site**: Run the following command to create a new CampsiteJS project.
     ```bash
-    campsitejs create my-site
+    campsitejs my-site
     ```
 3. **Navigate to Your Site**: Change into your new site directory.
    ```bash
@@ -36,4 +45,4 @@ To create your first CampsiteJS site, follow these steps:
    ```bash
    npm run build
    ```
-   The output will be in the `./campfire/` folder, this can be changed in your `campsite.config.js` file.
+   *The output will be in the `./campfire/` folder, this can be changed in your `campsite.config.js` file by modifying the `outputDir` property.*
