@@ -1,5 +1,5 @@
 export default {
-  siteName: "CampsiteWebsite",
+  siteName: "CampsiteJS",
   domain: "https://campsitejs.dev",
   baseURL: "/",
   srcDir: "src",

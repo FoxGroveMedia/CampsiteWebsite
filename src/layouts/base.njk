@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% set is_home = (page.path == '/' or page.url == '/') %}
   {% set meta_title = frontmatter.title or title or site.name %}
-  {% set meta_description = frontmatter.description or page.description or "A cozy Campsite starter." %}
+  {% set meta_description = frontmatter.description or page.description or "The cozy new static site generator." %}
   {% set meta_url = frontmatter.canonical or frontmatter.url %}
   <title>{{ meta_title }} | {{ site.name }}</title>
   <meta name="description" content="{{ meta_description }}">
