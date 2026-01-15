@@ -65,6 +65,9 @@
   article ol li, article ul li {
     @apply mb-2;
   }
+  .btn {
+    @apply inline-block rounded-md bg-amber-700 hover:bg-campfire-600 px-6 py-3 font-semibold text-white transition inline-flex items-center gap-2;
+  }
 }
 
 html {
