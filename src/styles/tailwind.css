@@ -3,8 +3,14 @@
 @source "./src/**/*.{html,md,njk,js,vue}";
 @source "./src/data/**/*.json";
 @source "./public/**/*.{html,js}";
+@source "./campfire/**/*.html";
 
 @theme {
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
   --color-campfire-50: #fff0e5;
   --color-campfire-100: #ffe1cc;
   --color-campfire-200: #ffc499;
