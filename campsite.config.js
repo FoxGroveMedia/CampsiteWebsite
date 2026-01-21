@@ -3,9 +3,9 @@ export default {
   outDir: "campfire",
   templateEngine: "nunjucks",
   markdown: true,
-  minifyCSS: false,
-  minifyHTML: false,
-  cacheBustAssets: false,
+  minifyCSS: true,
+  minifyHTML: true,
+  cacheBustAssets: true,
   excludeFiles: ['.pdf'],
   compressPhotos: true,
   compressionSettings: {
