@@ -454,13 +454,13 @@ Use the `make:component` command:
 
 ```bash
 # Vue component
-campsite make:component MyComponent.vue
+camper make:component MyComponent.vue
 
 # Alpine component
-campsite make:component my-card.html
+camper make:component my-card.html
 
 # Multiple components
-campsite make:component Card.vue, Modal.vue, Dropdown.html
+camper make:component Card.vue, Modal.vue, Dropdown.html
 ```
 
 **Generated Vue component:**
@@ -605,7 +605,7 @@ Break large components into smaller, reusable pieces:
 View all components in your project:
 
 ```bash
-campsite list
+camper list
 ```
 
 **Output:**

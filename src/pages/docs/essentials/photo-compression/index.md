@@ -105,10 +105,10 @@ export default {
 
 ## Build Process
 
-When you run `campsite build`, compressed images are automatically generated:
+When you run `camper build`, compressed images are automatically generated:
 
 ```bash
-campsite build
+camper build
 ```
 
 **Example output:**

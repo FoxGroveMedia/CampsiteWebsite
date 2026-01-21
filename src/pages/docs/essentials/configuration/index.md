@@ -640,7 +640,7 @@ export default {
 ### Check Your Config
 
 ```bash
-campsite check
+camper check
 ```
 
 This validates:
@@ -652,13 +652,13 @@ This validates:
 
 ```bash
 # Development build
-campsite dev
+camper dev
 
 # Production build
-campsite build
+camper build
 
 # Test production build
-campsite preview
+camper preview
 ```
 
 ---

@@ -3,9 +3,17 @@ export default {
   outDir: "campfire",
   templateEngine: "nunjucks",
   markdown: true,
-  minifyCSS: true,
-  minifyHTML: true,
-  cacheBustAssets: true,
+  minifyCSS: false,
+  minifyHTML: false,
+  cacheBustAssets: false,
+  excludeFiles: ['.pdf'],
+  compressPhotos: true,
+  compressionSettings: {
+    quality: 80,
+    formats: [".webp", ".avif"],
+    inputFormats: [".jpg", ".jpeg", ".png"],
+    preserveOriginal: true
+  },
   integrations: {
     alpine: false,
     liquid: true,

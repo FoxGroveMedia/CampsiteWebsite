@@ -222,7 +222,7 @@ export default {
 When files are excluded, you'll see confirmation in the build output:
 
 ```bash
-campsite build
+camper build
 ```
 
 **Example output:**
@@ -371,7 +371,7 @@ temp-backup.json        // Prefix with "temp-"
 Build and verify excluded files aren't in output:
 
 ```bash
-campsite build
+camper build
 ls -la dist/  # Check output directory
 ```
 

@@ -12,7 +12,7 @@ description: Complete guide to CampsiteJS content creation commands - create pag
 Make commands in CampsiteJS provide a quick way to create content files with proper structure and naming. All make commands follow the pattern:
 
 ```bash
-campsite make:<type> <name> [name2, name3, ...]
+camper make:<type> <name> [name2, name3, ...]
 ```
 
 <a id="features"></a>
@@ -45,7 +45,7 @@ File extensions are determined by:
 
 <a id="make-page"></a>
 
-## `campsite make:page`
+## `camper make:page`
 
 Creates page files in `src/pages/`.
 
@@ -53,26 +53,26 @@ Creates page files in `src/pages/`.
 
 ```bash
 # Single page
-campsite make:page about
+camper make:page about
 
 # Multiple pages
-campsite make:page home, about, contact
+camper make:page home, about, contact
 
 # With custom extension
-campsite make:page blog.md
+camper make:page blog.md
 ```
 
 ### Examples
 
 **Creating with default engine (Nunjucks):**
 ```bash
-campsite make:page about
+camper make:page about
 # Creates: src/pages/about.njk
 ```
 
 **Batch creation:**
 ```bash
-campsite make:page services, portfolio, testimonials
+camper make:page services, portfolio, testimonials
 # Creates:
 #   src/pages/services.njk
 #   src/pages/portfolio.njk
@@ -81,7 +81,7 @@ campsite make:page services, portfolio, testimonials
 
 **Markdown page:**
 ```bash
-campsite make:page blog.md
+camper make:page blog.md
 # Creates: src/pages/blog.md
 ```
 
@@ -118,7 +118,7 @@ Welcome to the blog page.
 
 <a id="make-post"></a>
 
-## `campsite make:post`
+## `camper make:post`
 
 Creates blog posts in `src/pages/blog/` with date and author metadata.
 
@@ -126,16 +126,16 @@ Creates blog posts in `src/pages/blog/` with date and author metadata.
 
 ```bash
 # Single post
-campsite make:post my-first-post
+camper make:post my-first-post
 
 # Multiple posts
-campsite make:post hello-world, getting-started, tips-and-tricks
+camper make:post hello-world, getting-started, tips-and-tricks
 ```
 
 ### Examples
 
 ```bash
-campsite make:post introducing-campsitejs
+camper make:post introducing-campsitejs
 # Creates: src/pages/blog/introducing-campsitejs.njk
 ```
 
@@ -164,7 +164,7 @@ Your post content goes here.
 
 <a id="make-layout"></a>
 
-## `campsite make:layout`
+## `camper make:layout`
 
 Creates layout templates in `src/layouts/`.
 
@@ -172,16 +172,16 @@ Creates layout templates in `src/layouts/`.
 
 ```bash
 # Single layout
-campsite make:layout post
+camper make:layout post
 
 # Multiple layouts
-campsite make:layout post, portfolio, landing
+camper make:layout post, portfolio, landing
 ```
 
 ### Examples
 
 ```bash
-campsite make:layout docs
+camper make:layout docs
 # Creates: src/layouts/docs.njk
 ```
 
@@ -207,7 +207,7 @@ campsite make:layout docs
 
 <a id="make-component"></a>
 
-## `campsite make:component`
+## `camper make:component`
 
 Creates reusable components in `src/components/`.
 
@@ -215,16 +215,16 @@ Creates reusable components in `src/components/`.
 
 ```bash
 # Single component
-campsite make:component button
+camper make:component button
 
 # Multiple components
-campsite make:component card, modal, dropdown
+camper make:component card, modal, dropdown
 ```
 
 ### Examples
 
 ```bash
-campsite make:component hero-section
+camper make:component hero-section
 # Creates: src/components/hero-section.njk
 ```
 
@@ -241,7 +241,7 @@ campsite make:component hero-section
 
 <a id="make-partial"></a>
 
-## `campsite make:partial`
+## `camper make:partial`
 
 Creates partial templates in `src/partials/`.
 
@@ -249,16 +249,16 @@ Creates partial templates in `src/partials/`.
 
 ```bash
 # Single partial
-campsite make:partial navbar
+camper make:partial navbar
 
 # Multiple partials
-campsite make:partial header, footer, sidebar
+camper make:partial header, footer, sidebar
 ```
 
 ### Examples
 
 ```bash
-campsite make:partial navigation
+camper make:partial navigation
 # Creates: src/partials/navigation.njk
 ```
 
@@ -280,7 +280,7 @@ campsite make:partial navigation
 
 <a id="make-collection"></a>
 
-## `campsite make:collection`
+## `camper make:collection`
 
 Creates JSON data collections in `src/collections/`.
 
@@ -288,16 +288,16 @@ Creates JSON data collections in `src/collections/`.
 
 ```bash
 # Single collection
-campsite make:collection products
+camper make:collection products
 
 # Multiple collections
-campsite make:collection team, services, testimonials
+camper make:collection team, services, testimonials
 ```
 
 ### Examples
 
 ```bash
-campsite make:collection team
+camper make:collection team
 # Creates: src/collections/team.json
 ```
 
@@ -332,10 +332,10 @@ Create files in subdirectories by including the path:
 
 ```bash
 # Nested pages
-campsite make:page blog/2024/hello-world
+camper make:page blog/2024/hello-world
 
 # Nested components
-campsite make:component ui/cards/product-card
+camper make:component ui/cards/product-card
 ```
 
 ### Mixed Extensions in Batch
@@ -343,7 +343,7 @@ campsite make:component ui/cards/product-card
 Each file can have its own extension:
 
 ```bash
-campsite make:page about.njk, blog.md, services.liquid
+camper make:page about.njk, blog.md, services.liquid
 ```
 
 ### Output Examples
@@ -421,7 +421,7 @@ export default {
 
 **Commands automatically use the right extension:**
 ```bash
-campsite make:page about
+camper make:page about
 # With nunjucks: creates about.njk
 # With liquid: creates about.liquid
 # With mustache: creates about.mustache
@@ -454,4 +454,4 @@ campsite make:page about
 
 ---
 
-⛺ **Pro Tip**: Create files in bulk to scaffold your site quickly: `campsite make:page home, about, services, contact, blog`
+⛺ **Pro Tip**: Create files in bulk to scaffold your site quickly: `camper make:page home, about, services, contact, blog`

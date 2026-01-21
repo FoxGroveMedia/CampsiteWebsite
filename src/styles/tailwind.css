@@ -1,15 +1,38 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@source "./src/**/*.{html,md,njk,js,vue}";
+@source "./src/data/**/*.json";
+@source "./public/**/*.{html,js}";
+
+@theme {
+  --color-campfire-50: #fff0e5;
+  --color-campfire-100: #ffe1cc;
+  --color-campfire-200: #ffc499;
+  --color-campfire-300: #ffa666;
+  --color-campfire-400: #ff8833;
+  --color-campfire-500: #ff6a00;
+  --color-campfire-600: #cc5500;
+  --color-campfire-700: #994000;
+  --color-campfire-800: #662b00;
+  --color-campfire-900: #160f0a;
+  --color-campfire-950: #0a0501;
+  --color-grove-ink: #0b0c10;
+  --color-grove-foam: #f4ede0;
+  --color-grove-glow: #f97316;
+  --color-grove-forest: #1f5130;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", Menlo, Consolas, monospace;
+  --font-serif: "Caprasimo", serif;
+}
 
 .font-serif {
-  font-family: "Caprasimo", serif;
+  font-family: var(--font-serif);
 }
 
 @layer base {
   body {
     @apply text-white font-sans;
-    font-family: inter, "inter Fallback", system-ui;
+    font-family: var(--font-sans);
   }
   code {
     @apply bg-campfire-950 text-lime-500 font-mono py-1.5 px-3 rounded-md;
@@ -80,7 +103,7 @@ html {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Caprasimo", serif;
+  font-family: var(--font-serif);
 }
 
 .text-shadow-strong {
@@ -93,7 +116,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .underlined {
-  position:relative;
+  position: relative;
 }
 
 .underlined:after {
@@ -106,5 +129,5 @@ h1, h2, h3, h4, h5, h6 {
   border: 3px solid transparent;
   border-top-color: currentcolor;
   border-radius: 40%;
-  clip-path:inset(0 0 50% 0)
+  clip-path: inset(0 0 50% 0);
 }

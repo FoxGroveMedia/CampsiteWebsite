@@ -2,21 +2,31 @@
 title: Overview
 subtitle: CLI Reference
 layout: docs.njk
-description: Complete reference for the CampsiteJS CLI (campsite command) - manage your static site projects with ease.
+description: Complete reference for the CampsiteJS CLI (camper command) - manage your static site projects with ease.
 ---
 
 <a id="overview"></a>
 
 ## CampsiteJS CLI Reference
 
-The `campsite` CLI is your command center for managing CampsiteJS projects. With a cozy campfire theme 🏕️ and intuitive commands, it makes static site development a breeze.
+The `camper` CLI is your command center for managing CampsiteJS projects. With a cozy campfire theme 🏕️ and intuitive commands, it makes static site development a breeze.
 
 ### CLI Structure
 
 The CampsiteJS ecosystem consists of two packages:
 
 - **`campsitejs`** (Scaffolder): Creates new projects via `npm create campsitejs@latest`
-- **`basecampjs`** (Build Engine): Provides the `campsite` CLI for managing existing projects
+- **`basecampjs`** (Build Engine): Provides the `camper` CLI for managing existing projects
+
+### Installing the CLI Globally
+
+For easier access to the `camper` command from anywhere, you can install it globally:
+
+```bash
+npm install -g basecampjs
+```
+
+Once installed globally, you can run `camper` commands directly from any project directory. If you don't install globally, you can still use `npx camper` to run commands from your local project dependencies.
 
 <a id="command-categories"></a>
 
@@ -25,31 +35,31 @@ The CampsiteJS ecosystem consists of two packages:
 Commands are organized into logical groups for easy discovery:
 
 #### Help & Version
-- `campsite -h` / `campsite --help` - Shows comprehensive help
-- `campsite -v` / `campsite --version` - Displays current version
+- `camper -h` / `camper --help` - Shows comprehensive help
+- `camper -v` / `camper --version` - Displays current version
 
 #### Project Initialization
-- `campsite init` - Initialize Campsite in current directory
+- `camper init` - Initialize Campsite in current directory
 
 #### Development
-- `campsite dev` - Start development server with hot reloading
-- `campsite build` - Production build
-- `campsite serve` - Serve built site from dist/
-- `campsite preview` - Build + serve for production testing
+- `camper dev` - Start development server with hot reloading
+- `camper build` - Production build
+- `camper serve` - Serve built site from dist/
+- `camper preview` - Build + serve for production testing
 
 #### Utilities
-- `campsite clean` - Remove dist/ folder
-- `campsite check` - Validate project structure
-- `campsite list` - List all content with counts
-- `campsite upgrade` - Update basecampjs to latest
+- `camper clean` - Remove dist/ folder
+- `camper check` - Validate project structure
+- `camper list` - List all content with counts
+- `camper upgrade` - Update basecampjs to latest
 
 #### Content Creation (Make Commands)
-- `campsite make:page` - Create pages
-- `campsite make:post` - Create blog posts
-- `campsite make:layout` - Create layouts
-- `campsite make:component` - Create components
-- `campsite make:partial` - Create partials
-- `campsite make:collection` - Create data collections
+- `camper make:page` - Create pages
+- `camper make:post` - Create blog posts
+- `camper make:layout` - Create layouts
+- `camper make:component` - Create components
+- `camper make:partial` - Create partials
+- `camper make:collection` - Create data collections
 
 <a id="quick-examples"></a>
 
@@ -57,22 +67,22 @@ Commands are organized into logical groups for easy discovery:
 
 Start development server:
 ```bash
-campsite dev
+camper dev
 ```
 
 Create multiple pages at once:
 ```bash
-campsite make:page home, about, contact
+camper make:page home, about, contact
 ```
 
 Build for production:
 ```bash
-campsite build
+camper build
 ```
 
 Check project health:
 ```bash
-campsite check
+camper check
 ```
 
 <a id="theme"></a>
@@ -96,4 +106,4 @@ All CLI output embraces the cozy campfire aesthetic:
 
 ---
 
-🏕️ **Pro Tip**: Run `campsite --help` anytime to see all available commands with examples!
+🏕️ **Pro Tip**: Run `camper --help` anytime to see all available commands with examples!

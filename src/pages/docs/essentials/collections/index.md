@@ -406,10 +406,10 @@ Use the `make:collection` command:
 
 ```bash
 # Single collection
-campsite make:collection team
+camper make:collection team
 
 # Multiple collections
-campsite make:collection team, products, posts
+camper make:collection team, products, posts
 ```
 
 **Generated file:**
@@ -448,7 +448,7 @@ src/
 View all collections in your project:
 
 ```bash
-campsite list
+camper list
 ```
 
 **Output:**

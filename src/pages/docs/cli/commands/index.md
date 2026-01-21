@@ -9,12 +9,12 @@ description: Detailed reference for all CampsiteJS CLI commands with examples an
 
 ## Help & Version
 
-### `campsite --help` / `campsite -h`
+### `camper --help` / `camper -h`
 
 Shows comprehensive help with all commands, examples, and descriptions.
 
 ```bash
-campsite --help
+camper --help
 ```
 
 **Output includes:**
@@ -25,12 +25,12 @@ campsite --help
 
 ---
 
-### `campsite --version` / `campsite -v`
+### `camper --version` / `camper -v`
 
 Displays the current version of basecampjs installed.
 
 ```bash
-campsite --version
+camper --version
 # Output: 0.0.8
 ```
 
@@ -40,12 +40,12 @@ campsite --version
 
 ## Project Initialization
 
-### `campsite init`
+### `camper init`
 
 Initializes Campsite in the current directory. This command sets up a minimal project structure for an existing directory.
 
 ```bash
-campsite init
+camper init
 ```
 
 **What it creates:**
@@ -74,7 +74,7 @@ campsite init
 ✅ Created src/pages/index.njk
 ✅ Created src/layouts/base.njk
 
-🌲 Campsite initialized! Run 'campsite dev' to start.
+🌲 Campsite initialized! Run 'camper dev' to start.
 ```
 
 ---
@@ -83,12 +83,12 @@ campsite init
 
 ## Development Commands
 
-### `campsite dev`
+### `camper dev`
 
 Starts the development server with hot reloading. Watches `src/` and `public/` directories for changes.
 
 ```bash
-campsite dev
+camper dev
 ```
 
 **Features:**
@@ -112,12 +112,12 @@ campsite dev
 
 ---
 
-### `campsite build`
+### `camper build`
 
 Creates an optimized production build. Outputs to `dist/` (or configured `outDir`).
 
 ```bash
-campsite build
+camper build
 ```
 
 **Production optimizations:**
@@ -140,12 +140,12 @@ campsite build
 
 ---
 
-### `campsite serve`
+### `camper serve`
 
 Serves the built site from `dist/` directory on `http://localhost:4173`.
 
 ```bash
-campsite serve
+camper serve
 ```
 
 **Use cases:**
@@ -163,17 +163,17 @@ campsite serve
 
 ---
 
-### `campsite preview`
+### `camper preview`
 
 Combines `build` + `serve` for quick production testing.
 
 ```bash
-campsite preview
+camper preview
 ```
 
 **Equivalent to:**
 ```bash
-campsite build && campsite serve
+camper build && camper serve
 ```
 
 ---
@@ -182,12 +182,12 @@ campsite build && campsite serve
 
 ## Utility Commands
 
-### `campsite clean`
+### `camper clean`
 
 Removes the `dist/` folder (or configured `outDir`) for fresh builds.
 
 ```bash
-campsite clean
+camper clean
 ```
 
 **Use cases:**
@@ -204,12 +204,12 @@ campsite clean
 
 ---
 
-### `campsite check`
+### `camper check`
 
 Validates project structure, configuration, and dependencies.
 
 ```bash
-campsite check
+camper check
 ```
 
 **Checks performed:**
@@ -234,12 +234,12 @@ campsite check
 
 ---
 
-### `campsite list`
+### `camper list`
 
 Lists all content with counts organized by type.
 
 ```bash
-campsite list
+camper list
 ```
 
 **Shows:**
@@ -280,12 +280,12 @@ campsite list
 
 ---
 
-### `campsite upgrade`
+### `camper upgrade`
 
 Updates `basecampjs` to the latest version.
 
 ```bash
-campsite upgrade
+camper upgrade
 ```
 
 **Process:**
@@ -316,4 +316,4 @@ campsite upgrade
 
 ---
 
-🧭 **Quick Reference**: Run `campsite --help` anytime to see all commands!
+🧭 **Quick Reference**: Run `camper --help` anytime to see all commands!
