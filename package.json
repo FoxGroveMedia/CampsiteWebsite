@@ -8,8 +8,8 @@
     "dev:css": "npx tailwindcss -i ./src/styles/tailwind.css -o ./public/style.css --watch",
     "dev:site": "camper dev",
     "dev": "npm-run-all -p dev:css dev:site",
-    "prebuild": "npm run build:css",
     "build": "camper build",
+    "postbuild": "npm run build:css && cp _headers public/_headers && cp -r src/logos public/logos",
     "serve": "camper serve"
   },
   "dependencies": {

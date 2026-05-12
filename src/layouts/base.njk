@@ -1,23 +1,24 @@
 <!doctype html>
-<html lang="en" class="h-full min-h-screen">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% set is_home = (page.path == '/' or page.url == '/') %}
-  {% set meta_title = page.title + ' | ' + site.name + ': ' + site.tagline %}
+  {% if is_home %}
+  {% set meta_title = site.name + ' — ' + site.tagline %}
+  {% else %}
+  {% set meta_title = page.title + ' | ' + site.name %}
+  {% endif %}
   {% set meta_description = description or page.description or site.description %}
   {% set meta_url = frontmatter.canonical or frontmatter.url or site.domain %}
   <title>{{ meta_title }}</title>
   <meta name="description" content="{{ meta_description }}">
-  {% if frontmatter.robots %}
-  <meta name="robots" content="{{ frontmatter.robots }}">{% endif %}
-  {% if meta_url %}
-  <link rel="canonical" href="{{ meta_url }}">{% endif %}
+  {% if frontmatter.robots %}<meta name="robots" content="{{ frontmatter.robots }}">{% endif %}
+  {% if meta_url %}<link rel="canonical" href="{{ meta_url }}">{% endif %}
   <meta property="og:title" content="{{ meta_title }}">
   <meta property="og:description" content="{{ meta_description }}">
-  {% if meta_url %}
-  <meta property="og:url" content="{{ meta_url }}">{% endif %}
+  {% if meta_url %}<meta property="og:url" content="{{ meta_url }}">{% endif %}
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="{{ site.name }}">
   <meta property="og:image" content="{{ site.image }}">
@@ -25,79 +26,223 @@
   <meta name="twitter:title" content="{{ meta_title }}">
   <meta name="twitter:description" content="{{ meta_description }}">
   <meta name="twitter:image" content="{{ site.image }}">
-  {% if meta_url %}
-  <meta name="twitter:url" content="{{ meta_url }}">{% endif %}
+  {% if meta_url %}<meta name="twitter:url" content="{{ meta_url }}">{% endif %}
   <link rel="stylesheet" href="/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caprasimo&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
 </head>
 
-<body class="{{ page.body_css or '' }} relative h-full min-h-screen pt-12">
-  <header class="font-serif fixed z-50 w-full top-0 left-0 bg-stone-950 py-2">
-    <div class="flex items-center justify-between w-full{% if is_home %} max-w-7xl mx-auto{% endif %} px-6 lg:px-8">
-      <a href="/" class="inline-flex items-center text-white text-3xl py-1 hover:underline">
-        C⛺mpsiteJS
+<body class="{{ page.body_css or '' }} text-white antialiased">
+
+  <div class="fixed top-[-20%] left-[-10%] w-[600px] h-[600px] bg-[#EA4B71]/[0.07] rounded-full blur-[120px] z-0 pointer-events-none" aria-hidden="true"></div>
+  <div class="fixed bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-[#FF6C37]/[0.07] rounded-full blur-[120px] z-0 pointer-events-none" aria-hidden="true"></div>
+
+  <header class="sticky top-0 z-50 bg-[#05030A]/80 backdrop-blur-md border-b border-white/5"
+    x-data="{ mobileOpen: false, dropdown: null }">
+    <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+
+      <a href="/" class="flex items-center shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#EA4B71] rounded-md p-1" aria-label="CampsiteJS home">
+        <svg class="h-7" viewBox="0 0 725 117" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M690.271 93.3364C686.26 93.3364 682.378 92.995 678.623 92.3124C674.868 91.715 671.327 90.7764 667.999 89.4964C664.671 88.2164 661.684 86.6377 659.039 84.7604C657.93 83.9924 657.119 83.0537 656.607 81.9444C656.18 80.835 656.052 79.7684 656.223 78.7444C656.479 77.635 656.948 76.6964 657.631 75.9284C658.399 75.1604 659.295 74.691 660.319 74.5204C661.343 74.3497 662.452 74.691 663.647 75.5444C667.572 78.1897 671.668 80.1097 675.935 81.3044C680.287 82.499 685.066 83.0964 690.271 83.0964C697.78 83.0964 703.284 81.731 706.783 79.0004C710.367 76.2697 712.159 72.6857 712.159 68.2484C712.159 64.579 710.879 61.7204 708.319 59.6724C705.759 57.539 701.45 55.875 695.391 54.6804L681.823 51.8644C673.802 50.1577 667.786 47.3417 663.775 43.4164C659.85 39.491 657.887 34.243 657.887 27.6724C657.887 23.6617 658.698 20.035 660.319 16.7924C661.94 13.4644 664.244 10.6057 667.231 8.21636C670.218 5.82703 673.716 3.99236 677.727 2.71236C681.823 1.43236 686.346 0.792358 691.295 0.792358C696.586 0.792358 701.535 1.51769 706.143 2.96836C710.836 4.41903 715.06 6.55236 718.815 9.36836C719.839 10.1364 720.522 11.075 720.863 12.1844C721.204 13.2084 721.247 14.2324 720.991 15.2564C720.82 16.2804 720.351 17.1337 719.583 17.8164C718.9 18.499 718.004 18.883 716.895 18.9684C715.871 19.0537 714.719 18.6697 713.439 17.8164C710.026 15.427 706.527 13.7204 702.943 12.6964C699.359 11.587 695.434 11.0324 691.167 11.0324C686.815 11.0324 683.018 11.715 679.775 13.0804C676.618 14.4457 674.143 16.3657 672.351 18.8404C670.644 21.2297 669.791 24.0457 669.791 27.2884C669.791 31.2137 670.986 34.2857 673.375 36.5044C675.764 38.723 679.775 40.4297 685.407 41.6244L698.847 44.3124C707.38 46.1044 713.695 48.8777 717.791 52.6324C721.972 56.3017 724.063 61.251 724.063 67.4804C724.063 71.4057 723.252 74.947 721.631 78.1044C720.095 81.2617 717.876 83.9924 714.975 86.2964C712.074 88.515 708.532 90.2644 704.351 91.5444C700.17 92.739 695.476 93.3364 690.271 93.3364Z" fill="#ffffff"/>
+          <path d="M620.544 92.9523C618.752 93.0377 617.344 92.5683 616.32 91.5443C615.296 90.5203 614.784 89.2403 614.784 87.7043C614.784 86.5097 615.168 85.4857 615.936 84.6323C616.619 83.6937 617.728 83.1817 619.264 83.0963L623.232 82.7123C627.413 82.371 630.613 80.9203 632.832 78.3603C635.051 75.8003 636.16 72.3017 636.16 67.8643V7.06434C636.16 5.10167 636.672 3.60834 637.696 2.58434C638.72 1.56034 640.171 1.04834 642.048 1.04834C643.925 1.04834 645.376 1.56034 646.4 2.58434C647.424 3.60834 647.936 5.10167 647.936 7.06434V67.8643C647.936 72.899 647.04 77.2083 645.248 80.7923C643.541 84.291 640.981 87.0643 637.568 89.1123C634.155 91.075 629.888 92.2697 624.768 92.6963L620.544 92.9523Z" fill="#ffffff"/>
+          <path d="M597.424 93.6963C595.205 93.6963 593.371 92.971 591.92 91.5203C590.469 90.0696 589.744 88.235 589.744 86.0163C589.744 83.7976 590.469 82.0056 591.92 80.6403C593.371 79.275 595.205 78.5923 597.424 78.5923C599.813 78.5923 601.648 79.275 602.928 80.6403C604.293 82.0056 604.976 83.7976 604.976 86.0163C604.976 88.235 604.293 90.0696 602.928 91.5203C601.648 92.971 599.813 93.6963 597.424 93.6963Z" fill="#ffffff"/>
+          <path d="M458.552 29.2087C460.429 29.2088 461.88 29.7627 462.904 30.8718C463.928 31.8958 464.44 33.4322 464.44 35.4802V86.5525C464.44 88.5149 463.928 90.0506 462.904 91.1599C461.965 92.2691 460.515 92.8239 458.552 92.824C456.76 92.824 455.352 92.2692 454.328 91.1599C453.304 90.0506 452.792 88.5149 452.792 86.5525V35.4802C452.792 33.4322 453.304 31.8958 454.328 30.8718C455.352 29.7626 456.761 29.2087 458.552 29.2087Z" fill="#ffffff"/>
+          <path d="M458.552 1.81616C461.026 1.81616 462.862 2.41349 464.056 3.60815C465.336 4.71749 465.976 6.38179 465.976 8.60034C465.976 10.6483 465.336 12.3126 464.056 13.5925C462.862 14.7872 461.026 15.3845 458.552 15.3845C456.248 15.3844 454.413 14.7871 453.048 13.5925C451.768 12.3125 451.128 10.6483 451.128 8.60034C451.128 6.38175 451.768 4.71749 453.048 3.60815C454.413 2.41356 456.248 1.81624 458.552 1.81616Z" fill="#ffffff"/>
+          <path d="M404.771 93.3364C400.76 93.3364 396.878 92.995 393.123 92.3124C389.368 91.715 385.827 90.7764 382.499 89.4964C379.171 88.2164 376.184 86.6377 373.539 84.7604C372.43 83.9924 371.619 83.0537 371.107 81.9444C370.68 80.835 370.552 79.7684 370.723 78.7444C370.979 77.635 371.448 76.6964 372.131 75.9284C372.899 75.1604 373.795 74.691 374.819 74.5204C375.843 74.3497 376.952 74.691 378.147 75.5444C382.072 78.1897 386.168 80.1097 390.435 81.3044C394.787 82.499 399.566 83.0964 404.771 83.0964C412.28 83.0964 417.784 81.731 421.283 79.0004C424.867 76.2697 426.659 72.6857 426.659 68.2484C426.659 64.579 425.379 61.7204 422.819 59.6724C420.259 57.539 415.95 55.875 409.891 54.6804L396.323 51.8644C388.302 50.1577 382.286 47.3417 378.275 43.4164C374.35 39.491 372.387 34.243 372.387 27.6724C372.387 23.6617 373.198 20.035 374.819 16.7924C376.44 13.4644 378.744 10.6057 381.731 8.21636C384.718 5.82703 388.216 3.99236 392.227 2.71236C396.323 1.43236 400.846 0.792358 405.795 0.792358C411.086 0.792358 416.035 1.51769 420.643 2.96836C425.336 4.41903 429.56 6.55236 433.315 9.36836C434.339 10.1364 435.022 11.075 435.363 12.1844C435.704 13.2084 435.747 14.2324 435.491 15.2564C435.32 16.2804 434.851 17.1337 434.083 17.8164C433.4 18.499 432.504 18.883 431.395 18.9684C430.371 19.0537 429.219 18.6697 427.939 17.8164C424.526 15.427 421.027 13.7204 417.443 12.6964C413.859 11.587 409.934 11.0324 405.667 11.0324C401.315 11.0324 397.518 11.715 394.275 13.0804C391.118 14.4457 388.643 16.3657 386.851 18.8404C385.144 21.2297 384.291 24.0457 384.291 27.2884C384.291 31.2137 385.486 34.2857 387.875 36.5044C390.264 38.723 394.275 40.4297 399.907 41.6244L413.347 44.3124C421.88 46.1044 428.195 48.8777 432.291 52.6324C436.472 56.3017 438.563 61.251 438.563 67.4804C438.563 71.4057 437.752 74.947 436.131 78.1044C434.595 81.2617 432.376 83.9924 429.475 86.2964C426.574 88.515 423.032 90.2644 418.851 91.5444C414.67 92.739 409.976 93.3364 404.771 93.3364Z" fill="#ffffff"/>
+          <path d="M304.302 116.12C302.51 116.12 301.102 115.608 300.078 114.584C299.054 113.56 298.542 112.11 298.542 110.232V34.8403C298.542 32.8776 299.054 31.427 300.078 30.4883C301.102 29.4643 302.51 28.9523 304.302 28.9523C306.179 28.9523 307.587 29.4643 308.526 30.4883C309.55 31.427 310.062 32.8776 310.062 34.8403V46.4883L308.654 44.1843C310.019 39.491 312.707 35.7363 316.718 32.9203C320.729 30.1043 325.55 28.6963 331.182 28.6963C336.729 28.6963 341.55 30.019 345.646 32.6643C349.742 35.2243 352.942 38.9363 355.246 43.8003C357.55 48.579 358.702 54.2963 358.702 60.9523C358.702 67.523 357.55 73.283 355.246 78.2323C353.027 83.0963 349.827 86.851 345.646 89.4963C341.55 92.0563 336.729 93.3363 331.182 93.3363C325.635 93.3363 320.857 91.9283 316.846 89.1123C312.835 86.2963 310.147 82.5843 308.782 77.9763H310.19V110.232C310.19 112.11 309.678 113.56 308.654 114.584C307.63 115.608 306.179 116.12 304.302 116.12ZM328.494 84.1203C332.163 84.1203 335.363 83.2243 338.094 81.4323C340.91 79.6403 343.086 77.0376 344.622 73.6243C346.158 70.211 346.926 65.987 346.926 60.9523C346.926 53.443 345.262 47.7256 341.934 43.8003C338.606 39.875 334.126 37.9123 328.494 37.9123C324.739 37.9123 321.454 38.8083 318.638 40.6003C315.907 42.307 313.774 44.867 312.238 48.2803C310.787 51.6936 310.062 55.9176 310.062 60.9523C310.062 68.4616 311.726 74.2216 315.054 78.2323C318.382 82.1576 322.862 84.1203 328.494 84.1203Z" fill="#ffffff"/>
+          <path d="M194.308 93.0803C192.516 93.0803 191.108 92.5683 190.084 91.5443C189.06 90.5203 188.548 89.027 188.548 87.0643V34.8403C188.548 32.8776 189.06 31.427 190.084 30.4883C191.108 29.4643 192.516 28.9523 194.308 28.9523C196.1 28.9523 197.465 29.4643 198.404 30.4883C199.428 31.427 199.94 32.8776 199.94 34.8403V45.7203L198.532 43.4163C200.153 38.723 202.756 35.0963 206.34 32.5363C210.009 29.9763 214.361 28.6963 219.396 28.6963C224.687 28.6963 228.953 29.9763 232.196 32.5363C235.439 35.011 237.615 38.8083 238.724 43.9283H236.932C238.468 39.235 241.199 35.523 245.124 32.7923C249.135 30.0616 253.785 28.6963 259.076 28.6963C263.769 28.6963 267.609 29.635 270.596 31.5123C273.668 33.3043 275.972 36.035 277.508 39.7043C279.044 43.2883 279.812 47.8963 279.812 53.5283V87.0643C279.812 89.027 279.3 90.5203 278.276 91.5443C277.252 92.5683 275.844 93.0803 274.052 93.0803C272.175 93.0803 270.724 92.5683 269.7 91.5443C268.676 90.5203 268.164 89.027 268.164 87.0643V54.0403C268.164 48.579 267.225 44.5683 265.348 42.0083C263.471 39.4483 260.313 38.1683 255.876 38.1683C251.012 38.1683 247.129 39.875 244.228 43.2883C241.412 46.6163 240.004 51.2243 240.004 57.1123V87.0643C240.004 89.027 239.492 90.5203 238.468 91.5443C237.529 92.5683 236.121 93.0803 234.244 93.0803C232.367 93.0803 230.916 92.5683 229.892 91.5443C228.868 90.5203 228.356 89.027 228.356 87.0643V54.0403C228.356 48.579 227.417 44.5683 225.54 42.0083C223.663 39.4483 220.505 38.1683 216.068 38.1683C211.204 38.1683 207.321 39.875 204.42 43.2883C201.604 46.6163 200.196 51.2243 200.196 57.1123V87.0643C200.196 91.075 198.233 93.0803 194.308 93.0803Z" fill="#ffffff"/>
+          <path d="M43.008 93.3364C34.048 93.3364 26.368 91.459 19.968 87.7044C13.568 83.9497 8.61867 78.6164 5.12 71.7044C1.70667 64.707 0 56.4724 0 47.0004C0 39.9177 0.981333 33.5604 2.944 27.9284C4.90667 22.211 7.72267 17.347 11.392 13.3364C15.0613 9.24036 19.5413 6.12569 24.832 3.99236C30.208 1.85903 36.2667 0.792358 43.008 0.792358C48.128 0.792358 53.0347 1.51769 57.728 2.96836C62.5067 4.41903 66.6027 6.46703 70.016 9.11236C71.3813 10.051 72.2773 11.1177 72.704 12.3124C73.1307 13.507 73.1733 14.659 72.832 15.7684C72.576 16.7924 72.0213 17.6884 71.168 18.4564C70.4 19.139 69.4187 19.523 68.224 19.6084C67.0293 19.6084 65.7493 19.139 64.384 18.2004C61.3973 15.8964 58.112 14.2324 54.528 13.2084C51.0293 12.099 47.2747 11.5444 43.264 11.5444C36.6933 11.5444 31.104 12.9524 26.496 15.7684C21.9733 18.499 18.5173 22.5097 16.128 27.8004C13.824 33.0057 12.672 39.4057 12.672 47.0004C12.672 54.5097 13.824 60.9524 16.128 66.3284C18.5173 71.619 21.9733 75.6724 26.496 78.4884C31.104 81.219 36.6933 82.5844 43.264 82.5844C47.2747 82.5844 51.072 82.0297 54.656 80.9204C58.3253 79.811 61.696 78.1044 64.768 75.8004C66.1333 74.8617 67.3707 74.435 68.48 74.5204C69.6747 74.6057 70.656 74.9897 71.424 75.6724C72.192 76.2697 72.704 77.123 72.96 78.2324C73.3013 79.2564 73.3013 80.323 72.96 81.4324C72.6187 82.5417 71.8507 83.523 70.656 84.3764C67.1573 87.363 62.976 89.6244 58.112 91.1604C53.3333 92.611 48.2987 93.3364 43.008 93.3364Z" fill="#ffffff"/>
+          <path d="M134.546 2.66474C135.937 0.279749 138.999 -0.526184 141.384 0.86493C143.769 2.25633 144.575 5.31854 143.184 7.7038L94.6944 90.8288C93.303 93.214 90.2408 94.02 87.8556 92.6286C85.4703 91.2372 84.6644 88.175 86.0557 85.7897L134.546 2.66474Z" fill="#ffffff"/>
+          <path d="M117.873 0.86493C120.258 -0.526422 123.32 0.279495 124.712 2.66473L173.201 85.7897C174.592 88.175 173.786 91.2372 171.401 92.6286C169.016 94.0197 165.955 93.2138 164.563 90.8288L116.073 7.7038C114.682 5.31855 115.488 2.25632 117.873 0.86493Z" fill="#ffffff"/>
+          <path d="M175.809 83.3093C178.571 83.3094 180.809 85.5479 180.809 88.3093C180.809 91.0706 178.571 93.3091 175.809 93.3093H83.448C80.6866 93.3093 78.448 91.0707 78.448 88.3093C78.448 85.5478 80.6866 83.3093 83.448 83.3093H175.809Z" fill="#ffffff"/>
+          <path d="M573.448 35.1843C574.343 35.9151 574.224 36.0196 575.009 36.8884C577.398 39.5337 579.191 42.776 580.385 46.616C581.665 50.3706 582.305 54.6381 582.305 59.4167C582.305 60.7817 581.878 61.8481 581.025 62.616C580.257 63.2986 579.105 63.6404 577.569 63.6404H535.929C536.334 69.938 538.139 74.8019 541.345 78.2322C545.015 82.1573 550.305 84.1198 557.217 84.1199C559.947 84.1199 562.721 83.7791 565.537 83.0964C568.438 82.4138 571.212 81.1765 573.857 79.3845C575.137 78.6165 576.289 78.2748 577.313 78.3601C578.422 78.3602 579.318 78.7019 580.001 79.3845C580.683 79.9818 581.11 80.7496 581.281 81.6882C581.452 82.5416 581.324 83.4806 580.897 84.5046C580.471 85.5286 579.659 86.4242 578.465 87.1921C575.649 89.1547 572.278 90.6912 568.353 91.8005C564.513 92.8245 560.801 93.3367 557.217 93.3367C550.475 93.3366 544.673 92.0558 539.809 89.4958C535.031 86.8505 531.318 83.1388 528.673 78.3601C526.027 73.4963 524.705 67.7791 524.705 61.2087C524.705 57.3224 525.154 52.4884 526.073 49.1843C527.652 49.4386 529.229 50.3093 531.198 50.6843C533.167 51.0593 534.417 51.1843 536.981 51.3425C536.539 52.8744 536.226 54.4989 536.042 56.2166H572.409C572.247 52.5513 571.579 49.3935 570.401 46.7439C569.354 44.1609 568.448 42.6843 566.973 41.5378C568.009 40.7205 568.985 39.8886 569.891 39.0466C571.224 37.8089 572.382 36.3208 573.448 35.1843Z" fill="#ffffff"/>
+          <path d="M498.021 7.95928L498.019 7.95972C498.019 4.77939 495.434 2.18455 492.234 2.18433C489.034 2.18433 486.448 4.75386 486.448 7.93433V35.9099L486.367 35.8484H478.175C476.639 35.8485 475.444 36.2328 474.591 37.0007C473.738 37.7686 473.311 38.8777 473.311 40.3279C473.311 41.693 473.737 42.8027 474.591 43.656C475.444 44.4239 476.639 44.8083 478.175 44.8083H486.367V70.2966C486.367 75.2458 487.177 79.4273 488.799 82.8406C490.505 86.2539 493.023 88.8562 496.351 90.6482C499.765 92.4401 503.989 93.3367 509.023 93.3367C510.388 93.3367 511.924 93.1653 513.631 92.824C515.337 92.568 516.703 92.2698 517.727 91.9285C518.836 91.5871 519.562 90.9471 519.903 90.0085C520.33 88.9846 520.543 87.8751 520.543 86.6804C520.543 85.0592 520.244 83.9497 519.647 83.3523C519.135 82.755 518.495 82.4995 517.727 82.5847C516.874 82.5847 515.892 82.7551 514.783 83.0964C513.674 83.3524 512.308 83.4802 510.687 83.4802C506.165 83.4802 502.921 82.2856 500.959 79.8962C498.996 77.5069 498.015 73.9654 498.015 69.2722V66.5818C498.017 66.5328 498.019 66.4836 498.019 66.4343V44.5847L498.015 35.9099V14.9099L498.021 7.95928Z" fill="#ffffff"/>
+          <path d="M129.628 53.601C131.407 53.601 133.052 54.5453 133.948 56.0814L142.111 70.7904C143.502 73.1756 142.696 76.237 140.311 77.6283C137.926 79.0196 134.865 78.2137 133.473 75.8285L129.628 68.5238L125.785 75.8285C124.393 78.2138 121.331 79.0197 118.946 77.6283C116.561 76.237 115.755 73.1756 117.146 70.7904L125.31 56.0814L125.486 55.8002C126.411 54.4308 127.961 53.601 129.628 53.601Z" fill="#FF6C37"/>
+          <path d="M551.073 11.3972C546.073 8.89723 545.285 7.1297 537.149 3.08669C530.567 -0.1836 523.473 -0.917999 516.44 1.18429L507.2 4.14726C503.073 5.89726 503.573 9.80929 507.2 11.3972C510.025 12.6336 514.073 16.1267 514.073 20.6843C514.073 25.2419 509.7 30.7517 507.2 32.2517C504.949 33.6122 500.179 41.8851 507.83 40.7426C515.481 39.6001 518.207 38.801 532.578 42.9927C546.948 47.1843 560.948 37.4342 567.948 30.9342C574.948 24.4342 579.448 17.8244 579.448 14.2518C579.448 10.3093 574.528 10.707 567.948 12.2518C563.948 13.0995 556.073 13.8972 551.073 11.3972Z" fill="#FF6C37"/>
+        </svg>
       </a>
-      <nav class="flex items-center gap-2 text-white">
-        {% set nav_items = navbar or collections.navbar or [] %}
-        {% set is_docs_page = page.path and page.path.indexOf('/docs/') == 0 %}
-        {% for item in nav_items %}
-        {% set is_docs_item = item.url and item.url.indexOf('/docs/') == 0 %}
-        {% set is_active = (item.url == page.path) or (is_docs_page and is_docs_item) %}
-        <a href="{{ item.url or '#' }}" {% if item.target %}target="{{ item.target }}" {% endif %} {% if item.rel
-          %}rel="{{ item.rel }}" {% endif %}
-          class="px-2 {% if is_active %} active {% else %} not-active {% endif %} {{ item.class or '' }}">
-          {% if item.label %}{{ item.label }}{% endif %}
-          {% if item.svg %}{{ item.svg | safe }}{% endif %}
-        </a>
-        {% endfor %}
-      </nav>
+
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400" @mouseleave="dropdown = null">
+        <div class="relative">
+          <button @mouseover="dropdown = 'features'"
+            class="flex items-center gap-1 hover:text-white transition-colors py-5 focus:outline-none">
+            Features
+            <svg class="w-4 h-4 transition-transform duration-200" :class="dropdown === 'features' ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div x-show="dropdown === 'features'"
+               x-transition:enter="transition ease-out duration-150"
+               x-transition:enter-start="opacity-0 translate-y-2"
+               x-transition:enter-end="opacity-100 translate-y-0"
+               x-transition:leave="transition ease-in duration-100"
+               x-transition:leave-start="opacity-100 translate-y-0"
+               x-transition:leave-end="opacity-0 translate-y-2"
+               class="absolute left-0 top-full w-[480px] bg-[#0E0B16] border border-white/10 rounded-xl shadow-2xl p-6 grid grid-cols-2 gap-3"
+               style="display: none;"
+               @mouseover="dropdown = 'features'">
+            <a href="/docs/template-languages" class="p-3 hover:bg-white/5 rounded-lg transition-colors flex gap-3 group">
+              <div class="w-10 h-10 bg-[#EA4B71]/10 rounded-lg flex items-center justify-center text-[#EA4B71] group-hover:bg-[#EA4B71]/20 transition-colors flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+              </div>
+              <div>
+                <p class="text-white font-semibold text-sm">Template Engines</p>
+                <p class="text-xs text-zinc-500 mt-0.5">Nunjucks, Liquid, Markdown, Mustache.</p>
+              </div>
+            </a>
+            <a href="/docs/essentials/configuration" class="p-3 hover:bg-white/5 rounded-lg transition-colors flex gap-3 group">
+              <div class="w-10 h-10 bg-[#FF6C37]/10 rounded-lg flex items-center justify-center text-[#FF6C37] group-hover:bg-[#FF6C37]/20 transition-colors flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              </div>
+              <div>
+                <p class="text-white font-semibold text-sm">Lightning Fast</p>
+                <p class="text-xs text-zinc-500 mt-0.5">Optimized builds with smart asset handling.</p>
+              </div>
+            </a>
+            <a href="/docs/css-frameworks" class="p-3 hover:bg-white/5 rounded-lg transition-colors flex gap-3 group">
+              <div class="w-10 h-10 bg-purple-500/10 rounded-lg flex items-center justify-center text-purple-400 group-hover:bg-purple-500/20 transition-colors flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+              </div>
+              <div>
+                <p class="text-white font-semibold text-sm">CSS Frameworks</p>
+                <p class="text-xs text-zinc-500 mt-0.5">Tailwind v4, Bootstrap, Bulma, Foundation.</p>
+              </div>
+            </a>
+            <a href="/docs/js-frameworks" class="p-3 hover:bg-white/5 rounded-lg transition-colors flex gap-3 group">
+              <div class="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500/20 transition-colors flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+              </div>
+              <div>
+                <p class="text-white font-semibold text-sm">JS Frameworks</p>
+                <p class="text-xs text-zinc-500 mt-0.5">Alpine.js and Vue.js, out of the box.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <a href="/docs" class="hover:text-white transition-colors">Docs</a>
+        <a href="https://github.com/FoxGroveMedia/CampsiteJS" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">GitHub</a>
+      </div>
+
+      <div class="hidden md:flex items-center gap-4">
+        <a href="/docs/getting-started/installation" class="bg-gradient-to-r from-[#EA4B71] to-[#FF6C37] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">Get Started</a>
+      </div>
+
+      <button @click="mobileOpen = !mobileOpen" class="md:hidden text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#EA4B71] rounded p-1" aria-label="Toggle menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </nav>
+
+    <div x-show="mobileOpen"
+         x-transition:enter="transition ease-out duration-150"
+         x-transition:enter-start="opacity-0 -translate-y-2"
+         x-transition:enter-end="opacity-100 translate-y-0"
+         x-transition:leave="transition ease-in duration-100"
+         x-transition:leave-start="opacity-100 translate-y-0"
+         x-transition:leave-end="opacity-0 -translate-y-2"
+         class="md:hidden bg-[#0E0B16] border-b border-white/5 p-6 absolute w-full left-0 z-50"
+         style="display: none;">
+      <div class="flex flex-col gap-4 text-sm">
+        <a href="/docs/getting-started/installation" class="text-zinc-300 hover:text-white transition-colors">Features</a>
+        <a href="/docs" class="text-zinc-300 hover:text-white transition-colors">Docs</a>
+        <a href="https://github.com/FoxGroveMedia/CampsiteJS" target="_blank" rel="noopener noreferrer" class="text-zinc-300 hover:text-white transition-colors">GitHub</a>
+        <hr class="border-white/5 my-1">
+        <a href="/docs/getting-started/installation" class="bg-gradient-to-r from-[#EA4B71] to-[#FF6C37] text-white px-4 py-2.5 rounded-lg font-semibold text-center hover:opacity-90 transition-opacity">Get Started</a>
+      </div>
     </div>
   </header>
-  <main>
+
+  <main class="relative z-10">
     {% block content %}
     {% if content %}
     {{ content | safe }}
     {% else %}
-    <section>
-      <p>Campfire ready</p>
-      <h1>Welcome to {{ site.name }}</h1>
-      <p>Edit <code>src/pages/index.md</code> to get started.</p>
+    <section class="max-w-7xl mx-auto px-6 py-24 text-center">
+      <h1 class="text-4xl font-bold mb-4">Welcome to {{ site.name }}</h1>
+      <p class="text-zinc-400">Edit <code>src/pages/index.njk</code> to get started.</p>
     </section>
     {% endif %}
     {% endblock %}
   </main>
-  <footer class="relative py-8 text-xs text-amber-50/40 text-center">
-    <div class="flex items-center justify-center mb-4">
-      <a aria-label="Fox Grove Media Twitter page" href="https://x.com/FoxGroveMedia" target="_blank" rel="noreferrer"
-        class="text-amber-50/40 hover:text-white px-2"><svg alt="CampsiteJS Github page" class="size-7"
-          fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
-          <path
-            d="M453.2 112L523.8 112L369.6 288.2L551 528L409 528L297.7 382.6L170.5 528L99.8 528L264.7 339.5L90.8 112L236.4 112L336.9 244.9L453.2 112zM428.4 485.8L467.5 485.8L215.1 152L173.1 152L428.4 485.8z">
-          </path>
-        </svg></a>
-      <a aria-label="CampsiteJS Github page" href="https://github.com/FoxGroveMedia/campsitejs" target="_blank"
-        rel="noreferrer" class="text-amber-50/40 hover:text-white px-2"><svg alt="Fox Grove Media Twitter page"
-          class="size-7" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
-          <path
-            d="M237.9 461.4C237.9 463.4 235.6 465 232.7 465C229.4 465.3 227.1 463.7 227.1 461.4C227.1 459.4 229.4 457.8 232.3 457.8C235.3 457.5 237.9 459.1 237.9 461.4zM206.8 456.9C206.1 458.9 208.1 461.2 211.1 461.8C213.7 462.8 216.7 461.8 217.3 459.8C217.9 457.8 216 455.5 213 454.6C210.4 453.9 207.5 454.9 206.8 456.9zM251 455.2C248.1 455.9 246.1 457.8 246.4 460.1C246.7 462.1 249.3 463.4 252.3 462.7C255.2 462 257.2 460.1 256.9 458.1C256.6 456.2 253.9 454.9 251 455.2zM316.8 72C178.1 72 72 177.3 72 316C72 426.9 141.8 521.8 241.5 555.2C254.3 557.5 258.8 549.6 258.8 543.1C258.8 536.9 258.5 502.7 258.5 481.7C258.5 481.7 188.5 496.7 173.8 451.9C173.8 451.9 162.4 422.8 146 415.3C146 415.3 123.1 399.6 147.6 399.9C147.6 399.9 172.5 401.9 186.2 425.7C208.1 464.3 244.8 453.2 259.1 446.6C261.4 430.6 267.9 419.5 275.1 412.9C219.2 406.7 162.8 398.6 162.8 302.4C162.8 274.9 170.4 261.1 186.4 243.5C183.8 237 175.3 210.2 189 175.6C209.9 169.1 258 202.6 258 202.6C278 197 299.5 194.1 320.8 194.1C342.1 194.1 363.6 197 383.6 202.6C383.6 202.6 431.7 169 452.6 175.6C466.3 210.3 457.8 237 455.2 243.5C471.2 261.2 481 275 481 302.4C481 398.9 422.1 406.6 366.2 412.9C375.4 420.8 383.2 435.8 383.2 459.3C383.2 493 382.9 534.7 382.9 542.9C382.9 549.4 387.5 557.3 400.2 555C500.2 521.8 568 426.9 568 316C568 177.3 455.5 72 316.8 72zM169.2 416.9C167.9 417.9 168.2 420.2 169.9 422.1C171.5 423.7 173.8 424.4 175.1 423.1C176.4 422.1 176.1 419.8 174.4 417.9C172.8 416.3 170.5 415.6 169.2 416.9zM158.4 408.8C157.7 410.1 158.7 411.7 160.7 412.7C162.3 413.7 164.3 413.4 165 412C165.7 410.7 164.7 409.1 162.7 408.1C160.7 407.5 159.1 407.8 158.4 408.8zM190.8 444.4C189.2 445.7 189.8 448.7 192.1 450.6C194.4 452.9 197.3 453.2 198.6 451.6C199.9 450.3 199.3 447.3 197.3 445.4C195.1 443.1 192.1 442.8 190.8 444.4zM179.4 429.7C177.8 430.7 177.8 433.3 179.4 435.6C181 437.9 183.7 438.9 185 437.9C186.6 436.6 186.6 434 185 431.7C183.6 429.4 181 428.4 179.4 429.7z">
-          </path>
-        </svg></a>
-      <a aria-label="Fox Grove Media NPM page" href="https://www.npmjs.com/~foxgrove" target="_blank" rel="noreferrer"
-        class="text-amber-50/40 hover:text-white px-2"><svg alt="Fox Grove Media NPM page" class="size-7"
-          fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
-          <path
-            d="M320.5 572C313.8 572 307 570.2 301.1 566.8L239.4 530.3C230.2 525.1 234.7 523.3 237.7 522.3C250 518 252.5 517.1 265.6 509.6C267 508.8 268.8 509.1 270.2 510L317.6 538.1C319.3 539.1 321.7 539.1 323.3 538.1L508 431.5C509.7 430.5 510.8 428.5 510.8 426.5L510.8 213.3C510.8 211.2 509.7 209.3 507.9 208.2L323.3 101.7C321.6 100.7 319.3 100.7 317.6 101.7L133.1 208.3C131.3 209.3 130.2 211.3 130.2 213.4L130.2 426.5C130.2 428.5 131.3 430.5 133.1 431.4L183.7 460.6C211.2 474.3 228 458.2 228 441.9L228 231.5C228 228.5 230.4 226.2 233.4 226.2L256.8 226.2C259.7 226.2 262.2 228.5 262.2 231.5L262.2 442C262.2 478.6 242.2 499.6 207.5 499.6C196.8 499.6 188.4 499.6 165 488L116.6 460.1C104.6 453.2 97.2 440.3 97.2 426.4L97.2 213.3C97.2 199.5 104.6 186.5 116.6 179.6L301.1 73C312.8 66.4 328.3 66.4 339.9 73L524.6 179.7C536.6 186.6 544 199.5 544 213.4L544 426.5C544 440.3 536.6 453.2 524.6 460.2L339.9 566.8C334 570.2 327.3 572 320.5 572zM469.6 361.9C469.6 322 442.6 311.4 385.9 303.9C328.5 296.3 322.7 292.4 322.7 279C322.7 267.9 327.6 253.1 370.1 253.1C408 253.1 422 261.3 427.8 286.9C428.3 289.3 430.5 291.1 433 291.1L457 291.1C458.5 291.1 459.9 290.5 460.9 289.4C461.9 288.3 462.4 286.8 462.3 285.3C458.6 241.2 429.3 220.7 370.1 220.7C317.4 220.7 286 242.9 286 280.2C286 320.6 317.3 331.8 367.8 336.8C428.3 342.7 433 351.6 433 363.5C433 384.1 416.4 392.9 377.5 392.9C328.6 392.9 317.9 380.6 314.3 356.3C313.9 353.7 311.7 351.8 309 351.8L285.1 351.8C282.1 351.8 279.8 354.2 279.8 357.1C279.8 388.2 296.7 425.3 377.6 425.3C436 425.2 469.6 402.1 469.6 361.9z" />
-        </svg></a>
-    </div>
-    <p>Copyright &copy; {{ currentYear }}. Released under the <a href="https://opensource.org/license/MIT" target="_blank" rel="noreferrer"
-        class="font-semibold text-amber-50/60 hover:text-white hover:underline">MIT License.</a></p>
-    <p>Built with <span class="font-semibold text-amber-50/60">CampsiteJS</span> and a whole lot of ❤️ by <a href="https://foxgrovemedia.com"
-        target="_blank" rel="noreferrer" class="text-amber-500 hover:text-white hover:underline">Fox Grove Media</a>.
-    </p>
-  </footer>
-</body>
 
+  <footer class="relative z-10 border-t border-white/5 py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+        <div>
+          <h3 class="text-sm font-semibold text-white mb-4">Product</h3>
+          <ul class="space-y-3 text-sm text-zinc-300">
+            <li><a href="/docs" class="hover:text-white transition-colors">Documentation</a></li>
+            <li><a href="/docs/getting-started/installation" class="hover:text-white transition-colors">Installation</a></li>
+            <li><a href="/docs/essentials/configuration" class="hover:text-white transition-colors">Configuration</a></li>
+            <li><a href="/docs/getting-started/deploying" class="hover:text-white transition-colors">Deployment</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-white mb-4">Integrations</h3>
+          <ul class="space-y-3 text-sm text-zinc-300">
+            <li><a href="/docs/template-languages" class="hover:text-white transition-colors">Template Engines</a></li>
+            <li><a href="/docs/css-frameworks" class="hover:text-white transition-colors">CSS Frameworks</a></li>
+            <li><a href="/docs/js-frameworks" class="hover:text-white transition-colors">JS Frameworks</a></li>
+            <li><a href="/docs/cli" class="hover:text-white transition-colors">CLI Reference</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-white mb-4">Resources</h3>
+          <ul class="space-y-3 text-sm text-zinc-300">
+            <li><a href="https://github.com/FoxGroveMedia/CampsiteJS" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">GitHub</a></li>
+            <li><a href="https://www.npmjs.com/package/basecampjs" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">npm</a></li>
+            <li><a href="https://github.com/FoxGroveMedia/CampsiteJS/issues" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Issues</a></li>
+          </ul>
+        </div>
+        <div class="col-span-2 md:col-span-1">
+          <a href="/" class="inline-flex mb-3" aria-label="CampsiteJS home">
+            <svg class="h-6" viewBox="0 0 725 117" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M690.271 93.3364C686.26 93.3364 682.378 92.995 678.623 92.3124C674.868 91.715 671.327 90.7764 667.999 89.4964C664.671 88.2164 661.684 86.6377 659.039 84.7604C657.93 83.9924 657.119 83.0537 656.607 81.9444C656.18 80.835 656.052 79.7684 656.223 78.7444C656.479 77.635 656.948 76.6964 657.631 75.9284C658.399 75.1604 659.295 74.691 660.319 74.5204C661.343 74.3497 662.452 74.691 663.647 75.5444C667.572 78.1897 671.668 80.1097 675.935 81.3044C680.287 82.499 685.066 83.0964 690.271 83.0964C697.78 83.0964 703.284 81.731 706.783 79.0004C710.367 76.2697 712.159 72.6857 712.159 68.2484C712.159 64.579 710.879 61.7204 708.319 59.6724C705.759 57.539 701.45 55.875 695.391 54.6804L681.823 51.8644C673.802 50.1577 667.786 47.3417 663.775 43.4164C659.85 39.491 657.887 34.243 657.887 27.6724C657.887 23.6617 658.698 20.035 660.319 16.7924C661.94 13.4644 664.244 10.6057 667.231 8.21636C670.218 5.82703 673.716 3.99236 677.727 2.71236C681.823 1.43236 686.346 0.792358 691.295 0.792358C696.586 0.792358 701.535 1.51769 706.143 2.96836C710.836 4.41903 715.06 6.55236 718.815 9.36836C719.839 10.1364 720.522 11.075 720.863 12.1844C721.204 13.2084 721.247 14.2324 720.991 15.2564C720.82 16.2804 720.351 17.1337 719.583 17.8164C718.9 18.499 718.004 18.883 716.895 18.9684C715.871 19.0537 714.719 18.6697 713.439 17.8164C710.026 15.427 706.527 13.7204 702.943 12.6964C699.359 11.587 695.434 11.0324 691.167 11.0324C686.815 11.0324 683.018 11.715 679.775 13.0804C676.618 14.4457 674.143 16.3657 672.351 18.8404C670.644 21.2297 669.791 24.0457 669.791 27.2884C669.791 31.2137 670.986 34.2857 673.375 36.5044C675.764 38.723 679.775 40.4297 685.407 41.6244L698.847 44.3124C707.38 46.1044 713.695 48.8777 717.791 52.6324C721.972 56.3017 724.063 61.251 724.063 67.4804C724.063 71.4057 723.252 74.947 721.631 78.1044C720.095 81.2617 717.876 83.9924 714.975 86.2964C712.074 88.515 708.532 90.2644 704.351 91.5444C700.17 92.739 695.476 93.3364 690.271 93.3364Z" fill="#ffffff"/>
+              <path d="M620.544 92.9523C618.752 93.0377 617.344 92.5683 616.32 91.5443C615.296 90.5203 614.784 89.2403 614.784 87.7043C614.784 86.5097 615.168 85.4857 615.936 84.6323C616.619 83.6937 617.728 83.1817 619.264 83.0963L623.232 82.7123C627.413 82.371 630.613 80.9203 632.832 78.3603C635.051 75.8003 636.16 72.3017 636.16 67.8643V7.06434C636.16 5.10167 636.672 3.60834 637.696 2.58434C638.72 1.56034 640.171 1.04834 642.048 1.04834C643.925 1.04834 645.376 1.56034 646.4 2.58434C647.424 3.60834 647.936 5.10167 647.936 7.06434V67.8643C647.936 72.899 647.04 77.2083 645.248 80.7923C643.541 84.291 640.981 87.0643 637.568 89.1123C634.155 91.075 629.888 92.2697 624.768 92.6963L620.544 92.9523Z" fill="#ffffff"/>
+              <path d="M597.424 93.6963C595.205 93.6963 593.371 92.971 591.92 91.5203C590.469 90.0696 589.744 88.235 589.744 86.0163C589.744 83.7976 590.469 82.0056 591.92 80.6403C593.371 79.275 595.205 78.5923 597.424 78.5923C599.813 78.5923 601.648 79.275 602.928 80.6403C604.293 82.0056 604.976 83.7976 604.976 86.0163C604.976 88.235 604.293 90.0696 602.928 91.5203C601.648 92.971 599.813 93.6963 597.424 93.6963Z" fill="#ffffff"/>
+              <path d="M458.552 29.2087C460.429 29.2088 461.88 29.7627 462.904 30.8718C463.928 31.8958 464.44 33.4322 464.44 35.4802V86.5525C464.44 88.5149 463.928 90.0506 462.904 91.1599C461.965 92.2691 460.515 92.8239 458.552 92.824C456.76 92.824 455.352 92.2692 454.328 91.1599C453.304 90.0506 452.792 88.5149 452.792 86.5525V35.4802C452.792 33.4322 453.304 31.8958 454.328 30.8718C455.352 29.7626 456.761 29.2087 458.552 29.2087Z" fill="#ffffff"/>
+              <path d="M458.552 1.81616C461.026 1.81616 462.862 2.41349 464.056 3.60815C465.336 4.71749 465.976 6.38179 465.976 8.60034C465.976 10.6483 465.336 12.3126 464.056 13.5925C462.862 14.7872 461.026 15.3845 458.552 15.3845C456.248 15.3844 454.413 14.7871 453.048 13.5925C451.768 12.3125 451.128 10.6483 451.128 8.60034C451.128 6.38175 451.768 4.71749 453.048 3.60815C454.413 2.41356 456.248 1.81624 458.552 1.81616Z" fill="#ffffff"/>
+              <path d="M404.771 93.3364C400.76 93.3364 396.878 92.995 393.123 92.3124C389.368 91.715 385.827 90.7764 382.499 89.4964C379.171 88.2164 376.184 86.6377 373.539 84.7604C372.43 83.9924 371.619 83.0537 371.107 81.9444C370.68 80.835 370.552 79.7684 370.723 78.7444C370.979 77.635 371.448 76.6964 372.131 75.9284C372.899 75.1604 373.795 74.691 374.819 74.5204C375.843 74.3497 376.952 74.691 378.147 75.5444C382.072 78.1897 386.168 80.1097 390.435 81.3044C394.787 82.499 399.566 83.0964 404.771 83.0964C412.28 83.0964 417.784 81.731 421.283 79.0004C424.867 76.2697 426.659 72.6857 426.659 68.2484C426.659 64.579 425.379 61.7204 422.819 59.6724C420.259 57.539 415.95 55.875 409.891 54.6804L396.323 51.8644C388.302 50.1577 382.286 47.3417 378.275 43.4164C374.35 39.491 372.387 34.243 372.387 27.6724C372.387 23.6617 373.198 20.035 374.819 16.7924C376.44 13.4644 378.744 10.6057 381.731 8.21636C384.718 5.82703 388.216 3.99236 392.227 2.71236C396.323 1.43236 400.846 0.792358 405.795 0.792358C411.086 0.792358 416.035 1.51769 420.643 2.96836C425.336 4.41903 429.56 6.55236 433.315 9.36836C434.339 10.1364 435.022 11.075 435.363 12.1844C435.704 13.2084 435.747 14.2324 435.491 15.2564C435.32 16.2804 434.851 17.1337 434.083 17.8164C433.4 18.499 432.504 18.883 431.395 18.9684C430.371 19.0537 429.219 18.6697 427.939 17.8164C424.526 15.427 421.027 13.7204 417.443 12.6964C413.859 11.587 409.934 11.0324 405.667 11.0324C401.315 11.0324 397.518 11.715 394.275 13.0804C391.118 14.4457 388.643 16.3657 386.851 18.8404C385.144 21.2297 384.291 24.0457 384.291 27.2884C384.291 31.2137 385.486 34.2857 387.875 36.5044C390.264 38.723 394.275 40.4297 399.907 41.6244L413.347 44.3124C421.88 46.1044 428.195 48.8777 432.291 52.6324C436.472 56.3017 438.563 61.251 438.563 67.4804C438.563 71.4057 437.752 74.947 436.131 78.1044C434.595 81.2617 432.376 83.9924 429.475 86.2964C426.574 88.515 423.032 90.2644 418.851 91.5444C414.67 92.739 409.976 93.3364 404.771 93.3364Z" fill="#ffffff"/>
+              <path d="M304.302 116.12C302.51 116.12 301.102 115.608 300.078 114.584C299.054 113.56 298.542 112.11 298.542 110.232V34.8403C298.542 32.8776 299.054 31.427 300.078 30.4883C301.102 29.4643 302.51 28.9523 304.302 28.9523C306.179 28.9523 307.587 29.4643 308.526 30.4883C309.55 31.427 310.062 32.8776 310.062 34.8403V46.4883L308.654 44.1843C310.019 39.491 312.707 35.7363 316.718 32.9203C320.729 30.1043 325.55 28.6963 331.182 28.6963C336.729 28.6963 341.55 30.019 345.646 32.6643C349.742 35.2243 352.942 38.9363 355.246 43.8003C357.55 48.579 358.702 54.2963 358.702 60.9523C358.702 67.523 357.55 73.283 355.246 78.2323C353.027 83.0963 349.827 86.851 345.646 89.4963C341.55 92.0563 336.729 93.3363 331.182 93.3363C325.635 93.3363 320.857 91.9283 316.846 89.1123C312.835 86.2963 310.147 82.5843 308.782 77.9763H310.19V110.232C310.19 112.11 309.678 113.56 308.654 114.584C307.63 115.608 306.179 116.12 304.302 116.12ZM328.494 84.1203C332.163 84.1203 335.363 83.2243 338.094 81.4323C340.91 79.6403 343.086 77.0376 344.622 73.6243C346.158 70.211 346.926 65.987 346.926 60.9523C346.926 53.443 345.262 47.7256 341.934 43.8003C338.606 39.875 334.126 37.9123 328.494 37.9123C324.739 37.9123 321.454 38.8083 318.638 40.6003C315.907 42.307 313.774 44.867 312.238 48.2803C310.787 51.6936 310.062 55.9176 310.062 60.9523C310.062 68.4616 311.726 74.2216 315.054 78.2323C318.382 82.1576 322.862 84.1203 328.494 84.1203Z" fill="#ffffff"/>
+              <path d="M194.308 93.0803C192.516 93.0803 191.108 92.5683 190.084 91.5443C189.06 90.5203 188.548 89.027 188.548 87.0643V34.8403C188.548 32.8776 189.06 31.427 190.084 30.4883C191.108 29.4643 192.516 28.9523 194.308 28.9523C196.1 28.9523 197.465 29.4643 198.404 30.4883C199.428 31.427 199.94 32.8776 199.94 34.8403V45.7203L198.532 43.4163C200.153 38.723 202.756 35.0963 206.34 32.5363C210.009 29.9763 214.361 28.6963 219.396 28.6963C224.687 28.6963 228.953 29.9763 232.196 32.5363C235.439 35.011 237.615 38.8083 238.724 43.9283H236.932C238.468 39.235 241.199 35.523 245.124 32.7923C249.135 30.0616 253.785 28.6963 259.076 28.6963C263.769 28.6963 267.609 29.635 270.596 31.5123C273.668 33.3043 275.972 36.035 277.508 39.7043C279.044 43.2883 279.812 47.8963 279.812 53.5283V87.0643C279.812 89.027 279.3 90.5203 278.276 91.5443C277.252 92.5683 275.844 93.0803 274.052 93.0803C272.175 93.0803 270.724 92.5683 269.7 91.5443C268.676 90.5203 268.164 89.027 268.164 87.0643V54.0403C268.164 48.579 267.225 44.5683 265.348 42.0083C263.471 39.4483 260.313 38.1683 255.876 38.1683C251.012 38.1683 247.129 39.875 244.228 43.2883C241.412 46.6163 240.004 51.2243 240.004 57.1123V87.0643C240.004 89.027 239.492 90.5203 238.468 91.5443C237.529 92.5683 236.121 93.0803 234.244 93.0803C232.367 93.0803 230.916 92.5683 229.892 91.5443C228.868 90.5203 228.356 89.027 228.356 87.0643V54.0403C228.356 48.579 227.417 44.5683 225.54 42.0083C223.663 39.4483 220.505 38.1683 216.068 38.1683C211.204 38.1683 207.321 39.875 204.42 43.2883C201.604 46.6163 200.196 51.2243 200.196 57.1123V87.0643C200.196 91.075 198.233 93.0803 194.308 93.0803Z" fill="#ffffff"/>
+              <path d="M43.008 93.3364C34.048 93.3364 26.368 91.459 19.968 87.7044C13.568 83.9497 8.61867 78.6164 5.12 71.7044C1.70667 64.707 0 56.4724 0 47.0004C0 39.9177 0.981333 33.5604 2.944 27.9284C4.90667 22.211 7.72267 17.347 11.392 13.3364C15.0613 9.24036 19.5413 6.12569 24.832 3.99236C30.208 1.85903 36.2667 0.792358 43.008 0.792358C48.128 0.792358 53.0347 1.51769 57.728 2.96836C62.5067 4.41903 66.6027 6.46703 70.016 9.11236C71.3813 10.051 72.2773 11.1177 72.704 12.3124C73.1307 13.507 73.1733 14.659 72.832 15.7684C72.576 16.7924 72.0213 17.6884 71.168 18.4564C70.4 19.139 69.4187 19.523 68.224 19.6084C67.0293 19.6084 65.7493 19.139 64.384 18.2004C61.3973 15.8964 58.112 14.2324 54.528 13.2084C51.0293 12.099 47.2747 11.5444 43.264 11.5444C36.6933 11.5444 31.104 12.9524 26.496 15.7684C21.9733 18.499 18.5173 22.5097 16.128 27.8004C13.824 33.0057 12.672 39.4057 12.672 47.0004C12.672 54.5097 13.824 60.9524 16.128 66.3284C18.5173 71.619 21.9733 75.6724 26.496 78.4884C31.104 81.219 36.6933 82.5844 43.264 82.5844C47.2747 82.5844 51.072 82.0297 54.656 80.9204C58.3253 79.811 61.696 78.1044 64.768 75.8004C66.1333 74.8617 67.3707 74.435 68.48 74.5204C69.6747 74.6057 70.656 74.9897 71.424 75.6724C72.192 76.2697 72.704 77.123 72.96 78.2324C73.3013 79.2564 73.3013 80.323 72.96 81.4324C72.6187 82.5417 71.8507 83.523 70.656 84.3764C67.1573 87.363 62.976 89.6244 58.112 91.1604C53.3333 92.611 48.2987 93.3364 43.008 93.3364Z" fill="#ffffff"/>
+              <path d="M134.546 2.66474C135.937 0.279749 138.999 -0.526184 141.384 0.86493C143.769 2.25633 144.575 5.31854 143.184 7.7038L94.6944 90.8288C93.303 93.214 90.2408 94.02 87.8556 92.6286C85.4703 91.2372 84.6644 88.175 86.0557 85.7897L134.546 2.66474Z" fill="#ffffff"/>
+              <path d="M117.873 0.86493C120.258 -0.526422 123.32 0.279495 124.712 2.66473L173.201 85.7897C174.592 88.175 173.786 91.2372 171.401 92.6286C169.016 94.0197 165.955 93.2138 164.563 90.8288L116.073 7.7038C114.682 5.31855 115.488 2.25632 117.873 0.86493Z" fill="#ffffff"/>
+              <path d="M175.809 83.3093C178.571 83.3094 180.809 85.5479 180.809 88.3093C180.809 91.0706 178.571 93.3091 175.809 93.3093H83.448C80.6866 93.3093 78.448 91.0707 78.448 88.3093C78.448 85.5478 80.6866 83.3093 83.448 83.3093H175.809Z" fill="#ffffff"/>
+              <path d="M573.448 35.1843C574.343 35.9151 574.224 36.0196 575.009 36.8884C577.398 39.5337 579.191 42.776 580.385 46.616C581.665 50.3706 582.305 54.6381 582.305 59.4167C582.305 60.7817 581.878 61.8481 581.025 62.616C580.257 63.2986 579.105 63.6404 577.569 63.6404H535.929C536.334 69.938 538.139 74.8019 541.345 78.2322C545.015 82.1573 550.305 84.1198 557.217 84.1199C559.947 84.1199 562.721 83.7791 565.537 83.0964C568.438 82.4138 571.212 81.1765 573.857 79.3845C575.137 78.6165 576.289 78.2748 577.313 78.3601C578.422 78.3602 579.318 78.7019 580.001 79.3845C580.683 79.9818 581.11 80.7496 581.281 81.6882C581.452 82.5416 581.324 83.4806 580.897 84.5046C580.471 85.5286 579.659 86.4242 578.465 87.1921C575.649 89.1547 572.278 90.6912 568.353 91.8005C564.513 92.8245 560.801 93.3367 557.217 93.3367C550.475 93.3366 544.673 92.0558 539.809 89.4958C535.031 86.8505 531.318 83.1388 528.673 78.3601C526.027 73.4963 524.705 67.7791 524.705 61.2087C524.705 57.3224 525.154 52.4884 526.073 49.1843C527.652 49.4386 529.229 50.3093 531.198 50.6843C533.167 51.0593 534.417 51.1843 536.981 51.3425C536.539 52.8744 536.226 54.4989 536.042 56.2166H572.409C572.247 52.5513 571.579 49.3935 570.401 46.7439C569.354 44.1609 568.448 42.6843 566.973 41.5378C568.009 40.7205 568.985 39.8886 569.891 39.0466C571.224 37.8089 572.382 36.3208 573.448 35.1843Z" fill="#ffffff"/>
+              <path d="M498.021 7.95928L498.019 7.95972C498.019 4.77939 495.434 2.18455 492.234 2.18433C489.034 2.18433 486.448 4.75386 486.448 7.93433V35.9099L486.367 35.8484H478.175C476.639 35.8485 475.444 36.2328 474.591 37.0007C473.738 37.7686 473.311 38.8777 473.311 40.3279C473.311 41.693 473.737 42.8027 474.591 43.656C475.444 44.4239 476.639 44.8083 478.175 44.8083H486.367V70.2966C486.367 75.2458 487.177 79.4273 488.799 82.8406C490.505 86.2539 493.023 88.8562 496.351 90.6482C499.765 92.4401 503.989 93.3367 509.023 93.3367C510.388 93.3367 511.924 93.1653 513.631 92.824C515.337 92.568 516.703 92.2698 517.727 91.9285C518.836 91.5871 519.562 90.9471 519.903 90.0085C520.33 88.9846 520.543 87.8751 520.543 86.6804C520.543 85.0592 520.244 83.9497 519.647 83.3523C519.135 82.755 518.495 82.4995 517.727 82.5847C516.874 82.5847 515.892 82.7551 514.783 83.0964C513.674 83.3524 512.308 83.4802 510.687 83.4802C506.165 83.4802 502.921 82.2856 500.959 79.8962C498.996 77.5069 498.015 73.9654 498.015 69.2722V66.5818C498.017 66.5328 498.019 66.4836 498.019 66.4343V44.5847L498.015 35.9099V14.9099L498.021 7.95928Z" fill="#ffffff"/>
+              <path d="M129.628 53.601C131.407 53.601 133.052 54.5453 133.948 56.0814L142.111 70.7904C143.502 73.1756 142.696 76.237 140.311 77.6283C137.926 79.0196 134.865 78.2137 133.473 75.8285L129.628 68.5238L125.785 75.8285C124.393 78.2138 121.331 79.0197 118.946 77.6283C116.561 76.237 115.755 73.1756 117.146 70.7904L125.31 56.0814L125.486 55.8002C126.411 54.4308 127.961 53.601 129.628 53.601Z" fill="#FF6C37"/>
+              <path d="M551.073 11.3972C546.073 8.89723 545.285 7.1297 537.149 3.08669C530.567 -0.1836 523.473 -0.917999 516.44 1.18429L507.2 4.14726C503.073 5.89726 503.573 9.80929 507.2 11.3972C510.025 12.6336 514.073 16.1267 514.073 20.6843C514.073 25.2419 509.7 30.7517 507.2 32.2517C504.949 33.6122 500.179 41.8851 507.83 40.7426C515.481 39.6001 518.207 38.801 532.578 42.9927C546.948 47.1843 560.948 37.4342 567.948 30.9342C574.948 24.4342 579.448 17.8244 579.448 14.2518C579.448 10.3093 574.528 10.707 567.948 12.2518C563.948 13.0995 556.073 13.8972 551.073 11.3972Z" fill="#FF6C37"/>
+            </svg>
+          </a>
+          <p class="text-sm text-zinc-300 leading-relaxed">{{ site.tagline }}</p>
+          <div class="flex items-center gap-3 mt-4">
+            <a href="https://x.com/FoxGroveMedia" target="_blank" rel="noreferrer" aria-label="Fox Grove Media on X" class="text-zinc-400 hover:text-white transition-colors">
+              <svg class="size-5" fill="currentColor" viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg"><path d="M453.2 112L523.8 112L369.6 288.2L551 528L409 528L297.7 382.6L170.5 528L99.8 528L264.7 339.5L90.8 112L236.4 112L336.9 244.9L453.2 112zM428.4 485.8L467.5 485.8L215.1 152L173.1 152L428.4 485.8z"/></svg>
+            </a>
+            <a href="https://github.com/FoxGroveMedia/CampsiteJS" target="_blank" rel="noreferrer" aria-label="CampsiteJS on GitHub" class="text-zinc-400 hover:text-white transition-colors">
+              <svg class="size-5" fill="currentColor" viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg"><path d="M316.8 72C178.1 72 72 177.3 72 316C72 426.9 141.8 521.8 241.5 555.2C254.3 557.5 258.8 549.6 258.8 543.1C258.8 536.9 258.5 502.7 258.5 481.7C258.5 481.7 188.5 496.7 173.8 451.9C173.8 451.9 162.4 422.8 146 415.3C146 415.3 123.1 399.6 147.6 399.9C147.6 399.9 172.5 401.9 186.2 425.7C208.1 464.3 244.8 453.2 259.1 446.6C261.4 430.6 267.9 419.5 275.1 412.9C219.2 406.7 162.8 398.6 162.8 302.4C162.8 274.9 170.4 261.1 186.4 243.5C183.8 237 175.3 210.2 189 175.6C209.9 169.1 258 202.6 258 202.6C278 197 299.5 194.1 320.8 194.1C342.1 194.1 363.6 197 383.6 202.6C383.6 202.6 431.7 169 452.6 175.6C466.3 210.3 457.8 237 455.2 243.5C471.2 261.2 481 275 481 302.4C481 398.9 422.1 406.6 366.2 412.9C375.4 420.8 383.2 435.8 383.2 459.3C383.2 493 382.9 534.7 382.9 542.9C382.9 549.4 387.5 557.3 400.2 555C500.2 521.8 568 426.9 568 316C568 177.3 455.5 72 316.8 72z"/></svg>
+            </a>
+            <a href="https://www.npmjs.com/~foxgrove" target="_blank" rel="noreferrer" aria-label="Fox Grove Media on npm" class="text-zinc-400 hover:text-white transition-colors">
+              <svg class="size-5" fill="currentColor" viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg"><path d="M320.5 572C313.8 572 307 570.2 301.1 566.8L239.4 530.3C230.2 525.1 234.7 523.3 237.7 522.3C250 518 252.5 517.1 265.6 509.6C267 508.8 268.8 509.1 270.2 510L317.6 538.1C319.3 539.1 321.7 539.1 323.3 538.1L508 431.5C509.7 430.5 510.8 428.5 510.8 426.5L510.8 213.3C510.8 211.2 509.7 209.3 507.9 208.2L323.3 101.7C321.6 100.7 319.3 100.7 317.6 101.7L133.1 208.3C131.3 209.3 130.2 211.3 130.2 213.4L130.2 426.5C130.2 428.5 131.3 430.5 133.1 431.4L183.7 460.6C211.2 474.3 228 458.2 228 441.9L228 231.5C228 228.5 230.4 226.2 233.4 226.2L256.8 226.2C259.7 226.2 262.2 228.5 262.2 231.5L262.2 442C262.2 478.6 242.2 499.6 207.5 499.6C196.8 499.6 188.4 499.6 165 488L116.6 460.1C104.6 453.2 97.2 440.3 97.2 426.4L97.2 213.3C97.2 199.5 104.6 186.5 116.6 179.6L301.1 73C312.8 66.4 328.3 66.4 339.9 73L524.6 179.7C536.6 186.6 544 199.5 544 213.4L544 426.5C544 440.3 536.6 453.2 524.6 460.2L339.9 566.8C334 570.2 327.3 572 320.5 572z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-zinc-400">
+        <p>© {{ currentYear }} CampsiteJS. Released under the <a href="https://opensource.org/license/MIT" target="_blank" rel="noreferrer" class="underline underline-offset-2 hover:text-white transition-colors">MIT License</a>. Built by <a href="https://foxgrovemedia.com" target="_blank" rel="noreferrer" class="text-[#FF6C37] underline underline-offset-2 hover:text-white transition-colors">Fox Grove Media</a>.</p>
+        <nav aria-label="Legal links" class="flex items-center gap-6">
+          <a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="/accessibility" class="hover:text-white transition-colors">Accessibility</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+</body>
 </html>

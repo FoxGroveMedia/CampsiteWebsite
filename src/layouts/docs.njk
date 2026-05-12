@@ -5,7 +5,7 @@
 <el-dialog>
   <dialog id="sidebar" class="m-0 p-0 backdrop:bg-transparent lg:hidden">
     <el-dialog-backdrop
-      class="fixed inset-0 bg-stone-950/90 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"></el-dialog-backdrop>
+      class="fixed inset-0 bg-[#05030A]/90 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"></el-dialog-backdrop>
 
     <div tabindex="0" class="fixed inset-0 flex focus:outline focus:outline-0">
       <el-dialog-panel
@@ -14,17 +14,13 @@
           class="absolute left-full top-0 flex w-16 justify-center pt-5 duration-300 ease-in-out group-data-[closed]/dialog-panel:opacity-0">
           <button type="button" command="close" commandfor="sidebar" class="-m-2.5 p-2.5">
             <span class="sr-only">Close sidebar</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon"
-              aria-hidden="true" class="size-6 text-white">
-              <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="size-6 text-white">
+              <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </button>
         </div>
 
-        <!-- Sidebar component, swap this element with another sidebar if you like -->
-        <div
-          class="relative flex grow flex-col gap-y-5 overflow-y-auto bg-stone-950/80 py-8 px-6 ring-1 ring-white/10 dark:before:pointer-events-none dark:before:absolute dark:before:inset-0 dark:before:bg-black/10">
-
+        <div class="relative flex grow flex-col gap-y-5 overflow-y-auto bg-[#0E0B16]/95 py-8 px-6 ring-1 ring-white/10">
           {{ docsSidebar(page.path,'Getting Started',[
           { href: "/docs", label: "Overview" },
           { href: "/docs/getting-started/installation", label: "Installation" },
@@ -75,9 +71,8 @@
 </el-dialog>
 
 <!-- Static sidebar for desktop -->
-<div class="hidden bg-stone-950/50 lg:fixed lg:pt-24 lg:inset-y-0 lg:z-10 lg:flex lg:w-72 lg:flex-col">
-  <!-- Sidebar component, swap this element with another sidebar if you like -->
-  <div class="flex grow flex-col gap-y-5 overflow-y-auto pt-12 px-6 dark:border-white/10 dark:bg-black/10">
+<div class="hidden bg-[#05030A]/60 lg:fixed lg:pt-16 lg:inset-y-0 lg:z-10 lg:flex lg:w-72 lg:flex-col border-r border-white/5">
+  <div class="flex grow flex-col gap-y-5 overflow-y-auto pt-8 px-6">
     {{ docsSidebar(page.path,'Getting Started',[
     { href: "/docs", label: "Overview" },
     { href: "/docs/getting-started/installation", label: "Installation" },
@@ -124,35 +119,32 @@
   </div>
 </div>
 
-<div
-  class="sticky top-[58px] z-40 flex items-center gap-x-6 bg-stone-900 px-4 py-4 shadow sm:px-6 lg:hidden dark:shadow-none dark:after:pointer-events-none dark:after:absolute dark:after:inset-0 dark:after:border-b dark:after:border-white/10 dark:after:bg-black/10">
+<!-- Mobile top bar -->
+<div class="sticky top-16 z-40 flex items-center gap-x-6 bg-[#0E0B16] border-b border-white/5 px-4 py-3 shadow sm:px-6 lg:hidden">
   <button type="button" command="show-modal" commandfor="sidebar"
-    class="-m-2.5 p-2.5 text-white hover:text-stone-400 lg:hidden">
+    class="-m-2.5 p-2.5 text-zinc-400 hover:text-white lg:hidden">
     <span class="sr-only">Open sidebar</span>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true"
-      class="size-6">
-      <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="size-6">
+      <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </button>
-  <div class="flex-1">
-    <h6 class="text-xs text-stone-400 leading-4">{{ page.subtitle }}</h6>
-    <h3 class="text-xl text-white leading-5">{{ page.title }}</h3>
+  <div class="flex-1 min-w-0">
+    <p class="text-xs text-zinc-500 leading-4 truncate">{{ page.subtitle }}</p>
+    <p class="text-sm text-white leading-5 font-semibold truncate">{{ page.title }}</p>
   </div>
 </div>
 
-<main class="py-10 lg:pl-72">
+<div class="py-10 lg:pl-72">
   <div class="px-4 sm:px-6 lg:px-8">
-    <header>
-      <div class="max-w-2xl min-w-0 flex-auto px-4 lg:max-w-none pt-12 mb-4 lg:pr-0 lg:pl-8 xl:px-16">
-        <h6 class="text-base text-stone-200/50 font-medium tracking-wide">{{ page.subtitle }}</h6>
-        <h1 class="text-4xl">{{ page.title }}</h1>
-      </div>
+    <header class="max-w-3xl pt-8 mb-6 px-4 lg:px-8">
+      <p class="text-sm text-zinc-500 font-medium tracking-wide mb-1">{{ page.subtitle }}</p>
+      <h1 class="text-4xl font-bold text-white">{{ page.title }}</h1>
     </header>
-    <article class="docs max-w-2xl min-w-0 flex-auto px-4 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16">
-      <p class="text-xl tracking-wide mb-12">{{ page.description }}</p>
+    <article class="docs max-w-3xl px-4 lg:px-8">
+      <p class="text-lg text-zinc-400 leading-relaxed mb-10">{{ page.description }}</p>
       {{ content | safe }}
     </article>
   </div>
-</main>
+</div>
 
 {% endblock %}

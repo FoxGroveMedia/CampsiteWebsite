@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:codepen.io)",
+      "WebFetch(domain:n8n.io)",
+      "Bash(npm run *)",
+      "Bash(npx @tailwindcss/cli -i ./src/styles/tailwind.css -o ./public/style.css --minify)",
+      "Bash(node_modules/.bin/tailwindcss -i ./src/styles/tailwind.css -o ./public/style.css --minify)",
+      "Bash(npm install *)",
+      "Bash(curl *)"
+    ]
+  }
+}

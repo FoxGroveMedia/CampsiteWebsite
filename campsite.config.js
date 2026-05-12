@@ -1,6 +1,6 @@
 export default {
   srcDir: "src",
-  outDir: "campfire",
+  outDir: "public",
   templateEngine: "nunjucks",
   markdown: true,
   minifyCSS: false,
@@ -15,7 +15,7 @@ export default {
     preserveOriginal: true
   },
   integrations: {
-    alpine: false,
+    alpine: true,
     liquid: true,
     mustache: false,
     nunjucks: true,

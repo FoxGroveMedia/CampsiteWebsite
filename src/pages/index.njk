@@ -1,60 +1,27 @@
 ---
-title: Welcome traveler
-description: Cozy, fast static sites with CampsiteJS.
+title: CampsiteJS
+description: CampsiteJS transforms static site building into an enjoyable coding adventure, packed with modern tooling out of the box.
 body_css: 'homepage'
 ---
 {% extends "base.njk" %}
 
 {% block content %}
+<div class="relative overflow-hidden">
 
-{% include "partials/hero.njk" %}
-
-{% include "partials/get-started.njk" %}
-
-<section class="bg-campfire-900 isolate overflow-hidden border-t-campfire-950/50 border-t-4">
-  <div class="mx-auto max-w-7xl relative py-24 lg:py-28 px-0 lg:px-8">
-    <div aria-hidden="true" class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl lg:-top-80">
-      <div
-        style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
-        class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-campfire-900 to-campfire-800/75 opacity-30 lg:left-[calc(50%-30rem)] lg:w-[72.1875rem]">
-      </div>
-    </div>
-    <article class="px-6 lg:px-0">
-      <h2 class="text-3xl lg:text-4xl font-extralight mb-6">What is CampsiteJS?</h2>
-      <p class="text-xl font-extralight leading-8 mb-20"><b>CampsiteJS</b> transforms static site building into an exciting adventure, equipped out-of-the-box with Markdown for simple, readable content creation; Nunjucks and Liquid for advanced templating with logic and data; Vue.js for building reactive, interactive components; Alpine.js for lightweight, easy-to-add interactivity; and Tailwind CSS for rapid, utility-first styling of responsive designs. Ideal for everything from minimalist blogs to complex projects, it makes web development smooth, fast, and enjoyable without needing extra plugins—perfect for solo developers or teams ready to explore the digital wilderness.</p>
-    </article>
-    <div class="text-xs text-center tracking-wider mt-10 text-stone-500 font-medium">built using</div>
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-12 lg:gap-x-24 lg:gap-16 items-center px-12 lg:px-0 pt-4 pb-8 text-white">
-        <a href="https://alpinejs.dev/" aria-label="Alpine.js" target="_blank" rel="noopener noreferrer" class="inline-block group"><img src="https://cdn.foxgrove.media/csjs/alpinejs_logo.svg?v=1" alt="Alpine.js logo" class="w-full pt-2 transition ease-in-out group-hover:scale-110 opacity-20 hover:opacity-100"></a>
-        <a href="https://nodejs.org/" aria-label="Node.js" target="_blank" rel="noopener noreferrer" class="inline-block group"><img src="https://cdn.foxgrove.media/csjs/nodejs_logo.svg?v=1" alt="Node.js logo" class="w-full transition ease-in-out group-hover:scale-110 opacity-20 hover:opacity-100"></a>
-        <a href="https://tailwindcss.com/" aria-label="Tailwind CSS" target="_blank" rel="noopener noreferrer" class="inline-block group"><img src="https://cdn.foxgrove.media/csjs/tailwindcss_logo.svg?v=1" alt="Tailwind CSS logo" class="w-full transition ease-in-out group-hover:scale-110 opacity-20 hover:opacity-100"></a>
-        <a href="https://vuejs.org/" aria-label="Vue.js" target="_blank" rel="noopener noreferrer" class="inline-block group"><img src="https://cdn.foxgrove.media/csjs/vuejs_logo.svg?v=2" alt="Vue.js logo" class="w-full transition ease-in-out group-hover:scale-110 opacity-20 hover:opacity-100"></a>
-    </div>
-    <div aria-hidden="true"
-      class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl lg:top-[calc(100%-30rem)]">
-      <div
-        style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
-        class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-campfire-900 to-campfire-700 opacity-30 lg:left-[calc(50%+36rem)] lg:w-[72.1875rem]">
-      </div>
-    </div>
+  <div aria-hidden="true" class="absolute inset-0 pointer-events-none z-0">
+    <div class="hero-blob-1 absolute -top-48 -left-40 w-[750px] h-[750px] rounded-full blur-[80px]" style="background:#381714;opacity:0.95;"></div>
+    <div class="hero-blob-2 absolute -top-24 -right-40 w-[700px] h-[700px] rounded-full blur-[80px]" style="background:#431726;opacity:0.95;"></div>
+    <div class="hero-blob-3 absolute top-[55vh] -right-20 w-[600px] h-[600px] rounded-full blur-[80px]" style="background:#381714;opacity:0.85;"></div>
   </div>
-</section>
-<section class="relative h-[465px] flex items-center justify-center border-y-amber-500 border-t-4 border-b-4" style="box-shadow: 0 25px 100px -100px black;">
-    <div class="z-0 merit-badges absolute top-0 left-0 w-full h-full brightness-50X opacity-75"></div>
-    <div class="z-10 text-center py-16 px-24" style="background: radial-gradient(ellipse at center, rgba(23,9,0,1) 0%,rgba(23,9,0,0) 100%);">
-        <h2 class="text-white text-4xl lg:text-5xl mb-8">Level Up Your Skills</h2>
-        <a href="/docs"
-            class="inline-block rounded bg-red-600 px-6 py-3 mb-8 font-semibold text-white hover:bg-red-700 transition inline-flex items-center gap-2">
-            <svg class="h-8 text-shadow-strong" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 640 640">
-                <path
-                    d="M528 320C528 205.1 434.9 112 320 112C205.1 112 112 205.1 112 320C112 434.9 205.1 528 320 528C434.9 528 528 434.9 528 320zM64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320zM370.7 389.1L226.4 444.6C207 452.1 187.9 433 195.4 413.6L250.9 269.3C254.2 260.8 260.8 254.2 269.3 250.9L413.6 195.4C433 187.9 452.1 207 444.6 226.4L389.1 370.7C385.8 379.2 379.2 385.8 370.7 389.1zM352 320C352 302.3 337.7 288 320 288C302.3 288 288 302.3 288 320C288 337.7 302.3 352 320 352C337.7 352 352 337.7 352 320z" />
-            </svg>
-            <div class="text-shadow-strong text-left">
-                <div class="text-xs leading-3">study the</div>
-                <div class="leading-4">Guidebook</div>
-            </div>
-        </a>
-    </div>
-</section>
+
+  <div class="relative z-10">
+    {% include "partials/home-hero.njk" %}
+    {% include "partials/home-quick-start.njk" %}
+    {% include "partials/home-deploy.njk" %}
+    {% include "partials/home-features.njk" %}
+    {% include "partials/home-install.njk" %}
+    {% include "partials/home-cta.njk" %}
+  </div>
+
+</div>
 {% endblock %}
