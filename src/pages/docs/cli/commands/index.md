@@ -51,11 +51,12 @@ camper init
 **What it creates:**
 - `src/pages/` - Directory for page content
 - `src/layouts/` - Directory for layout templates
-- `public/` - Directory for static assets
+- `static/` - Directory for static assets (CSS, images, etc.)
 - `campsite.config.js` - Configuration file
-- `package.json` - Node.js dependencies
-- `.gitignore` - Git ignore rules
-- Sample page and basic layout
+- `package.json` - Node.js dependencies (with `basecampjs`)
+- `.gitignore` - Git ignore rules (ignores `public/`)
+- Sample page (`src/pages/index.md`) and basic layout (`src/layouts/base.njk`)
+- Basic CSS in `static/style.css`
 
 **Features:**
 - Detects if already initialized and warns you
@@ -67,12 +68,13 @@ camper init
 🏕️ Initializing Campsite in current directory...
 ✅ Created src/pages/
 ✅ Created src/layouts/
-✅ Created public/
+✅ Created static/
 ✅ Created campsite.config.js
 ✅ Created package.json
 ✅ Created .gitignore
-✅ Created src/pages/index.njk
+✅ Created src/pages/index.md
 ✅ Created src/layouts/base.njk
+✅ Created static/style.css
 
 🌲 Campsite initialized! Run 'camper dev' to start.
 ```
@@ -99,14 +101,14 @@ camper dev
 - Detailed error messages
 
 **Default server:**
-- URL: `http://localhost:3000`
+- URL: `http://localhost:4173` (configurable via `port` in config)
 - Configurable port via config file
 
 **Example output:**
 ```
 🏕️ Starting Campsite dev server...
 🔥 Watching for changes in src/ and public/
-✅ Dev server running at http://localhost:3000
+✅ Dev server running at http://localhost:4173
 🌲 Happy camping!
 ```
 
@@ -114,7 +116,7 @@ camper dev
 
 ### `camper build`
 
-Creates an optimized production build. Outputs to `dist/` (or configured `outDir`).
+Creates an optimized production build. Outputs to your configured `outDir` (defaults to `public/`).
 
 ```bash
 camper build
@@ -134,7 +136,7 @@ camper build
 🎨 Processing layouts... (5 layouts)
 🧩 Processing partials... (8 partials)
 📦 Processing collections... (3 collections)
-✅ Build complete! Output: ./dist/
+✅ Build complete! Output: ./public/
 🌲 Ready to deploy!
 ```
 
@@ -142,7 +144,7 @@ camper build
 
 ### `camper serve`
 
-Serves the built site from `dist/` directory on `http://localhost:4173`.
+Serves the built site from your `outDir` directory (defaults to `public/`) on `http://localhost:4173`.
 
 ```bash
 camper serve
@@ -156,7 +158,7 @@ camper serve
 
 **Example output:**
 ```
-🏕️ Serving built site from dist/
+🏕️ Serving built site from public/
 🔥 Server running at http://localhost:4173
 🗺️ Press Ctrl+C to stop
 ```
@@ -184,7 +186,7 @@ camper build && camper serve
 
 ### `camper clean`
 
-Removes the `dist/` folder (or configured `outDir`) for fresh builds.
+Removes the `outDir` folder (defaults to `public/`) for fresh builds.
 
 ```bash
 camper clean
@@ -198,7 +200,7 @@ camper clean
 **Example output:**
 ```
 🏕️ Cleaning build directory...
-✅ Removed dist/
+✅ Removed public/
 🌲 Fresh start ready!
 ```
 

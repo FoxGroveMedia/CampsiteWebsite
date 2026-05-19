@@ -15,7 +15,7 @@ The `campsite.config.js` file lives at the root of your project and exports a co
 export default {
   siteName: "My Campsite",
   srcDir: "src",
-  outDir: "dist",
+  outDir: "public",
   // ... more options
 };
 ```
@@ -66,19 +66,39 @@ source/
 ### `outDir`
 
 **Type:** `string`  
-**Default:** `"dist"`
+**Default:** `"public"`
 
-The output directory for built files.
+The output directory for built files (where the static site is generated).
 
 ```javascript
 outDir: "build"
 ```
 
 **Common values:**
+- `"public"` - Default, common for web hosting
 - `"dist"` - Distribution
 - `"build"` - Build output
-- `"public"` - Public folder
-- `"campfire"` - CampsiteJS default output
+- `"campfire"` - Custom (used by some Campsite sites)
+
+---
+
+### `staticDir`
+
+**Type:** `string`  
+**Default:** `"static"` (auto-derives to avoid collision with `outDir`)
+
+The source directory for static assets (CSS, images, fonts, etc.) that get copied to `outDir` during build. Separate from your page source.
+
+```javascript
+staticDir: "assets"
+```
+
+**Auto-derivation logic:**
+- If `outDir` is `"public"`, defaults to `"static"`
+- If `outDir` is `"static"`, defaults to `"public"`
+- Otherwise stays `"static"`
+
+This prevents accidentally copying your build output into itself.
 
 ---
 
@@ -96,26 +116,47 @@ templateEngine: "liquid"
 
 This sets the default file extension when creating new files with `make:` commands.
 
+### `port`
+
+**Type:** `number`  
+**Default:** `4173`
+
+The port used by `camper dev` and `camper serve` (and `preview`).
+
+```javascript
+port: 3000
+```
+
 ---
 
 ## Content Options
 
-### `markdown`
+### Markdown Support
+
+Markdown is **always available** for `.md` files in `src/pages/` — they are automatically parsed for YAML frontmatter and rendered to HTML using Markdown-It.
+
+For other template files (`.njk`, `.liquid`, `.mustache`, `.html`), you can opt-in to Markdown post-processing on a **per-page basis** using frontmatter:
+
+```yaml
+---
+title: My Page
+markdown: true
+---
+# Heading
+
+This will be rendered as **Markdown** after the template engine processes it.
+```
+
+**Note:** The top-level `markdown: true` config option from older versions has been removed. Use the per-page frontmatter flag instead.
+
+---
+
+### `frontmatter`
 
 **Type:** `boolean`  
 **Default:** `true`
 
-Enable Markdown processing with frontmatter support.
-
-```javascript
-markdown: true
-```
-
-When enabled:
-- `.md` files are processed
-- Frontmatter is parsed
-- Markdown is converted to HTML
-- Can be overridden per-page with `markdown: false` in frontmatter
+Controls whether YAML frontmatter is parsed from page files. Currently always enabled (this option is legacy and may be removed in a future version).
 
 ---
 
@@ -187,6 +228,15 @@ app-f8d4a21c3e.js
 - Prevents stale cache issues
 - Automatic filename updates in HTML
 
+### Automatic `robots.txt` and `sitemap.xml`
+
+If you do not provide `robots.txt` or `sitemap.xml` in your `staticDir`, CampsiteJS will **automatically generate** them during build:
+
+- `robots.txt` with `User-agent: * Allow: /` and a sitemap reference
+- `sitemap.xml` listing all generated HTML pages with lastmod dates
+
+Place your own versions in `static/` to override.
+
 ---
 
 ## Photo Compression
@@ -202,7 +252,7 @@ Enable automatic photo compression during builds.
 compressPhotos: true
 ```
 
-See [Photo Compression](/docs/essentials/photo-compression) for detailed guide.
+See [Photo Compression](/docs/assets/photo-compression) for detailed guide.
 
 ---
 
@@ -327,8 +377,10 @@ integrations: {
 
 #### JavaScript Frameworks
 
-- **`vue`** - Vue.js for interactive components
-- **`alpine`** - Alpine.js for lightweight interactivity
+- **`vue`** - Vue.js for interactive components (config flag for future use; include via CDN or npm manually for now)
+- **`alpine`** - Alpine.js for lightweight interactivity (config flag for future use; include via CDN or npm manually for now)
+
+**Note:** The `integrations` flags for Vue and Alpine currently control defaults in `init` and `make` scaffolding but do not auto-inject scripts or provide special component processing. You can still use them by including the libraries yourself.
 
 ---
 
@@ -393,9 +445,8 @@ export default {
   // Basic settings
   siteName: "My Awesome Site",
   srcDir: "src",
-  outDir: "dist",
+  outDir: "public",
   templateEngine: "nunjucks",
-  markdown: true,
   
   // Build optimization
   minifyCSS: true,
@@ -472,9 +523,9 @@ export default {
 export default {
   siteName: "My Blog",
   srcDir: "src",
-  outDir: "dist",
+  outDir: "public",
   templateEngine: "nunjucks",
-  markdown: true,
+
   minifyCSS: true,
   minifyHTML: true,
   cacheBustAssets: true,
@@ -502,9 +553,9 @@ export default {
 export default {
   siteName: "John Doe Portfolio",
   srcDir: "src",
-  outDir: "dist",
+  outDir: "public",
   templateEngine: "liquid",
-  markdown: true,
+
   minifyCSS: true,
   minifyHTML: true,
   cacheBustAssets: true,
@@ -534,7 +585,7 @@ export default {
   srcDir: "src",
   outDir: "docs",
   templateEngine: "nunjucks",
-  markdown: true,
+
   minifyCSS: true,
   minifyHTML: true,
   cacheBustAssets: false,  // Not needed for docs
@@ -558,7 +609,7 @@ export default {
   srcDir: "src",
   outDir: "public",
   templateEngine: "nunjucks",
-  markdown: true,
+
   minifyCSS: true,
   minifyHTML: true,
   cacheBustAssets: true,
@@ -599,7 +650,7 @@ const isDev = process.env.NODE_ENV === 'development';
 export default {
   siteName: "My Site",
   srcDir: "src",
-  outDir: isDev ? "dev-build" : "dist",
+  outDir: isDev ? "dev-build" : "public",
   minifyCSS: !isDev,
   minifyHTML: !isDev,
   cacheBustAssets: !isDev,
@@ -625,7 +676,7 @@ export default {
 ```javascript
 export default {
   siteName: "My Site",
-  outDir: "dist",
+  outDir: "public",
   minifyCSS: true,
   minifyHTML: true,
   cacheBustAssets: true,
@@ -666,7 +717,7 @@ camper preview
 ## Additional Resources
 
 - [Extending CampsiteJS](/docs/essentials/extending) - Custom hooks and filters
-- [Photo Compression](/docs/essentials/photo-compression) - Image optimization
+- [Photo Compression](/docs/assets/photo-compression) - Image optimization
 - [File Exclusion](/docs/essentials/file-exclusion) - Skip files during build
 - [CLI Commands](/docs/cli/commands) - All available commands
 

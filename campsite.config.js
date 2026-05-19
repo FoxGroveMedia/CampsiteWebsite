@@ -2,7 +2,6 @@ export default {
   srcDir: "src",
   outDir: "public",
   templateEngine: "nunjucks",
-  markdown: true,
   minifyCSS: false,
   minifyHTML: false,
   cacheBustAssets: false,

@@ -54,7 +54,7 @@ src/
 
 Populate your collection with data:
 
-<div class="inline-block rounded-md bg-black py-1 px-3 text-base font-bold text-white mb-0">Filename: src/collections/team.json</div>
+<div class="filename">src/collections/team.json</div>
 
 ```json
 [
@@ -95,7 +95,7 @@ Access collections using the `collections` object:
 
 ### Site Configuration
 
-<div class="inline-block rounded-md bg-black py-1 px-3 text-base font-bold text-white mb-0">Filename: src/data/site.json</div>
+<div class="filename">src/data/site.json</div>
 
 ```json
 {
@@ -120,7 +120,7 @@ Access collections using the `collections` object:
 
 ### Navigation Menu
 
-<div class="inline-block rounded-md bg-black py-1 px-3 text-base font-bold text-white mb-0">Filename: src/collections/navbar.json</div>
+<div class="filename">src/collections/navbar.json</div>
 
 ```json
 [
@@ -158,7 +158,7 @@ Access collections using the `collections` object:
 
 ### Blog Posts Metadata
 
-<div class="inline-block rounded-md bg-black py-1 px-3 text-base font-bold text-white mb-0">Filename: src/collections/posts.json</div>
+<div class="filename">src/collections/posts.json</div>
 
 ```json
 [
@@ -203,7 +203,7 @@ Access collections using the `collections` object:
 
 ### Product Catalog
 
-<div class="inline-block rounded-md bg-black py-1 px-3 text-base font-bold text-white mb-0">Filename: src/collections/products.json</div>
+<div class="filename">src/collections/products.json</div>
 
 ```json
 [
@@ -414,7 +414,7 @@ camper make:collection team, products, posts
 
 **Generated file:**
 
-<div class="inline-block rounded-md bg-black py-1 px-3 text-base font-bold text-white mb-0">Filename: src/collections/team.json</div>
+<div class="filename">src/collections/team.json</div>
 
 ```json
 [
@@ -467,7 +467,7 @@ camper list
 
 ## Example: Complete Team Page
 
-<div class="inline-block rounded-md bg-black py-1 px-3 text-base font-bold text-white mb-0">Filename: src/collections/employees.json</div>
+<div class="filename">src/collections/employees.json</div>
 
 ```json
 [
@@ -496,7 +496,7 @@ camper list
 ]
 ```
 
-<div class="inline-block rounded-md bg-black py-1 px-3 text-base font-bold text-white mb-0">Filename: src/pages/team.njk</div>
+<div class="filename">src/pages/team.njk</div>
 
 ### Additional Resources
 - [Configuration](/docs/essentials/configuration) - All config options

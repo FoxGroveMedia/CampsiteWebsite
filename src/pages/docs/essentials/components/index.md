@@ -2,38 +2,20 @@
 title: Components
 subtitle: Essentials
 layout: docs.njk
-description: Learn how to create and use reusable components in CampsiteJS for Vue.js and Alpine.js.
+description: Learn how to organize reusable UI components and work with JavaScript frameworks in CampsiteJS.
 ---
 
-> Components in CampsiteJS allow you to create reusable, interactive UI elements using Vue.js or Alpine.js. Unlike partials (which are server-side template includes), components are client-side and can include JavaScript logic and interactivity.
+> CampsiteJS provides a `src/components/` directory and `make:component` command to help you organize reusable pieces of your interface.
 
 ## Overview
 
-CampsiteJS supports two popular JavaScript frameworks for building interactive components:
+You can place component files (HTML snippets, partials, or small JS widgets) in `src/components/`. This is purely an organizational convention — CampsiteJS does not process this folder specially.
 
-- **Vue.js** - Full-featured progressive framework
-- **Alpine.js** - Lightweight, reactive framework
-
-Components live in the `src/components/` directory and can be included in your pages and layouts.
+For interactive JavaScript components, simply include the library you want (Alpine.js, Vue, etc.) in your layout. See the [Working with Assets](/docs/assets) guide for recommended patterns.
 
 ## Setup
 
-### Enabling Components
-
-Enable JavaScript frameworks in your `campsite.config.js`:
-
-```javascript
-export default {
-  // ... other config
-  integrations: {
-    nunjucks: true,
-    liquid: false,
-    mustache: false,
-    vue: true,      // Enable Vue.js
-    alpine: true    // Enable Alpine.js
-  }
-};
-```
+CampsiteJS does not require any special configuration to use components or JavaScript libraries.
 
 ### During Project Creation
 
@@ -69,7 +51,7 @@ src/
 
 Create a `.vue` file in `src/components/`:
 
-<div class="inline-block rounded-md bg-black py-1 px-3 text-base font-bold text-white mb-0">Filename: src/components/Counter.vue</div>
+<div class="filename">src/components/Counter.vue</div>
 
 ```vue
 <template>
@@ -125,7 +107,7 @@ button {
 
 Include Vue components in your pages or layouts:
 
-<div class="inline-block rounded-md bg-black py-1 px-3 text-base font-bold text-white mb-0">Filename: src/pages/index.njk</div>
+<div class="filename">src/pages/index.njk</div>
 
 ```njk
 ---
@@ -149,7 +131,7 @@ title: Home
 
 Add Vue mounting code to your layout:
 
-<div class="inline-block rounded-md bg-black py-1 px-3 text-base font-bold text-white mb-0">Filename: src/layouts/base.njk</div>
+<div class="filename">src/layouts/base.njk</div>
 
 ```html
 <!DOCTYPE html>
@@ -181,7 +163,7 @@ Add Vue mounting code to your layout:
 
 ### Advanced Vue Example
 
-<div class="inline-block rounded-md bg-black py-1 px-3 text-base font-bold text-white mb-0">Filename: src/components/TodoList.vue</div>
+<div class="filename">src/components/TodoList.vue</div>
 
 ```vue
 <template>
@@ -303,7 +285,7 @@ Alpine.js is a lightweight alternative to Vue.js, using HTML attributes for reac
 
 ### Creating an Alpine Component
 
-<div class="inline-block rounded-md bg-black py-1 px-3 text-base font-bold text-white mb-0">Filename: src/components/alpine-counter.html</div>
+<div class="filename">src/components/alpine-counter.html</div>
 
 ```html
 <div x-data="{ count: 0 }" class="alpine-counter">
@@ -318,7 +300,7 @@ Alpine.js is a lightweight alternative to Vue.js, using HTML attributes for reac
 
 Include Alpine components using Nunjucks includes:
 
-<div class="inline-block rounded-md bg-black py-1 px-3 text-base font-bold text-white mb-0">Filename: src/pages/index.njk</div>
+<div class="filename">src/pages/index.njk</div>
 
 ```njk
 ---
@@ -334,7 +316,7 @@ title: Home
 
 ### Adding Alpine.js to Layout
 
-<div class="inline-block rounded-md bg-black py-1 px-3 text-base font-bold text-white mb-0">Filename: src/layouts/base.njk</div>
+<div class="filename">src/layouts/base.njk</div>
 
 ```html
 <!DOCTYPE html>
@@ -662,5 +644,5 @@ Then bundle with your build process (requires additional configuration).
 
 **Next Steps:**
 - [Partials](/docs/essentials/partials) - Learn about server-side includes
-- [JavaScript Frameworks](/docs/js-frameworks) - Framework-specific guides
+- [Working with Assets](/docs/assets) - CSS, JavaScript, and static files
 - [Make Commands](/docs/cli/make-commands) - Create components with CLI

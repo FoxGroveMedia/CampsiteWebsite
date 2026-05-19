@@ -15,8 +15,8 @@ The `camper` CLI is your command center for managing CampsiteJS projects. With a
 
 The CampsiteJS ecosystem consists of two packages:
 
-- **`campsitejs`** (Scaffolder): Creates new projects via `npm create campsitejs@latest`
-- **`basecampjs`** (Build Engine): Provides the `camper` CLI for managing existing projects
+- **`create-campsitejs`** (Scaffolder): Creates new projects via `npm create campsitejs@latest` (also provides `campsitejs` bin)
+- **`basecampjs`** (Build Engine): Provides the `camper` and `campsite` CLI commands for managing existing projects
 
 ### Installing the CLI Globally
 
@@ -44,11 +44,11 @@ Commands are organized into logical groups for easy discovery:
 #### Development
 - `camper dev` - Start development server with hot reloading
 - `camper build` - Production build
-- `camper serve` - Serve built site from dist/
+- `camper serve` - Serve built site from public/ (or configured `outDir`)
 - `camper preview` - Build + serve for production testing
 
 #### Utilities
-- `camper clean` - Remove dist/ folder
+- `camper clean` - Remove public/ (or `outDir`) folder
 - `camper check` - Validate project structure
 - `camper list` - List all content with counts
 - `camper upgrade` - Update basecampjs to latest
@@ -60,6 +60,9 @@ Commands are organized into logical groups for easy discovery:
 - `camper make:component` - Create components
 - `camper make:partial` - Create partials
 - `camper make:collection` - Create data collections
+
+#### Template Commands
+- `camper add:template [name]` - Install a starter template (single-page, basic-site, blog, docs) into existing project. Use `--force` to overwrite.
 
 <a id="quick-examples"></a>
 

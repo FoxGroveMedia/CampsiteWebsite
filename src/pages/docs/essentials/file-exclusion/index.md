@@ -5,11 +5,11 @@ layout: docs.njk
 description: Control which files are copied during the build process with the excludeFiles configuration option in CampsiteJS.
 ---
 
-> The `excludeFiles` configuration option allows you to skip specific files or patterns when copying from the `public/` directory during the build process. This is useful for excluding large files, work-in-progress content, or files that shouldn't be deployed to production.
+> The `excludeFiles` configuration option allows you to skip specific files or patterns when copying from the `staticDir` directory (defaults to `static/`) to your `outDir` during the build process. This is useful for excluding large files, work-in-progress content, or files that shouldn't be deployed to production.
 
 ## Overview
 
-By default, CampsiteJS copies all files from the `public/` directory to your output directory during the build process. The `excludeFiles` option gives you fine-grained control over what gets excluded, helping you:
+By default, CampsiteJS copies all files from your `staticDir` directory (defaults to `static/`) to your `outDir` (defaults to `public/`) during the build process. The `excludeFiles` option gives you fine-grained control over what gets excluded, helping you:
 
 - **Reduce build times** by skipping unnecessary files
 - **Prevent deployment** of draft or work-in-progress content
@@ -180,9 +180,8 @@ Here's a comprehensive configuration:
 export default {
   siteName: "My Campsite",
   srcDir: "src",
-  outDir: "dist",
+  outDir: "public",
   templateEngine: "nunjucks",
-  markdown: true,
   
   // File exclusion
   excludeFiles: [
@@ -234,15 +233,15 @@ camper build
   ⏭️  Skipping excluded file: design-mockup.psd
   ⏭️  Skipping excluded file: draft-blog-post.html
   ⏭️  Skipping excluded file: backup.zip
-✅ Build complete! Output: ./dist/
+✅ Build complete! Output: ./public/
 ```
 
 ## Directory Structure Example
 
-### Before Build (`public/` directory):
+### Before Build (`static/` directory - your `staticDir`):
 
 ```
-public/
+static/
   images/
     hero.jpg
     logo.png
@@ -262,10 +261,10 @@ public/
 excludeFiles: ['.pdf', 'draft-*', 'README.md']
 ```
 
-### After Build (`dist/` directory):
+### After Build (`public/` directory - your `outDir`):
 
 ```
-dist/
+public/
   images/
     hero.jpg
     logo.png
@@ -312,7 +311,7 @@ The `excludeFiles` option is similar to `.gitignore`, but works differently:
 | Feature | `.gitignore` | `excludeFiles` |
 |---------|-------------|----------------|
 | **Purpose** | Keep files out of version control | Keep files out of builds |
-| **Scope** | Entire project | Only `public/` directory |
+| **Scope** | Entire project | Only your `staticDir` (e.g. `static/`) |
 | **When** | Git operations | Build process |
 | **Impact** | Source control | Production deployment |
 
@@ -372,7 +371,7 @@ Build and verify excluded files aren't in output:
 
 ```bash
 camper build
-ls -la dist/  # Check output directory
+ls -la public/  # Check output directory (or your outDir)
 ```
 
 ### 4. Keep Production Clean
@@ -501,13 +500,13 @@ excludeFiles: [
 
 ## Additional Resources
 
-- [Photo Compression](/docs/essentials/photo-compression) - Optimize images during build
+- [Photo Compression](/docs/assets/photo-compression) - Optimize images during build
 - [Configuration](/docs/essentials/extending) - All config options
 - [Build Command](/docs/cli/commands#build) - Understanding the build process
 
 ---
 
 **Next Steps:**
-- [Photo Compression](/docs/essentials/photo-compression) - Optimize images
+- [Photo Compression](/docs/assets/photo-compression) - Optimize images
 - [Deploying](/docs/getting-started/deploying) - Deploy your site
 - [CLI Commands](/docs/cli/commands) - Build and development commands
